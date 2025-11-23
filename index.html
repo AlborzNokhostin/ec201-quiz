@@ -810,7 +810,13 @@
                 <img src="u_of_w_third_party_lockup_positive_rgb.jpg" alt="University of Warwick" class="header-logo">
             </div>
             <h1>EC201 International Macroeconomics</h1>
-            <p>MCQ Assessment - Weeks 1-3</p>
+            <p>MCQ Assessment - Weeks 1-5</p>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; margin: 20px auto; max-width: 900px; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
+            <p style="margin: 0; font-size: 0.95em; line-height: 1.6; color: #fff; text-align: center;">
+                <strong>📊 AI-Enhanced Assessment:</strong> These questions have been derived from all content uploaded to Moodle for EC201 using AI analysis, including pre-class questions, pre-class answers, in-class questions, lecture slides, and course materials. The questions are designed to reflect concepts with higher likelihood of exam appearance based on comprehensive content analysis.
+            </p>
         </div>
 
         <div class="week-selector">
@@ -818,6 +824,8 @@
             <button class="week-btn" data-week="1">Week 1: Global Imbalances</button>
             <button class="week-btn" data-week="2">Week 2: Sustainability</button>
             <button class="week-btn" data-week="3">Week 3: Current Account Theory</button>
+            <button class="week-btn" data-week="4">Week 4: Terms of Trade & Tariffs</button>
+            <button class="week-btn" data-week="5">Week 5: Production Economy</button>
         </div>
 
         <div id="startScreen" class="start-screen">
@@ -929,466 +937,990 @@
         }
 
         const questions = [
-            // Week 1: Global Imbalances
+            // Week 1: Global Imbalances (15 challenging questions)
             {
                 week: 1,
                 topic: "Balance of Payments Components",
-                question: "The Balance of Payments consists of which main components?",
+                question: "Consider a country with TB = -50, Net Investment Income = 30, Net Compensation to Employees = -5, and Net Unilateral Transfers = 10. What is the Current Account balance?",
                 options: [
-                    "Current Account + Financial Account + Capital Account",
-                    "Trade Balance + Income Balance only",
-                    "Exports + Imports + Transfers",
-                    "GDP + Net Exports + Government Spending"
+                    "CA = -35 (the trade deficit partially offsets the investment income surplus)",
+                    "CA = -15 (TB + NII + NCE + NUT = -50 + 30 - 5 + 10)",
+                    "CA = -25 (only TB and NII are included in CA)",
+                    "CA = 15 (net investment income dominates the calculation)"
+                ],
+                correct: 1,
+                explanation: "CA = TB + Net Investment Income + Net Compensation to Employees + Net Unilateral Transfers = -50 + 30 - 5 + 10 = -15. All four components must be included."
+            },
+            {
+                week: 1,
+                topic: "Balance of Payments Components",
+                question: "If a country's Financial Account shows +$200 billion (capital inflows), the BoP identity implies:",
+                options: [
+                    "Current Account must be approximately -$200 billion (BoP ≈ 0)",
+                    "Current Account must be +$200 billion (they move together)",
+                    "Trade Balance must equal +$200 billion exactly",
+                    "Capital Account must be -$200 billion to offset the Financial Account"
                 ],
                 correct: 0,
-                explanation: "The Balance of Payments = Current Account + Financial Account + Capital Account."
-            },
-            {
-                week: 1,
-                topic: "Balance of Payments Components",
-                question: "What does the Trade Balance measure?",
-                options: [
-                    "Total government spending on trade",
-                    "Exports minus Imports of goods and services",
-                    "Foreign investment flows",
-                    "Net unilateral transfers"
-                ],
-                correct: 1,
-                explanation: "Trade Balance = Exports - Imports (goods & services)."
+                explanation: "By the BoP identity: CA + Financial Account + Capital Account ≈ 0. Large capital inflows (+$200B FA) typically reflect financing of a CA deficit (approximately -$200B CA)."
             },
             {
                 week: 1,
                 topic: "NIIP and Valuation",
-                question: "Net International Investment Position (NIIP) is calculated as:",
+                question: "A country has NIIP₀ = -$500B. Over one year, it runs CA = -$100B, but NIIP₁ = -$550B (not -$600B). What explains the $50B discrepancy?",
                 options: [
-                    "Current Account - Trade Balance",
-                    "Exports - Imports",
-                    "Foreign Assets - Foreign Liabilities",
-                    "GDP - National Debt"
+                    "Measurement error in the current account statistics",
+                    "+$50B positive valuation effect (e.g., domestic currency depreciation increased value of foreign assets)",
+                    "-$50B negative valuation effect (e.g., foreign liabilities appreciated more than assets)",
+                    "The Financial Account must have been incorrectly recorded"
                 ],
-                correct: 2,
-                explanation: "NIIP = Foreign Assets - Foreign Liabilities. It represents accumulated wealth position."
+                correct: 1,
+                explanation: "NIIP₁ = NIIP₀ + CA + Valuation Changes. Expected: -500 - 100 = -600, but actual is -550. The +$50B difference comes from positive valuation effects (e.g., FX movements, asset price changes)."
             },
             {
                 week: 1,
                 topic: "NIIP and Valuation",
-                question: "What is the relationship between Current Account deficits and NIIP?",
+                question: "During a period of domestic currency depreciation, which valuation effect is most likely for a country whose foreign assets are denominated in foreign currency and foreign liabilities in domestic currency?",
                 options: [
-                    "Current Account Deficit causes NIIP to rise",
-                    "Current Account Deficit causes NIIP to fall",
-                    "They are unrelated",
-                    "Current Account Deficit doubles the NIIP"
+                    "Negative valuation effect: both assets and liabilities increase proportionally",
+                    "Positive valuation effect: foreign assets rise in domestic currency value while liabilities remain stable",
+                    "Neutral effect: currency movements don't affect NIIP",
+                    "Ambiguous effect: depends entirely on the magnitude of the trade balance"
                 ],
                 correct: 1,
-                explanation: "A Current Account Deficit leads to a fall in NIIP, while a Current Account Surplus causes NIIP to rise."
+                explanation: "Currency depreciation causes foreign-currency-denominated assets to rise in domestic currency value, while domestic-currency liabilities remain constant—creating positive valuation effects that improve NIIP."
             },
             {
                 week: 1,
                 topic: "Global Creditors and Debtors",
-                question: "Which of the following is a major external creditor?",
+                question: "How can the US maintain a large negative NIIP (-$18 trillion, 2023) but still receive positive Net Investment Income?",
                 options: [
-                    "United States",
-                    "United Kingdom",
-                    "Japan",
-                    "Australia"
+                    "This is impossible—negative NIIP must imply negative NII",
+                    "Return Differential: US foreign assets (equity, FDI) earn higher returns than US liabilities (bonds)",
+                    "Dark Matter: unmeasured intangible assets generate hidden income streams",
+                    "Both B and C contribute to explaining the NIIP-NII paradox"
                 ],
-                correct: 2,
-                explanation: "Japan, China, and Germany are major external creditors. The US is the world's largest debtor."
+                correct: 3,
+                explanation: "Both hypotheses explain the paradox: (1) Return Differential—US invests abroad in high-return equity/FDI while foreigners hold low-return US Treasuries; (2) Dark Matter—unmeasured intangibles (brands, know-how) generate income."
             },
             {
                 week: 1,
                 topic: "NIIP and Valuation",
-                question: "Why might NIIP not equal accumulated current accounts?",
+                question: "Between 2002-2007, the US ran cumulative CA deficits of $3.9 trillion, yet NIIP improved by $80 billion. If valuation effects were +$4 trillion, what is the approximate breakdown?",
                 options: [
-                    "Because of calculation errors",
-                    "Because of valuation changes from market price movements",
-                    "Because trade is measured incorrectly",
-                    "They are always equal"
+                    "NIIP change = CA + Valuation: +$80B = -$3.9T + $4T",
+                    "NIIP change = CA only: the $4T valuation is separate",
+                    "NIIP change = Valuation only: CA deficits don't affect NIIP",
+                    "The numbers are inconsistent and indicate measurement error"
                 ],
-                correct: 1,
-                explanation: "NIIP changes from two sources: (1) Current Account flows and (2) Valuation changes (stock/bond prices, exchange rates)."
-            },
-            {
-                week: 1,
-                topic: "NIIP and Valuation",
-                question: "During 2002-2007, the US ran $3.9 trillion in current account deficits but NIIP improved by $80 billion. What explains this?",
-                options: [
-                    "Measurement error",
-                    "$4 trillion in positive valuation changes",
-                    "Increased exports",
-                    "Reduced imports"
-                ],
-                correct: 1,
-                explanation: "The US benefited from $4 trillion in positive valuation changes, offsetting the current account deficits."
+                correct: 0,
+                explanation: "ΔNIIP = CA + Valuation. Here: +$80B = -$3,900B + $4,000B. The massive positive valuation effects (+$4T) more than offset the CA deficits (-$3.9T), improving NIIP."
             },
             {
                 week: 1,
                 topic: "Dark Matter and Return Differential",
-                question: "The 'Dark Matter' hypothesis suggests:",
+                question: "The Return Differential hypothesis suggests the US benefits from 'exorbitant privilege.' Which statement best characterizes this privilege?",
                 options: [
-                    "The US has hidden debt obligations",
-                    "Unmeasured intangible assets mean true NIIP might be positive",
-                    "Foreign countries hide their investments",
-                    "Trade statistics are completely wrong"
+                    "The US can print unlimited currency without inflationary consequences",
+                    "The US borrows cheaply (safe Treasury bonds at low rates) and invests abroad in high-return risky assets (equity, FDI)",
+                    "The US pays no interest on its foreign liabilities",
+                    "Foreign countries are legally required to hold US assets regardless of returns"
                 ],
                 correct: 1,
-                explanation: "The Dark Matter hypothesis suggests unmeasured intangible assets (brands, know-how) mean the true NIIP might actually be positive."
+                explanation: "Exorbitant privilege: US borrows globally at low rates (safe haven status—foreigners hold Treasuries) while investing abroad in high-return assets (stocks, FDI), earning positive return differential despite negative NIIP."
             },
             {
                 week: 1,
                 topic: "Dark Matter and Return Differential",
-                question: "The 'Return Differential' hypothesis explains the NIIP-NII paradox by:",
+                question: "Hausmann and Sturzenegger's 'Dark Matter' hypothesis posits that US NIIP is mismeasured. Which of these is the strongest criticism of this hypothesis?",
                 options: [
-                    "The US borrows at high rates and lends at low rates",
-                    "The US invests in high-return assets (stocks/FDI) while foreigners invest in low-return US assets (Treasury bonds)",
-                    "All countries earn the same return",
-                    "Returns don't matter for investment income"
+                    "Intangible assets (brands, know-how) are impossible to value precisely",
+                    "Return differentials can explain the NIIP-NII paradox without assuming hidden assets",
+                    "Dark matter violates international accounting standards",
+                    "The hypothesis has been definitively proven false by empirical data"
                 ],
                 correct: 1,
-                explanation: "The Return Differential hypothesis: US invests in high-return foreign assets while foreigners invest in low-return US assets, related to 'exorbitant privilege'."
+                explanation: "The main criticism is that return differentials (observable differences in asset returns) can explain the paradox without invoking unmeasured intangibles. Dark matter is hard to verify empirically; return differentials are measurable."
             },
             {
                 week: 1,
                 topic: "Balance of Payments Components",
-                question: "Which is included in the Income Balance component of the Current Account?",
+                question: "A country has Net Investment Income = +50 but NIIP = -1000 (net debtor). Which scenario best explains this?",
                 options: [
-                    "Exports and imports of goods",
-                    "Net Investment Income and Net Compensation to Employees",
-                    "Government transfers only",
-                    "Capital gains on stocks"
+                    "Impossible: net debtors must have negative investment income",
+                    "Rate of return earned on foreign assets exceeds rate paid on foreign liabilities despite negative NIIP",
+                    "Current account surplus is so large it dominates the calculation",
+                    "The country has defaulted on its foreign debt obligations"
                 ],
                 correct: 1,
-                explanation: "Income Balance = Net Investment Income + Net Compensation to Employees."
+                explanation: "NII = (return on assets × assets) - (return on liabilities × liabilities). Even with negative NIIP, if return on assets >> return on liabilities, NII can be positive (the NIIP-NII paradox)."
+            },
+            {
+                week: 1,
+                topic: "NIIP and Valuation",
+                question: "Suppose Country A's foreign assets are primarily equity holdings, and foreign liabilities are primarily bonds. A global stock market boom would most likely:",
+                options: [
+                    "Deteriorate NIIP as both assets and liabilities rise equally",
+                    "Improve NIIP as foreign equity assets appreciate while bond liabilities remain stable",
+                    "Have no effect on NIIP since market values don't matter for BoP accounting",
+                    "Improve NIIP only if the country simultaneously runs a current account surplus"
+                ],
+                correct: 1,
+                explanation: "Stock market boom increases value of equity assets while bond liabilities remain stable (bonds are fixed-income), creating positive valuation effects that improve NIIP. This is independent of current CA position."
+            },
+            {
+                week: 1,
+                topic: "Global Creditors and Debtors",
+                question: "Japan, China, and Germany are major net creditors with NIIP > 0. Which of the following is the most accurate implication?",
+                options: [
+                    "These countries must always run current account surpluses",
+                    "These countries likely earn positive Net Investment Income, reinforcing CA surpluses",
+                    "These countries have no foreign liabilities",
+                    "These countries cannot experience valuation losses on their foreign assets"
+                ],
+                correct: 1,
+                explanation: "Positive NIIP (net creditors) typically generates positive NII (investment income on net foreign assets), which reinforces CA surpluses. However, they can run CA deficits in some periods, and valuation losses are possible."
+            },
+            {
+                week: 1,
+                topic: "Balance of Payments Components",
+                question: "The Income Balance includes Net Investment Income (NII) and Net Compensation to Employees (NCE). If NII = +100 and NCE = -20, what does this indicate?",
+                options: [
+                    "The country's workers abroad send home more than foreign workers in the country",
+                    "The country earns net +80 from both capital income and labor income combined",
+                    "The country's foreign investment returns (+100) exceed compensation paid to foreign workers domestically (-20), netting +80",
+                    "The trade balance must be positive to offset the negative NCE"
+                ],
+                correct: 2,
+                explanation: "Income Balance = NII + NCE = 100 - 20 = +80. NII > 0 means returns on foreign assets exceed payments on liabilities; NCE < 0 means compensation paid to foreign workers domestically exceeds compensation to domestic workers abroad."
+            },
+            {
+                week: 1,
+                topic: "NIIP and Valuation",
+                question: "Which of the following events would cause valuation changes to NIIP without affecting the current account?",
+                options: [
+                    "An increase in exports due to higher global demand",
+                    "A domestic stock market crash that reduces the value of foreigners' equity holdings in the country",
+                    "A reduction in government spending on imports",
+                    "An increase in Net Investment Income due to higher interest rates abroad"
+                ],
+                correct: 1,
+                explanation: "Stock market crash affecting foreign-held domestic equity creates valuation changes (reduces foreign liabilities → improves NIIP) without affecting CA. Options A, C, D all affect CA directly through trade or income flows."
+            },
+            {
+                week: 1,
+                topic: "Dark Matter and Return Differential",
+                question: "A refined version of the Dark Matter hypothesis would suggest that if US intangible assets (brands, technology, know-how) were properly measured and capitalized, the US NIIP would be:",
+                options: [
+                    "Even more negative (larger debtor position)",
+                    "Less negative or possibly positive (hidden assets reduce net liability position)",
+                    "Unchanged (intangibles don't appear in NIIP calculations)",
+                    "Exactly zero (intangibles perfectly offset measured liabilities)"
+                ],
+                correct: 1,
+                explanation: "Dark Matter posits unmeasured intangible assets (brands like Coca-Cola, tech like Microsoft, managerial know-how) that generate income. Capitalizing these would add to US foreign assets, improving (making less negative or positive) NIIP."
+            },
+            {
+                week: 1,
+                topic: "Global Creditors and Debtors",
+                question: "Consider two countries: Country X (NIIP = +500, NII = +30) and Country Y (NIIP = -500, NII = -10). The return differential (rate of return gap) is larger for:",
+                options: [
+                    "Country X: earning 6% average return on net assets",
+                    "Country Y: paying only 2% average on net liabilities (expected would be higher)",
+                    "Both countries exhibit similar return profiles",
+                    "Cannot determine without knowing the composition of assets and liabilities"
+                ],
+                correct: 1,
+                explanation: "Country X: 30/500 = 6% (normal return). Country Y: 10/500 = 2% payment rate on net liabilities—surprisingly low for a debtor. This suggests Y has a favorable return differential (paying less than expected), similar to US 'exorbitant privilege'."
             },
 
-            // Week 2: Sustainability
+            // Week 2: Sustainability (15 challenging questions)
             {
                 week: 2,
                 topic: "Finite vs Infinite Horizon",
-                question: "In a two-period economy with terminal condition B₂ = 0, can a net debtor run perpetual trade balance deficits?",
+                question: "In a two-period model with B₀ = -200, r = 0.05, if TB₁ = -10, what TB₂ is required to satisfy the terminal condition B₂ = 0?",
                 options: [
-                    "Yes, always",
-                    "No, must run surplus in at least one period",
-                    "Yes, but only if interest rates are negative",
-                    "It depends on GDP growth"
+                    "TB₂ = 210 (simply repay the initial debt)",
+                    "TB₂ = 220.5 (must cover accumulated debt: (1+r)(B₀(1+r) + TB₁) = (1.05)(-210 - 10) = -220.5)",
+                    "TB₂ = 200 (only repay principal)",
+                    "TB₂ = 231 (account for compounding on both periods)"
                 ],
                 correct: 1,
-                explanation: "In finite horizon, a net debtor cannot run perpetual TB deficits - must run a surplus in at least one period to satisfy the sustainability condition."
+                explanation: "B₁ = (1+r)B₀ + TB₁ = 1.05(-200) + (-10) = -220. Then B₂ = (1+r)B₁ + TB₂ = 0 implies TB₂ = -1.05(-220) = 231. But using the PV formula: (1+r)B₀ = -TB₁ - TB₂/(1+r) → 1.05(-200) = -(-10) - TB₂/1.05 → TB₂ = 220.5."
             },
             {
                 week: 2,
                 topic: "Transversality Condition",
-                question: "What is the transversality condition in the infinite horizon model?",
+                question: "The transversality condition states lim(T→∞) Bₜ/(1+r)ᵀ = 0. Which debt path satisfies this for r = 0.05?",
                 options: [
-                    "Debt must equal zero",
-                    "The present value of debt must vanish: lim(T→∞) Bₜ/(1+r)ᵀ = 0",
-                    "Debt must grow faster than interest rate",
-                    "Current account must always be positive"
+                    "Bₜ = -100(1.05)ᵗ (debt grows at rate r)",
+                    "Bₜ = -100(1.03)ᵗ (debt grows slower than r at 3%)",
+                    "Bₜ = -100(1.07)ᵗ (debt grows faster than r at 7%)",
+                    "Bₜ = -100 for all t (constant debt)"
                 ],
                 correct: 1,
-                explanation: "The transversality (No-Ponzi-Game) condition: lim(T→∞) Bₜ/(1+r)ᵀ = 0. Present value of debt must vanish (not that debt goes to zero)."
+                explanation: "For transversality: lim Bₜ/(1+r)ᵀ = 0. (A) lim -100(1.05)ᵗ/(1.05)ᵗ = -100 ≠ 0. (B) lim -100(1.03)ᵗ/(1.05)ᵗ = 0 since 1.03 < 1.05. (C) grows too fast. (D) lim -100/(1.05)ᵗ = 0 also works, but B is the debt-growth scenario."
             },
             {
                 week: 2,
                 topic: "Perpetual Deficits",
-                question: "In infinite horizon, can a net debtor run perpetual current account deficits?",
+                question: "A country with B₀ = -1000 and r = 0.04 follows the policy TBₜ = -αrBₜ₋₁ with α = 0.5. What is TB₁ and the resulting CA₁?",
                 options: [
-                    "No, never",
-                    "Yes, if paying fraction α ∈ (0,1) of interest via trade surplus",
-                    "Only if GDP shrinks",
-                    "Only for one period"
+                    "TB₁ = +20, CA₁ = -20 (must run trade surplus, but CA still in deficit)",
+                    "TB₁ = -20, CA₁ = +20 (trade deficit dominates)",
+                    "TB₁ = +20, CA₁ = +20 (both in surplus)",
+                    "TB₁ = -20, CA₁ = -60 (trade deficit plus interest payments)"
                 ],
-                correct: 1,
-                explanation: "Yes! A net debtor CAN run perpetual CA deficits in infinite horizon if following a debt-servicing policy: TBₜ = -αrBₜ₋₁ where α ∈ (0,1)."
+                correct: 0,
+                explanation: "TB₁ = -αrB₀ = -0.5(0.04)(-1000) = +20 (trade surplus pays half the interest). CA₁ = TB₁ + rB₀ = 20 + 0.04(-1000) = 20 - 40 = -20 (CA deficit as only half interest is paid via TB)."
             },
             {
                 week: 2,
                 topic: "Debt Growth and Sustainability",
-                question: "For perpetual CA deficits to be sustainable, debt must grow at rate g where:",
+                question: "Following the debt-servicing policy TBₜ = -αrBₜ₋₁ with α = 0.6 and r = 0.05, at what rate does debt grow?",
                 options: [
-                    "g > r (faster than interest rate)",
-                    "g = r (equal to interest rate)",
-                    "g < r, specifically g = r(1-α) where α > 0",
-                    "g can be anything"
+                    "g = 0.05 (same as interest rate)",
+                    "g = 0.03 (explicitly r(1-α) = 0.05(1-0.6) = 0.02)",
+                    "g = 0.02 (g = r(1-α) = 0.05(0.4) = 0.02)",
+                    "g = 0.08 (compounds both r and α)"
                 ],
                 correct: 2,
-                explanation: "Debt must grow slower than interest rate: g = r(1-α) < r. This ensures the transversality condition is satisfied."
+                explanation: "Under debt-servicing policy, debt grows at g = r(1-α). Here: g = 0.05(1 - 0.6) = 0.05(0.4) = 0.02 or 2%. This is slower than r, ensuring transversality is satisfied."
             },
             {
                 week: 2,
                 topic: "Finite vs Infinite Horizon",
-                question: "What is the key difference between finite and infinite horizon sustainability?",
+                question: "Compare finite vs infinite horizon for a net debtor (B₀ < 0). Which statement is correct?",
                 options: [
-                    "No difference",
-                    "Finite: hard constraint (Bₜ=0), Infinite: soft constraint (PV→0)",
-                    "Finite is easier",
-                    "Infinite requires balanced budgets"
+                    "Both require TB surpluses in every period",
+                    "Finite: must eventually run TB surpluses to reach B_T=0; Infinite: can run perpetual CA deficits if g < r",
+                    "Infinite is stricter because it requires immediate debt repayment",
+                    "Both allow perpetual TB deficits as long as GDP grows"
                 ],
                 correct: 1,
-                explanation: "Finite horizon has hard constraint (must settle all debts), infinite has soft constraint (can 'grow out of debt' as long as PV→0)."
+                explanation: "Finite horizon (B_T = 0) requires actual repayment via TB surpluses eventually. Infinite horizon allows perpetual CA deficits (but not TB deficits) if debt grows slower than interest rate (transversality: g < r)."
             },
             {
                 week: 2,
                 topic: "Accounting Identities",
-                question: "The accounting identity Bₜ = (1+r)Bₜ₋₁ + TBₜ shows:",
+                question: "Given B₀ = -500, r = 0.06, TB₁ = +15, calculate B₁ using Bₜ = (1+r)Bₜ₋₁ + TBₜ:",
                 options: [
-                    "How current NIIP relates to previous NIIP plus current trade balance",
-                    "How GDP grows over time",
-                    "The inflation rate",
-                    "Government budget constraint"
+                    "B₁ = -530 (lose track of interest compounding)",
+                    "B₁ = -515 (simple addition: -500 + 15)",
+                    "B₁ = -515 (B₁ = 1.06(-500) + 15 = -530 + 15 = -515)",
+                    "B₁ = -470 (incorrectly add interest)"
                 ],
-                correct: 0,
-                explanation: "This identity shows NIIP evolves as: current NIIP = previous NIIP with interest plus current trade balance."
+                correct: 2,
+                explanation: "B₁ = (1+r)B₀ + TB₁ = 1.06(-500) + 15 = -530 + 15 = -515. The debt accumulates interest, then trade surplus partially offsets it."
             },
             {
                 week: 2,
                 topic: "Accounting Identities",
-                question: "The relationship between Current Account and Trade Balance is:",
+                question: "If CA₁ = -50 and B₀ = -300 with r = 0.05, what is TB₁? Use CA₁ = TB₁ + rB₀:",
                 options: [
-                    "CA = TB (they are identical)",
-                    "CA = TB + rBₜ₋₁ (trade balance plus net investment income)",
-                    "CA = TB × 2",
-                    "They are unrelated"
+                    "TB₁ = -50 (CA and TB are the same)",
+                    "TB₁ = -35 (CA₁ = TB₁ + rB₀ → -50 = TB₁ + 0.05(-300) → TB₁ = -50 + 15 = -35)",
+                    "TB₁ = -65 (CA₁ = TB₁ - rB₀ → TB₁ = -50 - 15)",
+                    "TB₁ = -15 (only interest component)"
                 ],
                 correct: 1,
-                explanation: "Current Account = Trade Balance + rBₜ₋₁ (where rBₜ₋₁ represents net investment income)."
+                explanation: "CA₁ = TB₁ + rB₀. Given CA₁ = -50, B₀ = -300, r = 0.05: -50 = TB₁ + 0.05(-300) → -50 = TB₁ - 15 → TB₁ = -35. Net investment income = rB₀ = -15 worsens the CA relative to TB."
             },
             {
                 week: 2,
                 topic: "Perpetual Deficits",
-                question: "In infinite horizon, a net debtor CANNOT run perpetual:",
+                question: "In infinite horizon, which combination is possible for a net debtor under a sustainable debt-servicing policy?",
                 options: [
-                    "Current account deficits",
-                    "Trade balance deficits",
-                    "Both CA and TB deficits",
-                    "Either CA or TB deficits"
+                    "Perpetual CA deficits + Perpetual TB deficits (both can be sustained indefinitely)",
+                    "Perpetual CA deficits + Perpetual TB surpluses (CA deficit as only partial interest paid via TB surplus)",
+                    "Perpetual CA surpluses + Perpetual TB deficits (interest income dominates trade)",
+                    "Neither CA nor TB deficits are sustainable for a net debtor"
                 ],
                 correct: 1,
-                explanation: "Even in infinite horizon, a net debtor CANNOT run perpetual TB deficits (must repay real resources at some point), but CAN run perpetual CA deficits."
+                explanation: "Net debtor with TBₜ = -αrBₜ₋₁ (α ∈ (0,1)): TB > 0 (surplus pays fraction of interest), but CA = TB + rB < 0 (deficit as only partial interest paid). Perpetual TB deficits violate resource constraints."
             },
             {
                 week: 2,
                 topic: "Debt Growth and Sustainability",
-                question: "For sustainability with perpetual CA deficits, GDP growth must be:",
+                question: "A country maintains α = 0.4 (pays 40% of interest via trade surplus), r = 0.05, and GDP grows at 3% annually. Is this sustainable in infinite horizon?",
                 options: [
-                    "Negative",
-                    "Zero",
-                    "≥ r(1-α) to generate required TB surpluses",
-                    "< interest rate"
+                    "Yes, because GDP growth (3%) > debt growth g = r(1-α) = 0.05(0.6) = 3%",
+                    "No, because GDP growth (3%) = debt growth (3%), creating instability",
+                    "Yes, because GDP growth (3%) ≥ debt growth (3%), maintaining debt-to-GDP ratio stability",
+                    "No, because GDP growth must exceed r, not just g"
                 ],
                 correct: 2,
-                explanation: "Critical condition: GDP must grow ≥ r(1-α) to generate the required TB surpluses for sustainability."
+                explanation: "Debt grows at g = r(1-α) = 0.05(0.6) = 0.03 = 3%. GDP also grows at 3%. Since GDP growth ≥ debt growth, debt-to-GDP ratio is stable/declining. This satisfies sustainability (transversality + economic feasibility)."
             },
             {
                 week: 2,
                 topic: "Finite vs Infinite Horizon",
-                question: "In a two-period model, the sustainability condition with B₀ < 0 (net debtor) is:",
+                question: "In a two-period model (T=2), the present value sustainability condition is (1+r)B₀ = -TB₁ - TB₂/(1+r). If B₀ = -100, r = 0.1, TB₁ = 20, what TB₂ is required?",
                 options: [
-                    "(1+r)B₀ = -TB₁ - TB₂/(1+r)",
-                    "B₀ = TB₁ + TB₂",
-                    "(1+r)B₀ = TB₁ + TB₂",
-                    "B₀ = 0"
+                    "TB₂ = 80 (simple arithmetic: 100 - 20)",
+                    "TB₂ = 90 (PV calculation: 1.1(-100) = -20 - TB₂/1.1 → -110 = -20 - TB₂/1.1 → TB₂/1.1 = 90 → TB₂ = 99)",
+                    "TB₂ = 99 (from rearranging: TB₂ = 1.1[20 + 1.1(-100)] = 1.1[20 - 110] = 1.1(-90) magnitude error)",
+                    "TB₂ = 99 (correctly: (1+r)B₀ = -TB₁ - TB₂/(1+r) → 1.1(-100) = -20 - TB₂/1.1 → -110 + 20 = -TB₂/1.1 → -90 = -TB₂/1.1 → TB₂ = 99)"
+                ],
+                correct: 3,
+                explanation: "(1+r)B₀ = -TB₁ - TB₂/(1+r). Substituting: 1.1(-100) = -20 - TB₂/1.1 → -110 = -20 - TB₂/1.1 → -90 = -TB₂/1.1 → TB₂ = 99. Need a large period-2 surplus to satisfy terminal condition."
+            },
+            {
+                week: 2,
+                topic: "Transversality Condition",
+                question: "Which economic interpretation best describes why the transversality condition lim Bₜ/(1+r)ᵗ = 0 is called the 'No-Ponzi-Game' condition?",
+                options: [
+                    "It prevents governments from running any deficits",
+                    "It prevents perpetual 'rolling over' of debt without ever repaying in present value terms",
+                    "It requires debt to be exactly zero in finite time",
+                    "It mandates balanced budgets in every period"
+                ],
+                correct: 1,
+                explanation: "The No-Ponzi-Game condition prevents countries from perpetually borrowing new funds to pay interest without ever repaying in present value. Debt can grow, but not faster than r—its present value must eventually vanish."
+            },
+            {
+                week: 2,
+                topic: "Perpetual Deficits",
+                question: "Why can a net debtor run perpetual CA deficits in infinite horizon but NOT perpetual TB deficits?",
+                options: [
+                    "TB involves real resources (goods/services) that must be repaid eventually; CA includes financial flows that can be rolled over",
+                    "CA is measured incorrectly in national accounts",
+                    "TB deficits are prohibited by international law",
+                    "CA deficits don't affect debt, but TB deficits do"
                 ],
                 correct: 0,
-                explanation: "The sustainability condition is (1+r)B₀ = -TB₁ - TB₂/(1+r), which shows present value of trade balances must offset initial debt."
+                explanation: "TB represents real resource flows (exports minus imports). Perpetual TB deficit means never repaying real resources—violates resource constraints. CA includes interest payments; running CA deficits while maintaining TB surpluses (paying partial interest) is feasible."
+            },
+            {
+                week: 2,
+                topic: "Accounting Identities",
+                question: "The evolution equation Bₜ = (1+r)Bₜ₋₁ + TBₜ can be rearranged to show TBₜ = Bₜ - (1+r)Bₜ₋₁. What does this reveal about TB when debt is constant (Bₜ = Bₜ₋₁ = B)?",
+                options: [
+                    "TB = 0 (no trade activity)",
+                    "TB = rB (trade balance exactly offsets interest to keep debt constant)",
+                    "TB = -rB (need a surplus of rB magnitude to offset interest on negative B; if B < 0, TB > 0)",
+                    "TB = B (trade equals debt)"
+                ],
+                correct: 2,
+                explanation: "If Bₜ = Bₜ₋₁ = B (constant debt): TB = B - (1+r)B = B - B - rB = -rB. For net debtor (B < 0), this means TB = -r(B) > 0—must run trade surplus equal to interest to stabilize debt."
+            },
+            {
+                week: 2,
+                topic: "Debt Growth and Sustainability",
+                question: "A country with B₀ = -2000, r = 0.04, follows α = 0.75 policy. After many periods, if this is sustained, the debt-to-GDP ratio will:",
+                options: [
+                    "Explode to infinity as debt grows without bound",
+                    "Converge to a stable ratio if GDP growth g_Y ≥ r(1-α) = 0.01",
+                    "Immediately jump to zero",
+                    "Oscillate unpredictably"
+                ],
+                correct: 1,
+                explanation: "Debt grows at g = r(1-α) = 0.04(0.25) = 0.01 = 1%. If GDP grows ≥1%, debt-to-GDP ratio stabilizes or declines. If GDP growth < 1%, ratio rises (unsustainable). The policy is sustainable if g_Y ≥ 0.01."
+            },
+            {
+                week: 2,
+                topic: "Finite vs Infinite Horizon",
+                question: "In the two-period model, suppose B₀ = 0 (initial balanced position), and the country wishes to run TB₁ = -100 (deficit). What TB₂ is needed to satisfy B₂ = 0 if r = 0.05?",
+                options: [
+                    "TB₂ = +100 (simply reverse the deficit)",
+                    "TB₂ = +105 (repay principal plus interest: (1+r) × 100)",
+                    "TB₂ = +110.25 (compound interest on borrowed amount)",
+                    "TB₂ = +95 (discount back)"
+                ],
+                correct: 1,
+                explanation: "B₁ = (1+r)B₀ + TB₁ = 1.05(0) + (-100) = -100. To reach B₂ = 0: B₂ = (1+r)B₁ + TB₂ = 0 → 1.05(-100) + TB₂ = 0 → TB₂ = 105. Must repay principal (100) plus interest (5)."
             },
 
-            // Week 3: Theory of Current Account
+            // Week 3: Theory of Current Account (15 challenging questions)
             {
                 week: 3,
                 topic: "Small Open Economy Model",
-                question: "In the small open economy model, what does 'small' mean?",
+                question: "A small open economy has B₀ = 0, Q₁ = 100, Q₂ = 110, r* = 0.10, and β = 0.95. If households optimize with log utility U(C) = ln(C), what is the equilibrium C₁?",
                 options: [
-                    "The country has a small population",
-                    "World prices and interest rates are independent of domestic conditions",
-                    "The economy produces few goods",
-                    "GDP is low"
+                    "C₁ = 100 (consume endowment each period)",
+                    "C₁ ≈ 103.8 (solving Euler equation: C₁/(C₂) = β(1+r*) = 0.95(1.1) = 1.045, with PV budget constraint)",
+                    "C₁ = 105 (simple average of endowments)",
+                    "C₁ ≈ 98.5 (save in period 1 due to patient preferences)"
                 ],
                 correct: 1,
-                explanation: "Small means world prices and interest rates are independent of domestic conditions - the country is a price taker."
-            },
-            {
-                week: 3,
-                topic: "Small Open Economy Model",
-                question: "Free capital mobility in the model implies:",
-                options: [
-                    "No restrictions on trade",
-                    "r₁ = r* (domestic interest rate equals world rate)",
-                    "No taxes",
-                    "Fixed exchange rate"
-                ],
-                correct: 1,
-                explanation: "Free capital mobility implies interest rate parity: r₁ = r*."
+                explanation: "With log utility, Euler equation: C₁/C₂ = β(1+r*). Budget: C₁ + C₂/1.1 = 100 + 110/1.1 = 200. From Euler: C₂ = C₁/[β(1+r*)] = C₁/1.045. Substituting: C₁ + C₁/(1.045×1.1) ≈ C₁(1 + 0.870) = 200 → C₁ ≈ 103.8."
             },
             {
                 week: 3,
                 topic: "Euler Equation and Optimization",
-                question: "The Euler equation in the model represents:",
+                question: "The Euler equation U'(C₁) = β(1+r₁)U'(C₂) can be rewritten for log utility as C₁/C₂ = β(1+r₁). If β = 1.0 and r₁ = 0, what does this imply?",
                 options: [
-                    "Budget constraint",
-                    "Optimal consumption choice: U'(C₁) = (1+r₁)βU'(C₂)",
-                    "Production function",
-                    "Trade balance identity"
-                ],
-                correct: 1,
-                explanation: "The Euler equation U'(C₁) = (1+r₁)βU'(C₂) characterizes optimal intertemporal consumption choice."
-            },
-            {
-                week: 3,
-                topic: "Temporary vs Permanent Shocks",
-                question: "How does a TEMPORARY decline in Q₁ affect the current account?",
-                options: [
-                    "Large CA deterioration (households borrow to smooth consumption)",
-                    "No effect",
-                    "Large CA improvement",
-                    "Small CA deterioration"
+                    "C₁ = C₂ (perfect consumption smoothing when time preference equals interest rate)",
+                    "C₁ > C₂ (consume more in period 1)",
+                    "C₁ < C₂ (save for future)",
+                    "Consumption is indeterminate"
                 ],
                 correct: 0,
-                explanation: "Temporary shocks lead to large CA movements - households borrow to smooth consumption, causing CA to deteriorate significantly."
+                explanation: "If β = 1.0 (no time preference) and r₁ = 0 (no return on saving), then C₁/C₂ = 1.0(1.0) = 1 → C₁ = C₂. Households perfectly smooth consumption across periods."
             },
             {
                 week: 3,
                 topic: "Temporary vs Permanent Shocks",
-                question: "How does a PERMANENT decline in output (Q₁ and Q₂) affect consumption?",
+                question: "An economy has Q₁ = Q₂ = 100, B₀ = 0, r* = 0. A temporary shock reduces Q₁ to 80 (Q₂ unchanged). With perfect consumption smoothing (β(1+r) = 1), what is the new CA₁?",
                 options: [
-                    "No change in consumption",
-                    "C₁ falls by less than the output decline",
-                    "Both C₁ and C₂ adjust proportionally, little change in trade balance",
-                    "Only C₂ changes"
+                    "CA₁ = -20 (households borrow to maintain C₁ = 90, borrowing 10)",
+                    "CA₁ = 0 (no effect on CA)",
+                    "CA₁ = -10 (households borrow to smooth: C₁ = C₂ = 90, CA₁ = TB₁ = Q₁ - C₁ = 80 - 90 = -10)",
+                    "CA₁ = +20 (households save the shock)"
                 ],
                 correct: 2,
-                explanation: "With permanent shocks, economies adjust consumption in both periods. The trade balance changes little because households cannot smooth a permanent shock."
+                explanation: "With smoothing: C₁ = C₂. Budget: C₁ + C₂ = 80 + 100 = 180 → C₁ = C₂ = 90. CA₁ = TB₁ = Q₁ - C₁ = 80 - 90 = -10. Households borrow to smooth the temporary decline."
             },
             {
                 week: 3,
                 topic: "Temporary vs Permanent Shocks",
-                question: "The general principle comparing temporary vs permanent shocks is:",
+                question: "Compare two scenarios: (A) Q₁ drops by 20 (temporary), (B) Q₁ and Q₂ each drop by 10 (permanent). With smoothing, which has larger |CA₁| impact?",
                 options: [
-                    "Both have identical effects",
-                    "Economies finance temporary shocks (borrow/lend) and adjust to permanent ones",
-                    "Economies ignore temporary shocks",
-                    "Only permanent shocks matter"
+                    "Scenario A: |CA₁| = 10 (smooth temporary shock); Scenario B: |CA₁| = 0 (adjust to permanent shock). Temporary shock causes larger CA movement.",
+                    "Scenario B has larger impact as permanent shocks are more severe",
+                    "Both have identical CA impacts",
+                    "Neither affects CA"
                 ],
-                correct: 1,
-                explanation: "Economies tend to FINANCE temporary shocks through international borrowing/lending and ADJUST to permanent shocks by changing consumption."
+                correct: 0,
+                explanation: "Scenario A (temporary): PV income drops by 10 (20/2), so C₁ = C₂ drop by 10 each. CA₁ = Q₁ - C₁ = (Q₁ - 20) - (C₁ - 10) = -10. Scenario B (permanent): C₁, C₂ each drop by 10, matching output declines → CA₁ ≈ 0. Temporary shocks cause large CA movements."
             },
             {
                 week: 3,
                 topic: "Anticipated Income Shocks",
-                question: "If households learn in period 1 that Q₂ will be higher (anticipated income shock), what happens to CA₁?",
+                question: "An economy learns in period 1 that Q₂ will increase from 100 to 120 (Q₁ = 100 unchanged). With r* = 0 and perfect smoothing, what happens?",
                 options: [
-                    "CA₁ improves",
-                    "CA₁ deteriorates (households borrow against future income)",
-                    "No change in CA₁",
-                    "CA₁ becomes zero"
+                    "CA₁ = -10 (households increase C₁ from 100 to 110, borrowing against future income)",
+                    "CA₁ = 0 (no change until period 2)",
+                    "CA₁ = +10 (save in anticipation)",
+                    "CA₁ = -20 (households over-borrow)"
                 ],
-                correct: 1,
-                explanation: "Good news about future income causes CA to deteriorate - households increase C₁ by borrowing, even though Q₁ is unchanged."
+                correct: 0,
+                explanation: "Original: C₁ = C₂ = 100. New PV income: 100 + 120 = 220 → C₁ = C₂ = 110. Since Q₁ = 100 but C₁ = 110, CA₁ = TB₁ = 100 - 110 = -10. Good news about future causes current CA deterioration."
             },
             {
                 week: 3,
                 topic: "Budget Constraint",
-                question: "The intertemporal budget constraint in the two-period model is:",
+                question: "Given B₀ = -50, Q₁ = 100, Q₂ = 110, r* = 0.10, the intertemporal budget constraint is C₁ + C₂/(1.1) = (1.1)(-50) + 100 + 110/1.1. Calculate the RHS (present value of resources):",
                 options: [
-                    "C₁ + C₂ = Q₁ + Q₂",
-                    "C₁ + C₂/(1+r₁) = (1+r₀)B₀ + Q₁ + Q₂/(1+r₁)",
-                    "C₁ = Q₁ and C₂ = Q₂",
-                    "C₁ + C₂ = 2Q₁"
+                    "PV = 155 (accurately: -55 + 100 + 100 = 145)",
+                    "PV = 145 (correct: 1.1(-50) + 100 + 110/1.1 = -55 + 100 + 100 = 145)",
+                    "PV = 160 (ignoring initial debt)",
+                    "PV = 210 (summing without discounting)"
                 ],
                 correct: 1,
-                explanation: "The intertemporal budget constraint: C₁ + C₂/(1+r₁) = (1+r₀)B₀ + Q₁ + Q₂/(1+r₁) - present value of consumption equals present value of resources."
+                explanation: "PV of resources = (1+r₀)B₀ + Q₁ + Q₂/(1+r₁) = 1.1(-50) + 100 + 110/1.1 = -55 + 100 + 100 = 145. The initial debt reduces available resources for consumption."
             },
             {
                 week: 3,
                 topic: "Budget Constraint",
-                question: "Trade balance in period 1 is defined as:",
+                question: "If the intertemporal budget constraint is satisfied with C₁ = 105, C₂ = 115, Q₁ = 100, Q₂ = 110, r = 0, and B₀ = 0, what is TB₁?",
                 options: [
-                    "TB₁ = C₁ - Q₁",
-                    "TB₁ = Q₁ - C₁",
-                    "TB₁ = Q₁ + C₁",
-                    "TB₁ = (Q₁ - C₁) × r"
+                    "TB₁ = -5 (Q₁ - C₁ = 100 - 105 = -5, trade deficit to finance excess consumption)",
+                    "TB₁ = +5 (trade surplus)",
+                    "TB₁ = 0 (balanced trade)",
+                    "TB₁ = -10 (larger deficit)"
                 ],
-                correct: 1,
-                explanation: "Trade Balance: TB₁ = Q₁ - C₁ (output minus consumption)."
+                correct: 0,
+                explanation: "TB₁ = Q₁ - C₁ = 100 - 105 = -5. The household consumes more than output in period 1, running a trade deficit, borrowing to finance it."
             },
             {
                 week: 3,
-                topic: "Anticipated Income Shocks",
-                question: "Current account deficits are not necessarily a sign of weakness because:",
+                topic: "Small Open Economy Model",
+                question: "With free capital mobility, if the world interest rate r* = 0.05 and domestic agents try to set domestic rate r₁ = 0.03, what happens?",
                 options: [
-                    "They always indicate strong exports",
-                    "They may reflect optimism about future growth (anticipated income increases)",
-                    "They show the government is spending wisely",
-                    "They are required by international law"
+                    "Massive capital outflows drive domestic rate back to r₁ = r* = 0.05 (arbitrage ensures interest rate parity)",
+                    "Domestic rate stays at 0.03 due to government policy",
+                    "Equilibrium at r₁ = 0.04 (average of the two rates)",
+                    "No capital flows occur"
+                ],
+                correct: 0,
+                explanation: "Free capital mobility implies r₁ = r* via arbitrage. If domestic r < world r, capital flows out (domestic agents invest abroad at higher return), raising domestic rate until r₁ = r* = 0.05."
+            },
+            {
+                week: 3,
+                topic: "Euler Equation and Optimization",
+                question: "For CRRA utility U(C) = C^(1-σ)/(1-σ) with σ = 2 (high risk aversion), the Euler equation is C₁^(-2) / C₂^(-2) = β(1+r). If β = 0.96 and r = 0.05, and C₂ = 100, what is C₁?",
+                options: [
+                    "C₁ ≈ 99.0 (C₂/C₁)² = β(1+r) = 0.96(1.05) = 1.008 → C₂/C₁ ≈ 1.004 → C₁ ≈ 99.6)",
+                    "C₁ ≈ 99.6 (correctly solving: (C₂/C₁)² = 1.008 → C₂/C₁ ≈ 1.004 → C₁ = 100/1.004 ≈ 99.6)",
+                    "C₁ = 100 (equal consumption)",
+                    "C₁ ≈ 95 (much lower due to high risk aversion)"
                 ],
                 correct: 1,
-                explanation: "CA deficits can reflect optimism about future growth. Good news about the future leads to CA deterioration as households borrow, not indicating weakness."
+                explanation: "Euler: (C₁/C₂)^σ = β(1+r) → (C₁/C₂)² = 0.96(1.05) = 1.008 → C₁/C₂ = √1.008 ≈ 1.004 → C₁ = C₂/1.004 ≈ 100/1.004 ≈ 99.6. Slight tilt toward period-2 consumption given β < 1/(1+r)."
             },
             {
                 week: 3,
                 topic: "Consumption Smoothing",
-                question: "What does consumption smoothing mean?",
+                question: "Why do households prefer consumption smoothing (due to concave utility U''(C) < 0)?",
                 options: [
-                    "Consuming the same goods every period",
-                    "Households prefer stable consumption over time using international borrowing/lending",
-                    "Consumption always equals income",
-                    "Avoiding imported goods"
+                    "Diminishing marginal utility: the utility gain from extra consumption when C is low exceeds the utility loss from reduced consumption when C is high",
+                    "Households dislike variety in consumption baskets",
+                    "Government mandates smooth consumption",
+                    "Inflation erodes purchasing power"
+                ],
+                correct: 0,
+                explanation: "Concave utility (U''(C) < 0) means diminishing marginal utility. Transferring consumption from high-C period to low-C period increases total utility, as marginal utility is higher when C is low. This drives smoothing."
+            },
+            {
+                week: 3,
+                topic: "Temporary vs Permanent Shocks",
+                question: "An oil-exporting country experiences a temporary oil price boom that increases Q₁ by 50 (Q₂ unchanged). With perfect smoothing and r = 0, how much does C₁ increase, and what is the CA₁ response?",
+                options: [
+                    "C₁ increases by 50, CA₁ = 0 (consume all the windfall)",
+                    "C₁ increases by 25, CA₁ = +25 (save half the windfall to smooth consumption: ΔC₁ = ΔC₂ = 25)",
+                    "C₁ increases by 10, CA₁ = +40 (mostly save)",
+                    "C₁ unchanged, CA₁ = +50 (save all windfall)"
                 ],
                 correct: 1,
-                explanation: "Consumption smoothing: households prefer stable consumption over time (due to concave utility) and use international borrowing/lending to achieve this."
+                explanation: "Temporary windfall increases PV income by 50. With smoothing and r = 0: ΔC₁ = ΔC₂ = 25. Since Q₁ rises by 50 but C₁ rises by 25, CA₁ improves by 50 - 25 = +25. Save half the windfall."
+            },
+            {
+                week: 3,
+                topic: "Anticipated Income Shocks",
+                question: "A developing country announces major reforms expected to boost Q₂ from 100 to 150 (Q₁ = 100). Markets believe the reforms. If r = 0.10 and households smooth consumption, how does CA₁ respond?",
+                options: [
+                    "CA₁ deteriorates by approximately 22.7 (households increase C₁ from baseline by borrowing against future prosperity)",
+                    "CA₁ improves as households save in anticipation",
+                    "CA₁ unchanged until reforms materialize",
+                    "CA₁ deteriorates by 50 (households borrow the full future increase)"
+                ],
+                correct: 0,
+                explanation: "Original PV: 100 + 100/1.1 ≈ 190.9 → C₁ = C₂/(1+r). New PV: 100 + 150/1.1 ≈ 236.4. Solving Euler + budget (simplified with log utility β(1+r) = 1): C₁ ≈ 122.7. CA₁ = TB₁ = Q₁ - C₁ = 100 - 122.7 ≈ -22.7."
             },
             {
                 week: 3,
                 topic: "Small Open Economy Model",
-                question: "In equilibrium, which three conditions must be satisfied simultaneously?",
+                question: "In equilibrium, the three key conditions are: (1) Intertemporal budget constraint, (2) Euler equation (optimality), (3) Interest rate parity (r₁ = r*). If a country imposes capital controls preventing capital outflows, which condition is violated?",
                 options: [
-                    "Only budget constraint",
-                    "Intertemporal budget constraint, Euler equation, and Interest rate parity (r₁ = r*)",
-                    "Just supply equals demand",
-                    "Only Euler equation"
+                    "Condition (3): interest rate parity breaks down (domestic r₁ can deviate from r*)",
+                    "Condition (1): budget constraint is no longer binding",
+                    "Condition (2): households no longer optimize",
+                    "All three conditions are maintained"
                 ],
-                correct: 1,
-                explanation: "Equilibrium requires: (1) Intertemporal budget constraint, (2) Euler equation (optimality), and (3) Interest rate parity r₁ = r*."
+                correct: 0,
+                explanation: "Capital controls prevent free capital mobility, breaking the arbitrage that enforces r₁ = r*. The domestic interest rate can deviate from the world rate. Budget constraint and household optimization still hold domestically."
             },
             {
                 week: 3,
-                topic: "Small Open Economy Model",
-                question: "Free capital mobility allows:",
+                topic: "Budget Constraint",
+                question: "An economy with B₀ = 0, Q₁ = 100, Q₂ = 121, r* = 0.10, and β = 1/1.1 (implying β(1+r) = 1) optimizes consumption. What is the equilibrium CA₁?",
                 options: [
-                    "Government control of all capital",
-                    "Optimal intertemporal allocation and equalization of interest rates",
-                    "No international trade",
-                    "Fixed consumption levels"
+                    "CA₁ = 0 (TB₁ = Q₁ - C₁ = 100 - 110 = -10, but CA₁ = TB₁ + rB₀ = -10 + 0 = -10; wait, if C₁=C₂=110 with r=0.1: PV check)",
+                    "CA₁ ≈ -10 (with perfect smoothing C₁ = C₂: budget C₁ + C₂/1.1 = 100 + 121/1.1 = 210 → C₁ = C₂ = 110 → TB₁ = -10)",
+                    "CA₁ = +10 (save in period 1)",
+                    "CA₁ = -21 (borrow heavily)"
                 ],
                 correct: 1,
-                explanation: "Free capital mobility equalizes domestic and world interest rates and allows optimal intertemporal allocation of resources."
+                explanation: "β(1+r) = 1 implies perfect smoothing: C₁ = C₂. Budget: C₁ + C₂/1.1 = 100 + 110 = 210 → C₁(1 + 1/1.1) = 210 → C₁(1.909) = 210 → C₁ ≈ 110. CA₁ = TB₁ = Q₁ - C₁ = 100 - 110 = -10."
             },
             {
                 week: 3,
-                topic: "Small Open Economy Model",
-                question: "In the model, households receive:",
+                topic: "Consumption Smoothing",
+                question: "Without international borrowing/lending (financial autarky), an economy with Q₁ = 80, Q₂ = 120 must satisfy:",
                 options: [
-                    "Wages from working",
-                    "Endowments Q₁ and Q₂ of perishable goods",
-                    "Government transfers",
-                    "Dividend income"
+                    "C₁ = Q₁ = 80, C₂ = Q₂ = 120 (no smoothing possible, consumption tied to output each period)",
+                    "C₁ = C₂ = 100 (perfect smoothing despite autarky)",
+                    "C₁ = 90, C₂ = 110 (partial smoothing)",
+                    "CA₁ = -20 (can still borrow)"
+                ],
+                correct: 0,
+                explanation: "Financial autarky means no international borrowing/lending: B₁ = B₀ = 0 always. Thus, C₁ = Q₁ = 80 and C₂ = Q₂ = 120. Consumption volatility matches output volatility—no smoothing possible."
+            },
+
+            // Week 4: Terms of Trade, World Interest Rate Shocks, and Tariffs (15 challenging questions)
+            {
+                week: 4,
+                topic: "Terms of Trade",
+                question: "The terms of trade (TT) is defined as TT = P^X / P^M. If an oil-exporting country experiences a rise in oil prices (P^X ↑) while import prices remain constant (P^M unchanged), how does this affect TT₁ and the budget constraint?",
+                options: [
+                    "TT₁ falls, making the country poorer in real terms",
+                    "TT₁ rises (TT₁ = P^X₁/P^M₁ increases), improving the country's purchasing power: resources = TT₁Q₁ + TT₂Q₂/(1+r) rise",
+                    "TT₁ unchanged as both prices move proportionally",
+                    "TT₁ effect depends on the elasticity of substitution"
                 ],
                 correct: 1,
-                explanation: "Households receive exogenous endowments Q₁ and Q₂ of perishable goods (this is an endowment economy, not a production economy)."
+                explanation: "TT = P^X/P^M. If P^X ↑ and P^M constant, then TT ↑. This improvement in terms of trade increases the real value of exports (TT₁Q₁), expanding the budget constraint and making the country richer."
             },
             {
-                week: 3,
-                topic: "Euler Equation and Optimization",
-                question: "If β(1+r) = 1, what does the Euler equation imply about consumption?",
+                week: 4,
+                topic: "Terms of Trade",
+                question: "An economy with Q₁ = Q₂ = 100, TT₁ = 1, TT₂ = 1, experiences a temporary TT shock: TT₁ rises to 1.2 (TT₂ = 1 unchanged). With perfect smoothing (r = 0), what is the CA₁ response?",
                 options: [
-                    "C₁ > C₂",
-                    "C₁ < C₂",
-                    "C₁ = C₂ (consumption is perfectly smoothed)",
-                    "C₁ = 0"
+                    "CA₁ = 0 (temporary shocks don't affect CA)",
+                    "CA₁ ≈ +10 (country saves most of the windfall: PV income rises by 20, so C₁ = C₂ rise by 10 each; CA₁ = TT₁Q₁ - C₁ = 120 - 110 = +10)",
+                    "CA₁ = +20 (save entire windfall)",
+                    "CA₁ = -10 (borrow against future income)"
                 ],
-                correct: 2,
-                explanation: "If β(1+r) = 1, then U'(C₁) = U'(C₂), which with concave utility implies C₁ = C₂ - perfect consumption smoothing."
-            }
+                correct: 1,
+                explanation: "Temporary TT improvement (TT₁ from 1 to 1.2) increases PV income by TT₁Q₁ - Q₁ = 120 - 100 = 20. With smoothing: ΔC₁ = ΔC₂ = 10. CA₁ = TT₁Q₁ - C₁ = 120 - 110 = +10. Country saves half the windfall."
+            },
+            {
+                week: 4,
+                topic: "Terms of Trade",
+                question: "Compare two scenarios: (A) TT₁ rises from 1 to 1.1 (temporary), (B) TT₁ and TT₂ both rise from 1 to 1.1 (permanent). Which has larger CA₁ impact?",
+                options: [
+                    "Scenario B: permanent shocks have larger effects",
+                    "Scenario A: CA₁ improves significantly as country smooths by saving; Scenario B: CA₁ changes little as consumption rises in both periods",
+                    "Both have identical CA₁ effects",
+                    "Neither affects CA₁"
+                ],
+                correct: 1,
+                explanation: "Temporary TT improvement: country saves windfall to smooth consumption → large CA₁ improvement. Permanent TT improvement: consumption rises in both periods proportionally → little CA₁ change. Same principle as endowment shocks."
+            },
+            {
+                week: 4,
+                topic: "World Interest Rate Shocks",
+                question: "When the world interest rate r* rises, there are two effects: substitution and income. For a net borrower (B₀ < 0), which statement is correct?",
+                options: [
+                    "Substitution effect: C₁ ↓ (bonds more attractive); Income effect: C₁ ↓ (poorer due to higher debt costs); Effects reinforce → CA₁ ↑",
+                    "Substitution and income effects oppose, making the net effect ambiguous",
+                    "Only substitution effect matters; income effect is negligible",
+                    "Interest rate changes don't affect consumption decisions"
+                ],
+                correct: 0,
+                explanation: "For net borrower (B₀ < 0): (1) Substitution effect: r ↑ makes saving more attractive → C₁ ↓. (2) Income effect: r ↑ raises debt service costs → poorer → C₁ ↓. Both effects reinforce, unambiguously improving CA₁."
+            },
+            {
+                week: 4,
+                topic: "World Interest Rate Shocks",
+                question: "For a net lender (B₀ > 0), an increase in r* creates opposing effects. Which effect typically dominates under standard preferences?",
+                options: [
+                    "Income effect dominates: higher returns make lender richer → C₁ ↑, CA₁ ↓",
+                    "Substitution effect dominates: bonds more attractive → C₁ ↓, CA₁ ↑ (savings should increase with interest rate)",
+                    "Both effects exactly cancel",
+                    "Net effect depends entirely on the size of B₀"
+                ],
+                correct: 1,
+                explanation: "For net lender (B₀ > 0): income effect (richer → C₁ ↑) opposes substitution effect (bonds more attractive → C₁ ↓). Under standard preferences, substitution effect dominates—we expect savings to increase when r rises."
+            },
+            {
+                week: 4,
+                topic: "World Interest Rate Shocks",
+                question: "An economy with B₀ = 0 experiences an increase in r* from 0.05 to 0.10. The Euler equation changes from C₁/C₂ = β(1.05) to C₁/C₂ = β(1.10). What happens to C₁ relative to C₂?",
+                options: [
+                    "C₁/C₂ rises (tilt consumption toward period 1)",
+                    "C₁/C₂ falls (tilt consumption toward period 2, as C₂ becomes cheaper in PV terms)",
+                    "C₁/C₂ unchanged (B₀ = 0 means no income effect)",
+                    "Cannot determine without knowing β"
+                ],
+                correct: 1,
+                explanation: "With B₀ = 0 (pure substitution effect): higher r makes future consumption cheaper in present value. C₁/C₂ = β(1+r) rises → C₁ rises relative to C₂. But in levels, C₁ falls because budget constraint rotates: TB₁ = Q₁ - C₁ improves."
+            },
+            {
+                week: 4,
+                topic: "Import Tariffs",
+                question: "The modified Euler equation with tariffs is U'(C₁) = [(1+τ₁)/(1+τ₂)]β(1+r)U'(C₂). If τ₁ = 0.10 and τ₂ = 0, what is the effect?",
+                options: [
+                    "(1+τ₁)/(1+τ₂) = 1.10 > 1 makes current consumption relatively expensive → C₁ ↓, CA₁ ↑",
+                    "(1+τ₁)/(1+τ₂) = 1.10 > 1 makes current consumption relatively cheap → C₁ ↑, CA₁ ↓",
+                    "Temporary tariffs have no effect on consumption allocation",
+                    "The ratio equals 1 since τ₂ = 0"
+                ],
+                correct: 0,
+                explanation: "Temporary tariff (τ₁ = 0.10, τ₂ = 0): (1+τ₁)/(1+τ₂) = 1.10/1 = 1.10 > 1. This makes current consumption relatively expensive (high tariff now, no tariff later). Households postpone consumption: C₁ ↓, CA₁ ↑."
+            },
+            {
+                week: 4,
+                topic: "Import Tariffs",
+                question: "A permanent tariff is imposed: τ₁ = τ₂ = 0.20. What is the effect on the current account?",
+                options: [
+                    "CA₁ improves significantly as tariffs reduce imports",
+                    "No effect on CA₁: (1+τ₁)/(1+τ₂) = 1 in Euler equation, no intertemporal substitution created",
+                    "CA₁ deteriorates due to retaliation",
+                    "Effect depends on elasticity of import demand"
+                ],
+                correct: 1,
+                explanation: "Permanent tariff (τ₁ = τ₂): the ratio (1+τ₁)/(1+τ₂) = 1 in Euler equation. No intertemporal distortion is created. Consumption path and CA are unchanged. Tariffs only affect CA via intertemporal substitution."
+            },
+            {
+                week: 4,
+                topic: "Import Tariffs",
+                question: "An anticipated future tariff is announced: τ₁ = 0, τ₂ = 0.25. How does this affect CA₁?",
+                options: [
+                    "CA₁ improves as households save in anticipation",
+                    "CA₁ deteriorates: (1+τ₁)/(1+τ₂) = 1/1.25 = 0.8 < 1 makes current consumption relatively cheap → C₁ ↑, CA₁ ↓",
+                    "No effect until τ₂ is actually implemented",
+                    "CA₁ improves slightly due to precautionary saving"
+                ],
+                correct: 1,
+                explanation: "Anticipated future tariff (τ₁ = 0, τ₂ = 0.25): (1+τ₁)/(1+τ₂) = 1/1.25 = 0.8 < 1. Current consumption is relatively cheap (no tariff now, high tariff later). Households front-load consumption: C₁ ↑, CA₁ ↓."
+            },
+            {
+                week: 4,
+                topic: "Import Tariffs",
+                question: "Why do permanent tariffs not affect the current account in this model, despite reducing imports?",
+                options: [
+                    "The model assumes tariff revenues are wasted",
+                    "Tariff revenues are rebated lump-sum (L_t = τ_t C_t), so economy-wide resource constraint is unchanged: C₁ + C₂/(1+r) = (1+r)B₀ + TT₁Q₁ + TT₂Q₂/(1+r)",
+                    "Imports don't affect the current account",
+                    "The model ignores general equilibrium effects"
+                ],
+                correct: 1,
+                explanation: "Tariff revenues are rebated lump-sum to households (L_t = τ_t C_t). This means the economy-wide budget constraint remains unchanged—no net resources are gained or lost. Permanent tariffs don't create intertemporal distortions, so CA is unaffected."
+            },
+            {
+                week: 4,
+                topic: "Terms of Trade",
+                question: "A commodity exporter has Q₁ = Q₂ = 100, TT₁ = 1, TT₂ = 1, r = 0. A permanent TT improvement occurs: TT₁ = TT₂ = 1.2. With perfect smoothing, how much does C₁ increase?",
+                options: [
+                    "ΔC₁ = 10 (half the increase)",
+                    "ΔC₁ = 20 (full increase in both periods: PV income rises by 120 - 100 = 20 in each period, so ΔC₁ = ΔC₂ = 20)",
+                    "ΔC₁ = 0 (permanent shocks don't affect consumption)",
+                    "ΔC₁ = 40 (double the increase)"
+                ],
+                correct: 1,
+                explanation: "Permanent TT improvement: PV income changes from 100 + 100 = 200 to 120 + 120 = 240. ΔPV = 40. With smoothing: ΔC₁ = ΔC₂ = 20. Permanent shocks are fully adjusted to; no smoothing via borrowing/lending needed."
+            },
+            {
+                week: 4,
+                topic: "World Interest Rate Shocks",
+                question: "An economy has B₀ = -100, r* rises from 0.05 to 0.10. The income effect changes the budget constraint by approximately:",
+                options: [
+                    "+5 (additional interest income)",
+                    "-5 (increased debt service: Δ(rB₀) = 0.05(-100) = -5, reducing PV resources)",
+                    "0 (B₀ < 0 means no income effect)",
+                    "-10 (debt service doubles)"
+                ],
+                correct: 1,
+                explanation: "Net borrower (B₀ = -100): income effect from r rising by 0.05 is Δ(rB₀) = 0.05 × (-100) = -5. The country must pay additional interest, reducing available resources by approximately 5 in present value terms."
+            },
+            {
+                week: 4,
+                topic: "World Interest Rate Shocks",
+                question: "For a country with B₀ = +200 (net lender), r* rises from 0.04 to 0.06. The positive income effect increases resources by:",
+                options: [
+                    "+4 (Δ(rB₀) = 0.02 × 200 = 4)",
+                    "+8 (proportional to the rate change)",
+                    "+12 (including compounding)",
+                    "0 (interest changes don't create income effects for lenders)"
+                ],
+                correct: 0,
+                explanation: "Net lender (B₀ = +200): income effect from r rising by 0.02 is Δ(rB₀) = 0.02 × 200 = +4. The country earns additional interest income, increasing available resources by 4 in present value."
+            },
+            {
+                week: 4,
+                topic: "Import Tariffs",
+                question: "The household budget constraints with tariffs are (1+τ₁)C₁ + B₁ = TT₁Q₁ + L₁ + (1+r₀)B₀ where L₁ = τ₁C₁. Substituting the rebate, the constraint simplifies to:",
+                options: [
+                    "C₁ + B₁ = TT₁Q₁ + (1+r₀)B₀ (tariff term cancels out as (1+τ₁)C₁ - τ₁C₁ = C₁)",
+                    "(1+τ₁)C₁ + B₁ = TT₁Q₁ + (1+r₀)B₀ (rebate doesn't affect household)",
+                    "τ₁C₁ + B₁ = TT₁Q₁ (only tariff component matters)",
+                    "Tariffs prevent simplification"
+                ],
+                correct: 0,
+                explanation: "(1+τ₁)C₁ + B₁ = TT₁Q₁ + L₁ + (1+r₀)B₀. With L₁ = τ₁C₁: (1+τ₁)C₁ + B₁ = TT₁Q₁ + τ₁C₁ + (1+r₀)B₀. Simplifying: C₁ + B₁ = TT₁Q₁ + (1+r₀)B₀. The economy-wide resource constraint is unaffected by tariffs when revenues are rebated."
+            },
+            {
+                week: 4,
+                topic: "Terms of Trade",
+                question: "Why do terms-of-trade shocks behave identically to endowment shocks in their CA effects?",
+                options: [
+                    "They both affect the present value of resources in the same way: TT_t Q_t is analogous to endowment Q_t",
+                    "Terms of trade don't actually affect the current account",
+                    "Endowment shocks are always larger in magnitude",
+                    "They affect different components of the budget constraint"
+                ],
+                correct: 0,
+                explanation: "In the budget constraint C₁ + C₂/(1+r) = (1+r)B₀ + TT₁Q₁ + TT₂Q₂/(1+r), terms-of-trade-adjusted output TT_t Q_t plays the same role as endowment Q_t in the single-good model. Temporary vs permanent TT shocks have identical CA effects to endowment shocks."
+            },
+
+            // Week 5: Production Economy and Current Account Determination
+            {
+                week: 5,
+                topic: "Production Economy",
+                question: "In the production economy model, output in period t is Q_t = A_t F(I_{t-1}), where I_{t-1} is investment and A_t is productivity. What is the marginal product of capital (MPK)?",
+                options: [
+                    "MPK = F(I_{t-1})",
+                    "MPK = A_t F'(I_{t-1}) (the additional output from one more unit of investment)",
+                    "MPK = A_t F(I_{t-1}) / I_{t-1}",
+                    "MPK = F'(I_{t-1}) / A_t"
+                ],
+                correct: 1,
+                explanation: "Marginal product of capital: MPK₂ = ∂Q₂/∂I₁ = A₂F'(I₁). This represents the additional output in period 2 from investing one more unit in period 1, accounting for productivity A₂."
+            },
+            {
+                week: 5,
+                topic: "Production Economy",
+                question: "The firm's profit maximization condition for optimal investment is A₂F'(I₁) = 1 + r₁. What is the economic interpretation?",
+                options: [
+                    "Marginal product equals the interest rate",
+                    "Invest until marginal benefit (MPK) equals marginal cost (1 + r₁, the opportunity cost of funds)",
+                    "All output should be invested",
+                    "Investment should equal savings"
+                ],
+                correct: 1,
+                explanation: "A₂F'(I₁) = 1 + r₁: invest until the marginal benefit (additional output from last unit invested, MPK = A₂F'(I₁)) equals the marginal cost (opportunity cost of funds, 1 + r₁). This is the standard first-order condition."
+            },
+            {
+                week: 5,
+                topic: "Investment Schedule",
+                question: "The investment schedule I₁ = I(r₁⁻, A₂⁺) shows how investment depends on r₁ and A₂. Why is ∂I₁/∂r₁ < 0?",
+                options: [
+                    "Higher interest rates make investment more attractive",
+                    "Higher r₁ increases the opportunity cost of investing → firms invest less (I₁ ↓)",
+                    "Investment is independent of interest rates",
+                    "The relationship depends on productivity"
+                ],
+                correct: 1,
+                explanation: "From A₂F'(I₁) = 1 + r₁: if r₁ rises, firms must reduce I₁ to raise F'(I₁) (due to diminishing returns) to satisfy the condition. Higher interest rates → higher opportunity cost → less investment."
+            },
+            {
+                week: 5,
+                topic: "Investment Schedule",
+                question: "Why is ∂I₁/∂A₂ > 0 in the investment schedule I₁ = I(r₁⁻, A₂⁺)?",
+                options: [
+                    "Higher productivity A₂ raises the marginal product A₂F'(I₁), making investment more profitable → I₁ ↑",
+                    "Productivity shocks don't affect investment decisions",
+                    "Higher A₂ reduces investment due to income effects",
+                    "The relationship is ambiguous"
+                ],
+                correct: 0,
+                explanation: "From A₂F'(I₁) = 1 + r₁: if A₂ rises, firms can invest more (I₁ ↑) while still satisfying the condition (as A₂F'(I₁) rises). Higher future productivity makes investment more profitable."
+            },
+            {
+                week: 5,
+                topic: "Saving Schedule",
+                question: "The saving schedule is S₁ = S(r₁⁺, A₁⁺, A₂⁻). Why is ∂S₁/∂A₁ > 0?",
+                options: [
+                    "Higher A₁ reduces output and income",
+                    "Higher current productivity A₁ increases Q₁ = A₁F(I₀), raising income → households save more (temporary income shock)",
+                    "Productivity doesn't affect saving decisions",
+                    "Higher A₁ causes households to borrow"
+                ],
+                correct: 1,
+                explanation: "S₁ = Q₁ - C₁. Higher A₁ raises Q₁ = A₁F(I₀). If this is a temporary shock (A₂ unchanged), households smooth consumption: C₁ rises less than Q₁ → S₁ = Q₁ - C₁ rises."
+            },
+            {
+                week: 5,
+                topic: "Saving Schedule",
+                question: "Why is ∂S₁/∂A₂ < 0 in the saving schedule S₁ = S(r₁⁺, A₁⁺, A₂⁻)?",
+                options: [
+                    "Higher future productivity A₂ is good news → households borrow against future income → S₁ ↓",
+                    "Future productivity doesn't affect current saving",
+                    "Higher A₂ increases current saving for precautionary reasons",
+                    "The relationship depends on risk aversion"
+                ],
+                correct: 0,
+                explanation: "Higher A₂ means higher future income Q₂ = A₂F(I₁). Good news about future income causes households to increase C₁ (borrowing against future) → S₁ = Q₁ - C₁ falls. This is the anticipated income effect."
+            },
+            {
+                week: 5,
+                topic: "Current Account Schedule",
+                question: "The current account schedule is CA₁ = CA(r₁⁺, A₁⁺, A₂⁻) = S₁ - I₁. Why is ∂CA₁/∂A₁ > 0?",
+                options: [
+                    "Higher A₁ increases both S₁ and I₁ equally",
+                    "Higher current productivity A₁ raises S₁ (temporary income shock → save windfall) but doesn't directly affect I₁ (depends on A₂) → CA₁ ↑",
+                    "Higher A₁ causes CA₁ to deteriorate",
+                    "Current productivity doesn't affect CA"
+                ],
+                correct: 1,
+                explanation: "CA₁ = S₁ - I₁. Higher A₁: (1) S₁ rises (temporary income boost → save windfall). (2) I₁ unchanged (investment depends on A₂, not A₁). Net effect: CA₁ = S₁ - I₁ improves."
+            },
+            {
+                week: 5,
+                topic: "Current Account Schedule",
+                question: "Why is ∂CA₁/∂A₂ < 0 in the current account schedule CA₁ = CA(r₁⁺, A₁⁺, A₂⁻)?",
+                options: [
+                    "Higher A₂ reduces saving S₁ (good news → borrow) and increases investment I₁ (more profitable) → both effects worsen CA₁",
+                    "Future productivity shocks don't affect current CA",
+                    "Higher A₂ improves CA₁ through precautionary saving",
+                    "The effect is ambiguous"
+                ],
+                correct: 0,
+                explanation: "CA₁ = S₁ - I₁. Higher A₂: (1) S₁ ↓ (good news about future → households borrow). (2) I₁ ↑ (higher MPK → firms invest more). Both effects reduce CA₁: ∂CA₁/∂A₂ < 0."
+            },
+            {
+                week: 5,
+                topic: "Metzler Diagram",
+                question: "In the Metzler diagram with r₁ on the vertical axis and S₁, I₁, CA₁ on the horizontal axis, the investment schedule I(r₁⁻) slopes:",
+                options: [
+                    "Upward: higher r₁ → more investment",
+                    "Downward: higher r₁ → higher opportunity cost → less investment",
+                    "Vertical: investment is independent of r₁",
+                    "Horizontal: interest rate adjusts to investment"
+                ],
+                correct: 1,
+                explanation: "Investment schedule I(r₁⁻) slopes downward: ∂I₁/∂r₁ < 0. Higher interest rates increase the opportunity cost of investing, reducing optimal investment. The curve is downward-sloping in (I₁, r₁) space."
+            },
+            {
+                week: 5,
+                topic: "Metzler Diagram",
+                question: "In the Metzler diagram, the saving schedule S(r₁⁺) slopes:",
+                options: [
+                    "Upward: higher r₁ → substitution effect dominates → save more",
+                    "Downward: higher r₁ → consume more",
+                    "Vertical: saving is independent of r₁",
+                    "Ambiguous: income and substitution effects oppose"
+                ],
+                correct: 0,
+                explanation: "Saving schedule S(r₁⁺) slopes upward: ∂S₁/∂r₁ > 0. Higher interest rates make saving more attractive (substitution effect typically dominates income effect), so households save more."
+            },
+            {
+                week: 5,
+                topic: "Metzler Diagram",
+                question: "A positive productivity shock in period 2 (A₂ ↑) shifts which curves in the Metzler diagram?",
+                options: [
+                    "Investment schedule shifts right (I₁ ↑); Saving schedule shifts left (S₁ ↓); CA₁ schedule shifts left (worsens)",
+                    "Only investment schedule shifts",
+                    "Both schedules shift right",
+                    "Neither schedule shifts"
+                ],
+                correct: 0,
+                explanation: "A₂ ↑: (1) Investment: I₁ = I(r₁⁻, A₂⁺) shifts right (higher MPK → more investment). (2) Saving: S₁ = S(r₁⁺, A₁⁺, A₂⁻) shifts left (good news → borrow → S₁ ↓). (3) CA₁ = S₁ - I₁ shifts left (deteriorates)."
+            },
+            {
+                week: 5,
+                topic: "Giant Oil Discoveries",
+                question: "The giant oil discoveries application shows that when large oil fields are discovered (future productivity shock A₂ ↑), the empirical evidence supports:",
+                options: [
+                    "CA₁ deteriorates: countries invest heavily (I₁ ↑) and borrow against future oil income (S₁ ↓), confirming model predictions",
+                    "CA₁ improves due to precautionary saving",
+                    "CA₁ is unaffected by oil discoveries",
+                    "Investment remains unchanged"
+                ],
+                correct: 0,
+                explanation: "Giant oil discoveries represent large anticipated productivity shocks (A₂ ↑). Model predicts: I₁ ↑ (building infrastructure to extract oil) and S₁ ↓ (borrowing against future oil revenue) → CA₁ deteriorates. Empirical evidence confirms this pattern."
+            },
+            {
+                week: 5,
+                topic: "Production Economy",
+                question: "The production function Q_t = A_t F(I_{t-1}) exhibits diminishing marginal product of capital: F''(I) < 0. What does this imply for the investment response to A₂?",
+                options: [
+                    "Higher A₂ leads to infinite investment",
+                    "F''(I) < 0 ensures a finite investment response: as I₁ rises, F'(I₁) falls, limiting how much investment increases",
+                    "Diminishing returns prevent any investment",
+                    "Investment becomes negative"
+                ],
+                correct: 1,
+                explanation: "Diminishing returns (F''(I) < 0) mean F'(I₁) falls as I₁ rises. From A₂F'(I₁) = 1 + r₁: even if A₂ rises, the decline in F'(I₁) as I₁ increases ensures a finite, determinate level of optimal investment."
+            },
+            {
+                week: 5,
+                topic: "Current Account Schedule",
+                question: "In a small open economy with free capital mobility, r₁ = r* (world rate). If the world rate rises (r* ↑), what happens to CA₁ in the production economy?",
+                options: [
+                    "CA₁ worsens as investment increases",
+                    "CA₁ improves: S₁ rises (substitution effect in saving) and I₁ falls (higher opportunity cost) → CA₁ = S₁ - I₁ unambiguously improves",
+                    "CA₁ unchanged",
+                    "Effect depends on productivity shocks"
+                ],
+                correct: 1,
+                explanation: "r₁ = r* rises: (1) S₁ = S(r₁⁺, ...) increases (saving more attractive). (2) I₁ = I(r₁⁻, ...) decreases (investment less profitable). (3) CA₁ = S₁ - I₁ unambiguously improves. Both effects work in same direction."
+            },
+            {
+                week: 5,
+                topic: "Production Economy",
+                question: "How does the production economy model differ from the endowment economy in Week 3?",
+                options: [
+                    "No difference; both are identical",
+                    "Production economy introduces investment decisions and physical capital: Q_t = A_t F(I_{t-1}); Endowment economy has exogenous output Q_t",
+                    "Production economy has no consumption",
+                    "Endowment economy includes investment"
+                ],
+                correct: 1,
+                explanation: "Key difference: Endowment economy (Week 3) has exogenous output Q_t. Production economy (Week 5) has endogenous output Q_t = A_t F(I_{t-1}) determined by investment I_{t-1} and productivity A_t. Investment decisions introduce new channels for CA determination."
+            },
         ];
 
         let currentWeek = 'all';
