@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC201 International Macroeconomics Quiz - Weeks 1-3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .week-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: #f8f9fa;
+            flex-wrap: wrap;
+        }
+
+        .week-btn {
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .week-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .week-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .quiz-area {
+            padding: 30px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .question-card {
+            display: none;
+        }
+
+        .question-card.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .question-number {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .question-text {
+            font-size: 20px;
+            color: #2d3748;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option {
+            padding: 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f7fafc;
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #edf2f7;
+        }
+
+        .option.correct {
+            border-color: #48bb78;
+            background: #f0fff4;
+        }
+
+        .option.incorrect {
+            border-color: #f56565;
+            background: #fff5f5;
+        }
+
+        .option-label {
+            font-weight: 600;
+            color: #667eea;
+            margin-right: 10px;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feedback.correct {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            color: #22543d;
+        }
+
+        .feedback.incorrect {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            color: #742a2a;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #2d3748;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+
+        .results {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .results.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .results h2 {
+            font-size: 32px;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        .results-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .result-stat {
+            text-align: center;
+        }
+
+        .result-stat-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .result-stat-label {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 5px;
+        }
+
+        .start-screen {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .start-screen h2 {
+            font-size: 32px;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        .start-screen p {
+            font-size: 18px;
+            color: #718096;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .week-description {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .week-description h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .week-description ul {
+            list-style-position: inside;
+            color: #4a5568;
+            line-height: 2;
+        }
+
+        .name-input-section {
+            margin: 30px 0;
+        }
+
+        .name-input {
+            padding: 14px 20px;
+            font-size: 16px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            margin: 10px auto;
+            display: block;
+            text-align: center;
+        }
+
+        .name-input:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .leaderboard-section {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .leaderboard-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .leaderboard-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .leaderboard-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .leaderboard-table tr:hover {
+            background: #edf2f7;
+        }
+
+        .rank-badge {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .rank-badge.gold {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+        }
+
+        .rank-badge.silver {
+            background: linear-gradient(135deg, #a8b8d8 0%, #c7d2e9 100%);
+        }
+
+        .rank-badge.bronze {
+            background: linear-gradient(135deg, #cd7f32 0%, #d4926f 100%);
+        }
+
+        .share-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 12px;
+        }
+
+        .share-section h4 {
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .share-link {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .share-link input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .btn-copy {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-copy:hover {
+            background: #5568d3;
+        }
+
+        .user-greeting {
+            text-align: center;
+            padding: 20px;
+            background: #f7fafc;
+            color: #2d3748;
+            font-size: 18px;
+        }
+
+        .user-greeting strong {
+            color: #667eea;
+        }
+
+        .no-leaderboard {
+            text-align: center;
+            color: #718096;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        .view-leaderboard-btn {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .view-leaderboard-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>EC201 International Macroeconomics</h1>
+            <p>MCQ Assessment - Weeks 1-3</p>
+        </div>
+
+        <div class="week-selector">
+            <button class="week-btn active" data-week="all">All Weeks</button>
+            <button class="week-btn" data-week="1">Week 1: Global Imbalances</button>
+            <button class="week-btn" data-week="2">Week 2: Sustainability</button>
+            <button class="week-btn" data-week="3">Week 3: Current Account Theory</button>
+        </div>
+
+        <div id="startScreen" class="start-screen">
+            <h2>Ready to Test Your Knowledge?</h2>
+            <p>This quiz covers key concepts from the first three weeks of EC201 International Macroeconomics.</p>
+
+            <div class="name-input-section">
+                <label for="userName" style="display: block; margin-bottom: 10px; font-weight: 600; color: #2d3748;">Enter Your Name:</label>
+                <input type="text" id="userName" class="name-input" placeholder="Your name..." required>
+            </div>
+
+            <div class="week-description">
+                <h3>Topics Covered:</h3>
+                <ul>
+                    <li>Balance of Payments and Current Account components</li>
+                    <li>Net International Investment Position (NIIP)</li>
+                    <li>Global imbalances and creditor/debtor nations</li>
+                    <li>Trade balance and current account sustainability</li>
+                    <li>Small open economy model</li>
+                    <li>Temporary vs permanent shocks</li>
+                    <li>Consumption smoothing and intertemporal choice</li>
+                </ul>
+            </div>
+
+            <button class="btn btn-primary" onclick="startQuiz()" style="font-size: 18px; padding: 18px 36px;">Start Quiz</button>
+            <button class="btn view-leaderboard-btn" onclick="showLeaderboardOnly()">View Leaderboard</button>
+
+            <div id="leaderboardDisplay" class="leaderboard-section" style="display: none;">
+                <h3>🏆 Leaderboard</h3>
+                <div id="leaderboardContent"></div>
+            </div>
+        </div>
+
+        <div id="quizArea" class="quiz-area" style="display: none;">
+            <div class="user-greeting" id="userGreeting"></div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div id="questionContainer"></div>
+
+            <div class="button-group">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()">Previous</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next Question</button>
+            </div>
+        </div>
+
+        <div id="results" class="results">
+            <div class="score-circle" id="scoreCircle">0%</div>
+            <h2 id="resultsTitle">Quiz Complete!</h2>
+            <div class="results-details">
+                <div class="result-stat">
+                    <div class="result-stat-value" id="correctCount">0</div>
+                    <div class="result-stat-label">Correct</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-value" id="incorrectCount">0</div>
+                    <div class="result-stat-label">Incorrect</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-value" id="totalCount">0</div>
+                    <div class="result-stat-label">Total Questions</div>
+                </div>
+            </div>
+
+            <div class="leaderboard-section">
+                <h3>🏆 Leaderboard</h3>
+                <div id="finalLeaderboard"></div>
+            </div>
+
+            <button class="btn btn-primary" onclick="restartQuiz()" style="margin-top: 30px;">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            // Week 1: Global Imbalances
+            {
+                week: 1,
+                question: "The Balance of Payments consists of which main components?",
+                options: [
+                    "Current Account + Financial Account + Capital Account",
+                    "Trade Balance + Income Balance only",
+                    "Exports + Imports + Transfers",
+                    "GDP + Net Exports + Government Spending"
+                ],
+                correct: 0,
+                explanation: "The Balance of Payments = Current Account + Financial Account + Capital Account."
+            },
+            {
+                week: 1,
+                question: "What does the Trade Balance measure?",
+                options: [
+                    "Total government spending on trade",
+                    "Exports minus Imports of goods and services",
+                    "Foreign investment flows",
+                    "Net unilateral transfers"
+                ],
+                correct: 1,
+                explanation: "Trade Balance = Exports - Imports (goods & services)."
+            },
+            {
+                week: 1,
+                question: "Net International Investment Position (NIIP) is calculated as:",
+                options: [
+                    "Current Account - Trade Balance",
+                    "Exports - Imports",
+                    "Foreign Assets - Foreign Liabilities",
+                    "GDP - National Debt"
+                ],
+                correct: 2,
+                explanation: "NIIP = Foreign Assets - Foreign Liabilities. It represents accumulated wealth position."
+            },
+            {
+                week: 1,
+                question: "What is the relationship between Current Account deficits and NIIP?",
+                options: [
+                    "Current Account Deficit causes NIIP to rise",
+                    "Current Account Deficit causes NIIP to fall",
+                    "They are unrelated",
+                    "Current Account Deficit doubles the NIIP"
+                ],
+                correct: 1,
+                explanation: "A Current Account Deficit leads to a fall in NIIP, while a Current Account Surplus causes NIIP to rise."
+            },
+            {
+                week: 1,
+                question: "Which of the following is a major external creditor?",
+                options: [
+                    "United States",
+                    "United Kingdom",
+                    "Japan",
+                    "Australia"
+                ],
+                correct: 2,
+                explanation: "Japan, China, and Germany are major external creditors. The US is the world's largest debtor."
+            },
+            {
+                week: 1,
+                question: "Why might NIIP not equal accumulated current accounts?",
+                options: [
+                    "Because of calculation errors",
+                    "Because of valuation changes from market price movements",
+                    "Because trade is measured incorrectly",
+                    "They are always equal"
+                ],
+                correct: 1,
+                explanation: "NIIP changes from two sources: (1) Current Account flows and (2) Valuation changes (stock/bond prices, exchange rates)."
+            },
+            {
+                week: 1,
+                question: "During 2002-2007, the US ran $3.9 trillion in current account deficits but NIIP improved by $80 billion. What explains this?",
+                options: [
+                    "Measurement error",
+                    "$4 trillion in positive valuation changes",
+                    "Increased exports",
+                    "Reduced imports"
+                ],
+                correct: 1,
+                explanation: "The US benefited from $4 trillion in positive valuation changes, offsetting the current account deficits."
+            },
+            {
+                week: 1,
+                question: "The 'Dark Matter' hypothesis suggests:",
+                options: [
+                    "The US has hidden debt obligations",
+                    "Unmeasured intangible assets mean true NIIP might be positive",
+                    "Foreign countries hide their investments",
+                    "Trade statistics are completely wrong"
+                ],
+                correct: 1,
+                explanation: "The Dark Matter hypothesis suggests unmeasured intangible assets (brands, know-how) mean the true NIIP might actually be positive."
+            },
+            {
+                week: 1,
+                question: "The 'Return Differential' hypothesis explains the NIIP-NII paradox by:",
+                options: [
+                    "The US borrows at high rates and lends at low rates",
+                    "The US invests in high-return assets (stocks/FDI) while foreigners invest in low-return US assets (Treasury bonds)",
+                    "All countries earn the same return",
+                    "Returns don't matter for investment income"
+                ],
+                correct: 1,
+                explanation: "The Return Differential hypothesis: US invests in high-return foreign assets while foreigners invest in low-return US assets, related to 'exorbitant privilege'."
+            },
+            {
+                week: 1,
+                question: "Which is included in the Income Balance component of the Current Account?",
+                options: [
+                    "Exports and imports of goods",
+                    "Net Investment Income and Net Compensation to Employees",
+                    "Government transfers only",
+                    "Capital gains on stocks"
+                ],
+                correct: 1,
+                explanation: "Income Balance = Net Investment Income + Net Compensation to Employees."
+            },
+
+            // Week 2: Sustainability
+            {
+                week: 2,
+                question: "In a two-period economy with terminal condition B₂ = 0, can a net debtor run perpetual trade balance deficits?",
+                options: [
+                    "Yes, always",
+                    "No, must run surplus in at least one period",
+                    "Yes, but only if interest rates are negative",
+                    "It depends on GDP growth"
+                ],
+                correct: 1,
+                explanation: "In finite horizon, a net debtor cannot run perpetual TB deficits - must run a surplus in at least one period to satisfy the sustainability condition."
+            },
+            {
+                week: 2,
+                question: "What is the transversality condition in the infinite horizon model?",
+                options: [
+                    "Debt must equal zero",
+                    "The present value of debt must vanish: lim(T→∞) Bₜ/(1+r)ᵀ = 0",
+                    "Debt must grow faster than interest rate",
+                    "Current account must always be positive"
+                ],
+                correct: 1,
+                explanation: "The transversality (No-Ponzi-Game) condition: lim(T→∞) Bₜ/(1+r)ᵀ = 0. Present value of debt must vanish (not that debt goes to zero)."
+            },
+            {
+                week: 2,
+                question: "In infinite horizon, can a net debtor run perpetual current account deficits?",
+                options: [
+                    "No, never",
+                    "Yes, if paying fraction α ∈ (0,1) of interest via trade surplus",
+                    "Only if GDP shrinks",
+                    "Only for one period"
+                ],
+                correct: 1,
+                explanation: "Yes! A net debtor CAN run perpetual CA deficits in infinite horizon if following a debt-servicing policy: TBₜ = -αrBₜ₋₁ where α ∈ (0,1)."
+            },
+            {
+                week: 2,
+                question: "For perpetual CA deficits to be sustainable, debt must grow at rate g where:",
+                options: [
+                    "g > r (faster than interest rate)",
+                    "g = r (equal to interest rate)",
+                    "g < r, specifically g = r(1-α) where α > 0",
+                    "g can be anything"
+                ],
+                correct: 2,
+                explanation: "Debt must grow slower than interest rate: g = r(1-α) < r. This ensures the transversality condition is satisfied."
+            },
+            {
+                week: 2,
+                question: "What is the key difference between finite and infinite horizon sustainability?",
+                options: [
+                    "No difference",
+                    "Finite: hard constraint (Bₜ=0), Infinite: soft constraint (PV→0)",
+                    "Finite is easier",
+                    "Infinite requires balanced budgets"
+                ],
+                correct: 1,
+                explanation: "Finite horizon has hard constraint (must settle all debts), infinite has soft constraint (can 'grow out of debt' as long as PV→0)."
+            },
+            {
+                week: 2,
+                question: "The accounting identity Bₜ = (1+r)Bₜ₋₁ + TBₜ shows:",
+                options: [
+                    "How current NIIP relates to previous NIIP plus current trade balance",
+                    "How GDP grows over time",
+                    "The inflation rate",
+                    "Government budget constraint"
+                ],
+                correct: 0,
+                explanation: "This identity shows NIIP evolves as: current NIIP = previous NIIP with interest plus current trade balance."
+            },
+            {
+                week: 2,
+                question: "The relationship between Current Account and Trade Balance is:",
+                options: [
+                    "CA = TB (they are identical)",
+                    "CA = TB + rBₜ₋₁ (trade balance plus net investment income)",
+                    "CA = TB × 2",
+                    "They are unrelated"
+                ],
+                correct: 1,
+                explanation: "Current Account = Trade Balance + rBₜ₋₁ (where rBₜ₋₁ represents net investment income)."
+            },
+            {
+                week: 2,
+                question: "In infinite horizon, a net debtor CANNOT run perpetual:",
+                options: [
+                    "Current account deficits",
+                    "Trade balance deficits",
+                    "Both CA and TB deficits",
+                    "Either CA or TB deficits"
+                ],
+                correct: 1,
+                explanation: "Even in infinite horizon, a net debtor CANNOT run perpetual TB deficits (must repay real resources at some point), but CAN run perpetual CA deficits."
+            },
+            {
+                week: 2,
+                question: "For sustainability with perpetual CA deficits, GDP growth must be:",
+                options: [
+                    "Negative",
+                    "Zero",
+                    "≥ r(1-α) to generate required TB surpluses",
+                    "< interest rate"
+                ],
+                correct: 2,
+                explanation: "Critical condition: GDP must grow ≥ r(1-α) to generate the required TB surpluses for sustainability."
+            },
+            {
+                week: 2,
+                question: "In a two-period model, the sustainability condition with B₀ < 0 (net debtor) is:",
+                options: [
+                    "(1+r)B₀ = -TB₁ - TB₂/(1+r)",
+                    "B₀ = TB₁ + TB₂",
+                    "(1+r)B₀ = TB₁ + TB₂",
+                    "B₀ = 0"
+                ],
+                correct: 0,
+                explanation: "The sustainability condition is (1+r)B₀ = -TB₁ - TB₂/(1+r), which shows present value of trade balances must offset initial debt."
+            },
+
+            // Week 3: Theory of Current Account
+            {
+                week: 3,
+                question: "In the small open economy model, what does 'small' mean?",
+                options: [
+                    "The country has a small population",
+                    "World prices and interest rates are independent of domestic conditions",
+                    "The economy produces few goods",
+                    "GDP is low"
+                ],
+                correct: 1,
+                explanation: "Small means world prices and interest rates are independent of domestic conditions - the country is a price taker."
+            },
+            {
+                week: 3,
+                question: "Free capital mobility in the model implies:",
+                options: [
+                    "No restrictions on trade",
+                    "r₁ = r* (domestic interest rate equals world rate)",
+                    "No taxes",
+                    "Fixed exchange rate"
+                ],
+                correct: 1,
+                explanation: "Free capital mobility implies interest rate parity: r₁ = r*."
+            },
+            {
+                week: 3,
+                question: "The Euler equation in the model represents:",
+                options: [
+                    "Budget constraint",
+                    "Optimal consumption choice: U'(C₁) = (1+r₁)βU'(C₂)",
+                    "Production function",
+                    "Trade balance identity"
+                ],
+                correct: 1,
+                explanation: "The Euler equation U'(C₁) = (1+r₁)βU'(C₂) characterizes optimal intertemporal consumption choice."
+            },
+            {
+                week: 3,
+                question: "How does a TEMPORARY decline in Q₁ affect the current account?",
+                options: [
+                    "Large CA deterioration (households borrow to smooth consumption)",
+                    "No effect",
+                    "Large CA improvement",
+                    "Small CA deterioration"
+                ],
+                correct: 0,
+                explanation: "Temporary shocks lead to large CA movements - households borrow to smooth consumption, causing CA to deteriorate significantly."
+            },
+            {
+                week: 3,
+                question: "How does a PERMANENT decline in output (Q₁ and Q₂) affect consumption?",
+                options: [
+                    "No change in consumption",
+                    "C₁ falls by less than the output decline",
+                    "Both C₁ and C₂ adjust proportionally, little change in trade balance",
+                    "Only C₂ changes"
+                ],
+                correct: 2,
+                explanation: "With permanent shocks, economies adjust consumption in both periods. The trade balance changes little because households cannot smooth a permanent shock."
+            },
+            {
+                week: 3,
+                question: "The general principle comparing temporary vs permanent shocks is:",
+                options: [
+                    "Both have identical effects",
+                    "Economies finance temporary shocks (borrow/lend) and adjust to permanent ones",
+                    "Economies ignore temporary shocks",
+                    "Only permanent shocks matter"
+                ],
+                correct: 1,
+                explanation: "Economies tend to FINANCE temporary shocks through international borrowing/lending and ADJUST to permanent shocks by changing consumption."
+            },
+            {
+                week: 3,
+                question: "If households learn in period 1 that Q₂ will be higher (anticipated income shock), what happens to CA₁?",
+                options: [
+                    "CA₁ improves",
+                    "CA₁ deteriorates (households borrow against future income)",
+                    "No change in CA₁",
+                    "CA₁ becomes zero"
+                ],
+                correct: 1,
+                explanation: "Good news about future income causes CA to deteriorate - households increase C₁ by borrowing, even though Q₁ is unchanged."
+            },
+            {
+                week: 3,
+                question: "The intertemporal budget constraint in the two-period model is:",
+                options: [
+                    "C₁ + C₂ = Q₁ + Q₂",
+                    "C₁ + C₂/(1+r₁) = (1+r₀)B₀ + Q₁ + Q₂/(1+r₁)",
+                    "C₁ = Q₁ and C₂ = Q₂",
+                    "C₁ + C₂ = 2Q₁"
+                ],
+                correct: 1,
+                explanation: "The intertemporal budget constraint: C₁ + C₂/(1+r₁) = (1+r₀)B₀ + Q₁ + Q₂/(1+r₁) - present value of consumption equals present value of resources."
+            },
+            {
+                week: 3,
+                question: "Trade balance in period 1 is defined as:",
+                options: [
+                    "TB₁ = C₁ - Q₁",
+                    "TB₁ = Q₁ - C₁",
+                    "TB₁ = Q₁ + C₁",
+                    "TB₁ = (Q₁ - C₁) × r"
+                ],
+                correct: 1,
+                explanation: "Trade Balance: TB₁ = Q₁ - C₁ (output minus consumption)."
+            },
+            {
+                week: 3,
+                question: "Current account deficits are not necessarily a sign of weakness because:",
+                options: [
+                    "They always indicate strong exports",
+                    "They may reflect optimism about future growth (anticipated income increases)",
+                    "They show the government is spending wisely",
+                    "They are required by international law"
+                ],
+                correct: 1,
+                explanation: "CA deficits can reflect optimism about future growth. Good news about the future leads to CA deterioration as households borrow, not indicating weakness."
+            },
+            {
+                week: 3,
+                question: "What does consumption smoothing mean?",
+                options: [
+                    "Consuming the same goods every period",
+                    "Households prefer stable consumption over time using international borrowing/lending",
+                    "Consumption always equals income",
+                    "Avoiding imported goods"
+                ],
+                correct: 1,
+                explanation: "Consumption smoothing: households prefer stable consumption over time (due to concave utility) and use international borrowing/lending to achieve this."
+            },
+            {
+                week: 3,
+                question: "In equilibrium, which three conditions must be satisfied simultaneously?",
+                options: [
+                    "Only budget constraint",
+                    "Intertemporal budget constraint, Euler equation, and Interest rate parity (r₁ = r*)",
+                    "Just supply equals demand",
+                    "Only Euler equation"
+                ],
+                correct: 1,
+                explanation: "Equilibrium requires: (1) Intertemporal budget constraint, (2) Euler equation (optimality), and (3) Interest rate parity r₁ = r*."
+            },
+            {
+                week: 3,
+                question: "Free capital mobility allows:",
+                options: [
+                    "Government control of all capital",
+                    "Optimal intertemporal allocation and equalization of interest rates",
+                    "No international trade",
+                    "Fixed consumption levels"
+                ],
+                correct: 1,
+                explanation: "Free capital mobility equalizes domestic and world interest rates and allows optimal intertemporal allocation of resources."
+            },
+            {
+                week: 3,
+                question: "In the model, households receive:",
+                options: [
+                    "Wages from working",
+                    "Endowments Q₁ and Q₂ of perishable goods",
+                    "Government transfers",
+                    "Dividend income"
+                ],
+                correct: 1,
+                explanation: "Households receive exogenous endowments Q₁ and Q₂ of perishable goods (this is an endowment economy, not a production economy)."
+            },
+            {
+                week: 3,
+                question: "If β(1+r) = 1, what does the Euler equation imply about consumption?",
+                options: [
+                    "C₁ > C₂",
+                    "C₁ < C₂",
+                    "C₁ = C₂ (consumption is perfectly smoothed)",
+                    "C₁ = 0"
+                ],
+                correct: 2,
+                explanation: "If β(1+r) = 1, then U'(C₁) = U'(C₂), which with concave utility implies C₁ = C₂ - perfect consumption smoothing."
+            }
+        ];
+
+        let currentWeek = 'all';
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let filteredQuestions = [];
+        let userName = '';
+
+        // Week selector
+        document.querySelectorAll('.week-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentWeek = this.dataset.week;
+            });
+        });
+
+        // Leaderboard functions
+        function getLeaderboard() {
+            const saved = localStorage.getItem('ec201_leaderboard');
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        function saveToLeaderboard(name, score, correct, total, week) {
+            const leaderboard = getLeaderboard();
+            const entry = {
+                name: name,
+                score: score,
+                correct: correct,
+                total: total,
+                week: week,
+                date: new Date().toISOString(),
+                timestamp: Date.now()
+            };
+            leaderboard.push(entry);
+            leaderboard.sort((a, b) => b.score - a.score || b.timestamp - a.timestamp);
+            localStorage.setItem('ec201_leaderboard', JSON.stringify(leaderboard));
+        }
+
+        function displayLeaderboard(elementId) {
+            const leaderboard = getLeaderboard();
+            const element = document.getElementById(elementId);
+
+            if (leaderboard.length === 0) {
+                element.innerHTML = '<div class="no-leaderboard">No scores yet. Be the first!</div>';
+                return;
+            }
+
+            let html = '<table class="leaderboard-table"><thead><tr><th>Rank</th><th>Name</th><th>Score</th><th>Week</th><th>Date</th></tr></thead><tbody>';
+
+            leaderboard.slice(0, 10).forEach((entry, index) => {
+                const rankClass = index === 0 ? 'gold' : index === 1 ? 'silver' : index === 2 ? 'bronze' : '';
+                const date = new Date(entry.date).toLocaleDateString();
+                const weekText = entry.week === 'all' ? 'All Weeks' : `Week ${entry.week}`;
+
+                html += `
+                    <tr>
+                        <td><span class="rank-badge ${rankClass}">${index + 1}</span></td>
+                        <td><strong>${entry.name}</strong></td>
+                        <td>${entry.score}% (${entry.correct}/${entry.total})</td>
+                        <td>${weekText}</td>
+                        <td>${date}</td>
+                    </tr>
+                `;
+            });
+
+            html += '</tbody></table>';
+            element.innerHTML = html;
+        }
+
+        function showLeaderboardOnly() {
+            const display = document.getElementById('leaderboardDisplay');
+            if (display.style.display === 'none') {
+                display.style.display = 'block';
+                displayLeaderboard('leaderboardContent');
+            } else {
+                display.style.display = 'none';
+            }
+        }
+
+        function startQuiz() {
+            // Get user name
+            userName = document.getElementById('userName').value.trim();
+            if (!userName) {
+                alert('Please enter your name before starting the quiz!');
+                return;
+            }
+            // Filter questions based on selected week
+            if (currentWeek === 'all') {
+                filteredQuestions = [...questions];
+            } else {
+                filteredQuestions = questions.filter(q => q.week === parseInt(currentWeek));
+            }
+
+            // Reset state
+            currentQuestionIndex = 0;
+            userAnswers = new Array(filteredQuestions.length).fill(null);
+
+            // Show quiz area
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('quizArea').style.display = 'block';
+            document.getElementById('results').classList.remove('show');
+
+            // Display user greeting
+            document.getElementById('userGreeting').innerHTML = `Good luck, <strong>${userName}</strong>! 🎓`;
+
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const container = document.getElementById('questionContainer');
+            const question = filteredQuestions[currentQuestionIndex];
+
+            container.innerHTML = `
+                <div class="question-card active">
+                    <div class="question-header">
+                        <span class="question-number">Question ${currentQuestionIndex + 1} of ${filteredQuestions.length}</span>
+                        <span class="question-number">Week ${question.week}</span>
+                    </div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">
+                        ${question.options.map((option, index) => `
+                            <div class="option" onclick="selectAnswer(${index})" data-index="${index}">
+                                <span class="option-label">${String.fromCharCode(65 + index)}.</span>
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" id="feedback"></div>
+                </div>
+            `;
+
+            // Restore previous answer if exists
+            if (userAnswers[currentQuestionIndex] !== null) {
+                selectAnswer(userAnswers[currentQuestionIndex], true);
+            }
+
+            updateProgress();
+            updateButtons();
+        }
+
+        function selectAnswer(index, skipFeedback = false) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+            });
+
+            options[index].classList.add('selected');
+            userAnswers[currentQuestionIndex] = index;
+
+            if (!skipFeedback) {
+                showFeedback(index);
+            }
+
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function showFeedback(selectedIndex) {
+            const question = filteredQuestions[currentQuestionIndex];
+            const feedback = document.getElementById('feedback');
+            const options = document.querySelectorAll('.option');
+
+            if (selectedIndex === question.correct) {
+                feedback.className = 'feedback correct show';
+                feedback.innerHTML = `<strong>Correct!</strong> ${question.explanation}`;
+                options[selectedIndex].classList.add('correct');
+            } else {
+                feedback.className = 'feedback incorrect show';
+                feedback.innerHTML = `<strong>Incorrect.</strong> ${question.explanation}`;
+                options[selectedIndex].classList.add('incorrect');
+                options[question.correct].classList.add('correct');
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < filteredQuestions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / filteredQuestions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+
+            if (currentQuestionIndex === filteredQuestions.length - 1) {
+                document.getElementById('nextBtn').textContent = 'Finish Quiz';
+            } else {
+                document.getElementById('nextBtn').textContent = 'Next Question';
+            }
+        }
+
+        function showResults() {
+            let correct = 0;
+            filteredQuestions.forEach((question, index) => {
+                if (userAnswers[index] === question.correct) {
+                    correct++;
+                }
+            });
+
+            const percentage = Math.round((correct / filteredQuestions.length) * 100);
+
+            // Save to leaderboard
+            saveToLeaderboard(userName, percentage, correct, filteredQuestions.length, currentWeek);
+
+            document.getElementById('quizArea').style.display = 'none';
+            document.getElementById('results').classList.add('show');
+
+            document.getElementById('scoreCircle').textContent = percentage + '%';
+            document.getElementById('correctCount').textContent = correct;
+            document.getElementById('incorrectCount').textContent = filteredQuestions.length - correct;
+            document.getElementById('totalCount').textContent = filteredQuestions.length;
+
+            let title = 'Quiz Complete!';
+            if (percentage === 100) title = `Perfect Score, ${userName}!`;
+            else if (percentage >= 80) title = `Excellent Work, ${userName}!`;
+            else if (percentage >= 60) title = `Good Job, ${userName}!`;
+            else if (percentage >= 40) title = `Keep Practicing, ${userName}!`;
+
+            document.getElementById('resultsTitle').textContent = title;
+
+            // Display leaderboard
+            displayLeaderboard('finalLeaderboard');
+        }
+
+        function restartQuiz() {
+            document.getElementById('results').classList.remove('show');
+            document.getElementById('startScreen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
