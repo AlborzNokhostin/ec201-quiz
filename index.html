@@ -885,6 +885,205 @@
             background: #667eea;
             color: white;
         }
+
+        /* Chat Styles */
+        .chat-toggle-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .chat-toggle-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 380px;
+            height: 550px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 999;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .chat-container.show {
+            display: flex;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .chat-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .chat-message {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            animation: messageSlide 0.3s ease-out;
+        }
+
+        @keyframes messageSlide {
+            from {
+                transform: translateX(-10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .chat-message-author {
+            font-size: 12px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .chat-message-text {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            word-wrap: break-word;
+            max-width: 85%;
+            color: #2d3748;
+            line-height: 1.5;
+        }
+
+        .chat-message-time {
+            font-size: 11px;
+            color: #a0aec0;
+            margin-top: 2px;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .chat-input:focus {
+            border-color: #667eea;
+        }
+
+        .chat-send-btn {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .chat-send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .chat-send-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Mobile responsiveness for chat */
+        @media (max-width: 768px) {
+            .chat-container {
+                width: calc(100vw - 40px);
+                right: 20px;
+                bottom: 90px;
+                height: 500px;
+            }
+
+            .chat-toggle-btn {
+                right: 20px;
+                bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -3271,6 +3470,143 @@
             document.getElementById('results').classList.remove('show');
             document.getElementById('startScreen').style.display = 'block';
         }
+
+        // ============== CHAT FUNCTIONALITY ==============
+        let chatDatabase;
+        let chatMessagesRef;
+
+        // Initialize chat when Firebase loads
+        function initializeChat() {
+            if (typeof firebase !== 'undefined' && firebase.database) {
+                chatDatabase = firebase.database();
+                chatMessagesRef = chatDatabase.ref('chat');
+
+                // Listen for new messages
+                chatMessagesRef.on('child_added', (snapshot) => {
+                    const message = snapshot.val();
+                    displayChatMessage(message);
+                });
+
+                console.log('Chat initialized successfully');
+            } else {
+                console.error('Firebase not available for chat');
+            }
+        }
+
+        function toggleChat() {
+            const chatContainer = document.getElementById('chatContainer');
+            chatContainer.classList.toggle('show');
+
+            if (chatContainer.classList.contains('show')) {
+                // Scroll to bottom when opening
+                setTimeout(() => {
+                    const messagesContainer = document.getElementById('chatMessages');
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 100);
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            const userName = document.getElementById('userName').value.trim() || 'Anonymous';
+
+            const messageData = {
+                name: userName,
+                message: message,
+                timestamp: Date.now(),
+                date: new Date().toLocaleString()
+            };
+
+            // Send to Firebase
+            if (chatMessagesRef) {
+                chatMessagesRef.push(messageData)
+                    .then(() => {
+                        input.value = '';
+                        console.log('Message sent to chat');
+                    })
+                    .catch((error) => {
+                        console.error('Error sending message:', error);
+                        alert('Failed to send message. Please try again.');
+                    });
+            } else {
+                alert('Chat is not connected. Please refresh the page.');
+            }
+        }
+
+        function displayChatMessage(messageData) {
+            const messagesContainer = document.getElementById('chatMessages');
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message';
+
+            const authorDiv = document.createElement('div');
+            authorDiv.className = 'chat-message-author';
+            authorDiv.textContent = messageData.name;
+
+            const textDiv = document.createElement('div');
+            textDiv.className = 'chat-message-text';
+            textDiv.textContent = messageData.message;
+
+            const timeDiv = document.createElement('div');
+            timeDiv.className = 'chat-message-time';
+            const messageDate = new Date(messageData.timestamp);
+            timeDiv.textContent = messageDate.toLocaleTimeString();
+
+            messageDiv.appendChild(authorDiv);
+            messageDiv.appendChild(textDiv);
+            messageDiv.appendChild(timeDiv);
+
+            messagesContainer.appendChild(messageDiv);
+
+            // Auto-scroll to bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Handle Enter key in chat input
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatInput = document.getElementById('chatInput');
+            if (chatInput) {
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendChatMessage();
+                    }
+                });
+            }
+
+            // Initialize chat after Firebase loads
+            setTimeout(() => {
+                initializeChat();
+            }, 1000);
+        });
     </script>
+
+    <!-- Chat UI -->
+    <button class="chat-toggle-btn" onclick="toggleChat()" title="Open Chat">
+        💬
+    </button>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <span>💬 EC201 Chat</span>
+            <button class="chat-close-btn" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="chat-input-container">
+            <input
+                type="text"
+                class="chat-input"
+                id="chatInput"
+                placeholder="Type a message..."
+                maxlength="500"
+            >
+            <button class="chat-send-btn" onclick="sendChatMessage()">Send</button>
+        </div>
+    </div>
 </body>
 </html>

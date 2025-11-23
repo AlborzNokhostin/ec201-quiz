@@ -1,35 +1,46 @@
 # EC201 International Macroeconomics Quiz
 
-An interactive MCQ quiz covering Weeks 1-5 of EC201 International Macroeconomics, featuring a leaderboard system to track high scores.
+An interactive MCQ quiz covering Weeks 1-5 of EC201 International Macroeconomics, featuring a global leaderboard system and real-time chat.
 
 ## Features
 
-- **75 comprehensive questions** covering:
-  - Week 1: Global Imbalances (15 questions)
-  - Week 2: Trade Balance and Current Account Sustainability (15 questions)
-  - Week 3: Theory of the Current Account (15 questions)
-  - Week 4: Terms of Trade, World Interest Rate Shocks, and Tariffs (15 questions)
-  - Week 5: Production Economy and Current Account Determination (15 questions)
+- **125 comprehensive questions** with difficulty levels:
+  - **Easy Mode**: 50 original questions (10 per week)
+  - **Hard Mode**: 75 challenging questions (15 per week)
+  - Week 1: Global Imbalances
+  - Week 2: Trade Balance and Current Account Sustainability
+  - Week 3: Theory of the Current Account
+  - Week 4: Terms of Trade, World Interest Rate Shocks, and Tariffs
+  - Week 5: Production Economy and Current Account Determination
 
 - **Interactive learning experience**:
+  - Difficulty selector (Easy/Hard)
   - Immediate feedback on answers
   - Detailed explanations for each question
   - Progress tracking
   - Week-specific or combined quizzes
 
-- **Leaderboard system**:
-  - Enter your name before starting
-  - Scores saved to browser localStorage
+- **Global leaderboard system** (Firebase):
+  - Real-time score syncing across all devices
   - Top 10 scores displayed with rankings
   - Gold, silver, and bronze badges for top 3
+  - First-attempt-only scoring for fairness
+
+- **Real-time chat** (Firebase):
+  - Floating chat button in bottom-right corner
+  - Instant messaging with all quiz users
+  - Message history and timestamps
+  - Mobile responsive design
 
 ## How to Use
 
 1. Enter your name
 2. Select which week(s) to be tested on
-3. Click "Start Quiz"
-4. Answer questions and receive instant feedback
-5. View your final score and leaderboard ranking
+3. Choose difficulty level (Easy or Hard)
+4. Click "Start Quiz"
+5. Answer questions and receive instant feedback
+6. View your final score and global leaderboard ranking
+7. Click the chat button (💬) to discuss questions with other students
 
 ## Topics Covered
 
@@ -75,10 +86,12 @@ An interactive MCQ quiz covering Weeks 1-5 of EC201 International Macroeconomics
 ## Technical Details
 
 - Built with vanilla HTML, CSS, and JavaScript
-- No external dependencies
-- Works offline (except for hosting)
-- Responsive design for mobile and desktop
-- Data persists using browser localStorage
+- Firebase Realtime Database for:
+  - Global leaderboard syncing
+  - Real-time chat messaging
+- Responsive glassmorphism design for mobile and desktop
+- Local difficulty/week selection
+- First-attempt-only scoring system
 
 ## Live Site
 
