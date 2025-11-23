@@ -1049,6 +1049,8 @@
         let currentWeek = 'all';
         let currentQuestionIndex = 0;
         let userAnswers = [];
+        let answeredCorrectly = []; // Track if answer was correct on first attempt
+        let hasAnswered = []; // Track if question has been answered
         let filteredQuestions = [];
         let userName = '';
 
@@ -1193,6 +1195,8 @@
             // Reset state
             currentQuestionIndex = 0;
             userAnswers = new Array(filteredQuestions.length).fill(null);
+            answeredCorrectly = new Array(filteredQuestions.length).fill(false);
+            hasAnswered = new Array(filteredQuestions.length).fill(false);
 
             // Show quiz area
             document.getElementById('startScreen').style.display = 'none';
@@ -1238,6 +1242,11 @@
         }
 
         function selectAnswer(index, skipFeedback = false) {
+            // If already answered, don't allow changing
+            if (hasAnswered[currentQuestionIndex] && !skipFeedback) {
+                return;
+            }
+
             const options = document.querySelectorAll('.option');
             options.forEach(opt => {
                 opt.classList.remove('selected', 'correct', 'incorrect');
@@ -1258,13 +1267,27 @@
             const feedback = document.getElementById('feedback');
             const options = document.querySelectorAll('.option');
 
+            // Mark as answered
+            hasAnswered[currentQuestionIndex] = true;
+
+            // Disable all options after first attempt
+            options.forEach(opt => {
+                opt.style.cursor = 'not-allowed';
+                opt.style.opacity = '0.7';
+                opt.onclick = null;
+            });
+
             if (selectedIndex === question.correct) {
+                // Only count as correct if it's the first attempt
+                answeredCorrectly[currentQuestionIndex] = true;
                 feedback.className = 'feedback correct show';
-                feedback.innerHTML = `<strong>Correct!</strong> ${question.explanation}`;
+                feedback.innerHTML = `<strong>✓ Correct!</strong> ${question.explanation}`;
                 options[selectedIndex].classList.add('correct');
             } else {
+                // Wrong answer - will NOT count toward score
+                answeredCorrectly[currentQuestionIndex] = false;
                 feedback.className = 'feedback incorrect show';
-                feedback.innerHTML = `<strong>Incorrect.</strong> ${question.explanation}`;
+                feedback.innerHTML = `<strong>✗ Incorrect.</strong> ${question.explanation}<br><br><em>Note: You cannot change your answer. This will count as incorrect in your final score.</em>`;
                 options[selectedIndex].classList.add('incorrect');
                 options[question.correct].classList.add('correct');
             }
@@ -1302,9 +1325,10 @@
         }
 
         function showResults() {
+            // Count only answers that were correct on FIRST attempt
             let correct = 0;
-            filteredQuestions.forEach((question, index) => {
-                if (userAnswers[index] === question.correct) {
+            answeredCorrectly.forEach((isCorrect) => {
+                if (isCorrect) {
                     correct++;
                 }
             });
