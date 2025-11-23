@@ -1262,56 +1262,56 @@
             <div class="poll-title">📊 Student Poll</div>
             <div class="poll-subtitle">Which topic do you think will be most challenging on the test?</div>
             <div class="poll-options" id="pollOptions">
-                <div class="poll-option" onclick="selectPollOption('week1')">
+                <div class="poll-option" onclick="selectPollOption('week1', event)">
                     <div class="poll-option-bar" id="bar-week1" style="width: 0%"></div>
                     <div class="poll-option-content">
                         <span class="poll-option-text">Week 1: Global Imbalances</span>
                         <span class="poll-option-percentage" id="percent-week1">0%</span>
                     </div>
                 </div>
-                <div class="poll-option" onclick="selectPollOption('week2')">
+                <div class="poll-option" onclick="selectPollOption('week2', event)">
                     <div class="poll-option-bar" id="bar-week2" style="width: 0%"></div>
                     <div class="poll-option-content">
                         <span class="poll-option-text">Week 2: Sustainability</span>
                         <span class="poll-option-percentage" id="percent-week2">0%</span>
                     </div>
                 </div>
-                <div class="poll-option" onclick="selectPollOption('week3')">
+                <div class="poll-option" onclick="selectPollOption('week3', event)">
                     <div class="poll-option-bar" id="bar-week3" style="width: 0%"></div>
                     <div class="poll-option-content">
                         <span class="poll-option-text">Week 3: Current Account</span>
                         <span class="poll-option-percentage" id="percent-week3">0%</span>
                     </div>
                 </div>
-                <div class="poll-option" onclick="selectPollOption('week4')">
+                <div class="poll-option" onclick="selectPollOption('week4', event)">
                     <div class="poll-option-bar" id="bar-week4" style="width: 0%"></div>
                     <div class="poll-option-content">
                         <span class="poll-option-text">Week 4: ToT & Tariffs</span>
                         <span class="poll-option-percentage" id="percent-week4">0%</span>
                     </div>
                 </div>
-                <div class="poll-option" onclick="selectPollOption('week5')">
+                <div class="poll-option" onclick="selectPollOption('week5', event)">
                     <div class="poll-option-bar" id="bar-week5" style="width: 0%"></div>
                     <div class="poll-option-content">
                         <span class="poll-option-text">Week 5: Production Economy</span>
                         <span class="poll-option-percentage" id="percent-week5">0%</span>
                     </div>
                 </div>
-                <div class="poll-option" onclick="selectPollOption('week6')">
+                <div class="poll-option" onclick="selectPollOption('week6', event)">
                     <div class="poll-option-bar" id="bar-week6" style="width: 0%"></div>
                     <div class="poll-option-content">
                         <span class="poll-option-text">Week 6: Topic 6</span>
                         <span class="poll-option-percentage" id="percent-week6">0%</span>
                     </div>
                 </div>
-                <div class="poll-option" onclick="selectPollOption('week7')">
+                <div class="poll-option" onclick="selectPollOption('week7', event)">
                     <div class="poll-option-bar" id="bar-week7" style="width: 0%"></div>
                     <div class="poll-option-content">
                         <span class="poll-option-text">Week 7: Topic 7</span>
                         <span class="poll-option-percentage" id="percent-week7">0%</span>
                     </div>
                 </div>
-                <div class="poll-option" onclick="selectPollOption('week8')">
+                <div class="poll-option" onclick="selectPollOption('week8', event)">
                     <div class="poll-option-bar" id="bar-week8" style="width: 0%"></div>
                     <div class="poll-option-content">
                         <span class="poll-option-text">Week 8: Topic 8</span>
@@ -1319,7 +1319,7 @@
                     </div>
                 </div>
             </div>
-            <button class="poll-submit-btn" id="pollSubmitBtn" onclick="submitPollVote()">Vote</button>
+            <button class="poll-submit-btn" id="pollSubmitBtn" onclick="submitPollVote()" disabled>Vote</button>
             <div class="poll-total-votes" id="pollTotalVotes">Loading votes...</div>
         </div>
 
@@ -3818,7 +3818,7 @@
             }
         }
 
-        function selectPollOption(weekId) {
+        function selectPollOption(weekId, event) {
             if (hasVoted) return;
 
             // Remove selected class from all options
