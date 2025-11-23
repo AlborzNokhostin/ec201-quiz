@@ -3819,7 +3819,12 @@
         }
 
         function selectPollOption(weekId, event) {
-            if (hasVoted) return;
+            if (hasVoted) {
+                console.log('Already voted, cannot select another option');
+                return;
+            }
+
+            console.log('Selected poll option:', weekId);
 
             // Remove selected class from all options
             document.querySelectorAll('.poll-option').forEach(opt => {
@@ -3832,10 +3837,20 @@
 
             // Enable submit button
             document.getElementById('pollSubmitBtn').disabled = false;
+            console.log('Vote button enabled');
         }
 
         function submitPollVote() {
-            if (!selectedPollOption || hasVoted) return;
+            if (!selectedPollOption || hasVoted) {
+                console.log('Cannot vote:', { selectedPollOption, hasVoted });
+                return;
+            }
+
+            if (!pollVotesRef) {
+                alert('Poll is not connected to Firebase. Please refresh the page and try again.');
+                console.error('pollVotesRef is null');
+                return;
+            }
 
             // Get current votes
             pollVotesRef.once('value').then((snapshot) => {
@@ -3859,6 +3874,9 @@
                     console.error('Error submitting vote:', error);
                     alert('Failed to submit vote. Please try again.');
                 });
+            }).catch((error) => {
+                console.error('Error reading votes:', error);
+                alert('Failed to connect to database. Please check your Firebase rules and try again.');
             });
         }
 
