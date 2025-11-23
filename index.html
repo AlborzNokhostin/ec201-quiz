@@ -1084,6 +1084,143 @@
                 bottom: 20px;
             }
         }
+
+        /* Poll Styles */
+        .poll-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(99, 102, 241, 0.05));
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px;
+        }
+
+        .poll-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .poll-subtitle {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .poll-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .poll-option {
+            position: relative;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .poll-option:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .poll-option.voted {
+            cursor: default;
+        }
+
+        .poll-option-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1), rgba(139, 92, 246, 0.1));
+            transition: width 0.5s ease;
+            z-index: 0;
+        }
+
+        .poll-option-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .poll-option-text {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 14px;
+        }
+
+        .poll-option-percentage {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 16px;
+        }
+
+        .poll-option.voted .poll-option-text {
+            font-weight: 700;
+        }
+
+        .poll-total-votes {
+            text-align: center;
+            color: #718096;
+            font-size: 13px;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .poll-vote-btn {
+            display: none;
+        }
+
+        .poll-option input[type="radio"] {
+            display: none;
+        }
+
+        .poll-option.selected {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .poll-submit-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .poll-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .poll-submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .poll-options {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1118,6 +1255,72 @@
                 <button class="difficulty-btn active" data-difficulty="easy">🟢 Easy - Original Questions</button>
                 <button class="difficulty-btn" data-difficulty="hard">🔴 Hard - Challenging Questions</button>
             </div>
+        </div>
+
+        <!-- Poll Section -->
+        <div class="poll-section">
+            <div class="poll-title">📊 Student Poll</div>
+            <div class="poll-subtitle">Which topic do you think will be most challenging on the test?</div>
+            <div class="poll-options" id="pollOptions">
+                <div class="poll-option" onclick="selectPollOption('week1')">
+                    <div class="poll-option-bar" id="bar-week1" style="width: 0%"></div>
+                    <div class="poll-option-content">
+                        <span class="poll-option-text">Week 1: Global Imbalances</span>
+                        <span class="poll-option-percentage" id="percent-week1">0%</span>
+                    </div>
+                </div>
+                <div class="poll-option" onclick="selectPollOption('week2')">
+                    <div class="poll-option-bar" id="bar-week2" style="width: 0%"></div>
+                    <div class="poll-option-content">
+                        <span class="poll-option-text">Week 2: Sustainability</span>
+                        <span class="poll-option-percentage" id="percent-week2">0%</span>
+                    </div>
+                </div>
+                <div class="poll-option" onclick="selectPollOption('week3')">
+                    <div class="poll-option-bar" id="bar-week3" style="width: 0%"></div>
+                    <div class="poll-option-content">
+                        <span class="poll-option-text">Week 3: Current Account</span>
+                        <span class="poll-option-percentage" id="percent-week3">0%</span>
+                    </div>
+                </div>
+                <div class="poll-option" onclick="selectPollOption('week4')">
+                    <div class="poll-option-bar" id="bar-week4" style="width: 0%"></div>
+                    <div class="poll-option-content">
+                        <span class="poll-option-text">Week 4: ToT & Tariffs</span>
+                        <span class="poll-option-percentage" id="percent-week4">0%</span>
+                    </div>
+                </div>
+                <div class="poll-option" onclick="selectPollOption('week5')">
+                    <div class="poll-option-bar" id="bar-week5" style="width: 0%"></div>
+                    <div class="poll-option-content">
+                        <span class="poll-option-text">Week 5: Production Economy</span>
+                        <span class="poll-option-percentage" id="percent-week5">0%</span>
+                    </div>
+                </div>
+                <div class="poll-option" onclick="selectPollOption('week6')">
+                    <div class="poll-option-bar" id="bar-week6" style="width: 0%"></div>
+                    <div class="poll-option-content">
+                        <span class="poll-option-text">Week 6: Topic 6</span>
+                        <span class="poll-option-percentage" id="percent-week6">0%</span>
+                    </div>
+                </div>
+                <div class="poll-option" onclick="selectPollOption('week7')">
+                    <div class="poll-option-bar" id="bar-week7" style="width: 0%"></div>
+                    <div class="poll-option-content">
+                        <span class="poll-option-text">Week 7: Topic 7</span>
+                        <span class="poll-option-percentage" id="percent-week7">0%</span>
+                    </div>
+                </div>
+                <div class="poll-option" onclick="selectPollOption('week8')">
+                    <div class="poll-option-bar" id="bar-week8" style="width: 0%"></div>
+                    <div class="poll-option-content">
+                        <span class="poll-option-text">Week 8: Topic 8</span>
+                        <span class="poll-option-percentage" id="percent-week8">0%</span>
+                    </div>
+                </div>
+            </div>
+            <button class="poll-submit-btn" id="pollSubmitBtn" onclick="submitPollVote()">Vote</button>
+            <div class="poll-total-votes" id="pollTotalVotes">Loading votes...</div>
         </div>
 
         <div id="startScreen" class="start-screen">
@@ -1845,15 +2048,15 @@
                 week: 5,
                 difficulty: "easy",
                 topic: "Investment Schedule",
-                question: "The investment schedule I₁ = I(r₁⁻, A₂⁺) shows:",
+                question: "The investment schedule I_1 = I(r_1^-, A_2^+) shows:",
                 options: [
-                    "Investment decreases with r₁ (higher cost) and increases with A₂ (higher MPK)",
-                    "Investment increases with r₁",
+                    "Investment decreases with r_1 (higher cost) and increases with A_2 (higher MPK)",
+                    "Investment increases with r_1",
                     "Investment is constant",
                     "Investment equals savings"
                 ],
                 correct: 0,
-                explanation: "∂I/∂r₁ < 0 (higher interest rate → higher cost → less investment). ∂I/∂A₂ > 0 (higher productivity → higher MPK → more investment)."
+                explanation: "∂I/∂r_1 < 0 (higher interest rate → higher cost → less investment). ∂I/∂A_2 > 0 (higher productivity → higher MPK → more investment)."
             },
             {
                 week: 5,
@@ -2821,29 +3024,29 @@
                 week: 5,
                 difficulty: "hard",
                 topic: "Investment Schedule",
-                question: "The investment schedule I₁ = I(r₁⁻, A₂⁺) shows how investment depends on r₁ and A₂. Why is ∂I₁/∂r₁ < 0?",
+                question: "The investment schedule I_1 = I(r_1^-, A_2^+) shows how investment depends on r_1 and A_2. Why is ∂I_1/∂r_1 < 0?",
                 options: [
                     "Higher interest rates make investment more attractive",
-                    "Higher r₁ increases the opportunity cost of investing → firms invest less (I₁ ↓)",
+                    "Higher r_1 increases the opportunity cost of investing → firms invest less (I_1 ↓)",
                     "Investment is independent of interest rates",
                     "The relationship depends on productivity"
                 ],
                 correct: 1,
-                explanation: "From A₂F'(I₁) = 1 + r₁: if r₁ rises, firms must reduce I₁ to raise F'(I₁) (due to diminishing returns) to satisfy the condition. Higher interest rates → higher opportunity cost → less investment."
+                explanation: "From A_2·F'(I_1) = 1 + r_1: if r_1 rises, firms must reduce I_1 to raise F'(I_1) (due to diminishing returns) to satisfy the condition. Higher interest rates → higher opportunity cost → less investment."
             },
             {
                 week: 5,
                 difficulty: "hard",
                 topic: "Investment Schedule",
-                question: "Why is ∂I₁/∂A₂ > 0 in the investment schedule I₁ = I(r₁⁻, A₂⁺)?",
+                question: "Why is ∂I_1/∂A_2 > 0 in the investment schedule I_1 = I(r_1^-, A_2^+)?",
                 options: [
-                    "Higher productivity A₂ raises the marginal product A₂F'(I₁), making investment more profitable → I₁ ↑",
+                    "Higher productivity A_2 raises the marginal product A_2·F'(I_1), making investment more profitable → I_1 ↑",
                     "Productivity shocks don't affect investment decisions",
-                    "Higher A₂ reduces investment due to income effects",
+                    "Higher A_2 reduces investment due to income effects",
                     "The relationship is ambiguous"
                 ],
                 correct: 0,
-                explanation: "From A₂F'(I₁) = 1 + r₁: if A₂ rises, firms can invest more (I₁ ↑) while still satisfying the condition (as A₂F'(I₁) rises). Higher future productivity makes investment more profitable."
+                explanation: "From A_2·F'(I_1) = 1 + r_1: if A_2 rises, firms can invest more (I_1 ↑) while still satisfying the condition (as A_2·F'(I_1) rises). Higher future productivity makes investment more profitable."
             },
             {
                 week: 5,
@@ -2935,13 +3138,13 @@
                 topic: "Metzler Diagram",
                 question: "A positive productivity shock in period 2 (A₂ ↑) shifts which curves in the Metzler diagram?",
                 options: [
-                    "Investment schedule shifts right (I₁ ↑); Saving schedule shifts left (S₁ ↓); CA₁ schedule shifts left (worsens)",
+                    "Investment schedule shifts right (I_1 ↑); Saving schedule shifts left (S_1 ↓); CA_1 schedule shifts left (worsens)",
                     "Only investment schedule shifts",
                     "Both schedules shift right",
                     "Neither schedule shifts"
                 ],
                 correct: 0,
-                explanation: "A₂ ↑: (1) Investment: I₁ = I(r₁⁻, A₂⁺) shifts right (higher MPK → more investment). (2) Saving: S₁ = S(r₁⁺, A₁⁺, A₂⁻) shifts left (good news → borrow → S₁ ↓). (3) CA₁ = S₁ - I₁ shifts left (deteriorates)."
+                explanation: "A_2 ↑: (1) Investment: I_1 = I(r_1^-, A_2^+) shifts right (higher MPK → more investment). (2) Saving: S_1 = S(r_1^+, A_1^+, A_2^-) shifts left (good news → borrow → S_1 ↓). (3) CA_1 = S_1 - I_1 shifts left (deteriorates)."
             },
             {
                 week: 5,
@@ -3580,8 +3783,133 @@
             // Initialize chat after Firebase loads
             setTimeout(() => {
                 initializeChat();
+                initializePoll();
             }, 1000);
         });
+
+        // ============== POLL FUNCTIONALITY ==============
+        let pollDatabase;
+        let pollVotesRef;
+        let selectedPollOption = null;
+        let hasVoted = false;
+
+        const pollWeeks = ['week1', 'week2', 'week3', 'week4', 'week5', 'week6', 'week7', 'week8'];
+
+        function initializePoll() {
+            if (typeof firebase !== 'undefined' && firebase.database) {
+                pollDatabase = firebase.database();
+                pollVotesRef = pollDatabase.ref('poll/votes');
+
+                // Check if user has already voted
+                const votedStatus = localStorage.getItem('ec201_poll_voted');
+                if (votedStatus === 'true') {
+                    hasVoted = true;
+                    disablePollVoting();
+                }
+
+                // Listen for vote updates
+                pollVotesRef.on('value', (snapshot) => {
+                    updatePollResults(snapshot.val());
+                });
+
+                console.log('Poll initialized successfully');
+            } else {
+                console.error('Firebase not available for poll');
+            }
+        }
+
+        function selectPollOption(weekId) {
+            if (hasVoted) return;
+
+            // Remove selected class from all options
+            document.querySelectorAll('.poll-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            // Add selected class to clicked option
+            event.currentTarget.classList.add('selected');
+            selectedPollOption = weekId;
+
+            // Enable submit button
+            document.getElementById('pollSubmitBtn').disabled = false;
+        }
+
+        function submitPollVote() {
+            if (!selectedPollOption || hasVoted) return;
+
+            // Get current votes
+            pollVotesRef.once('value').then((snapshot) => {
+                const votes = snapshot.val() || {};
+
+                // Initialize if doesn't exist
+                if (!votes[selectedPollOption]) {
+                    votes[selectedPollOption] = 0;
+                }
+
+                // Increment vote
+                votes[selectedPollOption]++;
+
+                // Save to Firebase
+                pollVotesRef.set(votes).then(() => {
+                    hasVoted = true;
+                    localStorage.setItem('ec201_poll_voted', 'true');
+                    disablePollVoting();
+                    alert('Thank you for voting! 🎉');
+                }).catch((error) => {
+                    console.error('Error submitting vote:', error);
+                    alert('Failed to submit vote. Please try again.');
+                });
+            });
+        }
+
+        function disablePollVoting() {
+            // Disable all options
+            document.querySelectorAll('.poll-option').forEach(opt => {
+                opt.classList.add('voted');
+                opt.onclick = null;
+            });
+
+            // Hide submit button
+            const submitBtn = document.getElementById('pollSubmitBtn');
+            submitBtn.style.display = 'none';
+
+            // Update subtitle
+            document.querySelector('.poll-subtitle').textContent = 'Poll Results - You have already voted';
+        }
+
+        function updatePollResults(votes) {
+            if (!votes) {
+                votes = {};
+                pollWeeks.forEach(week => {
+                    votes[week] = 0;
+                });
+            }
+
+            // Calculate total votes
+            let totalVotes = 0;
+            pollWeeks.forEach(week => {
+                totalVotes += (votes[week] || 0);
+            });
+
+            // Update display
+            if (totalVotes === 0) {
+                document.getElementById('pollTotalVotes').textContent = 'No votes yet - be the first to vote!';
+            } else {
+                document.getElementById('pollTotalVotes').textContent = `Total votes: ${totalVotes}`;
+            }
+
+            // Update percentages and bars
+            pollWeeks.forEach(week => {
+                const voteCount = votes[week] || 0;
+                const percentage = totalVotes > 0 ? Math.round((voteCount / totalVotes) * 100) : 0;
+
+                // Update percentage text
+                document.getElementById(`percent-${week}`).textContent = `${percentage}%`;
+
+                // Update bar width
+                document.getElementById(`bar-${week}`).style.width = `${percentage}%`;
+            });
+        }
     </script>
 
     <!-- Chat UI -->

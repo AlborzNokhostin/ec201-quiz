@@ -1,6 +1,6 @@
-# Firebase Chat Setup - Update Database Rules
+# Firebase Setup - Chat & Poll Features
 
-Your quiz now has a real-time chat feature! To enable it, you need to update your Firebase database rules.
+Your quiz now has real-time chat and poll features! To enable them, you need to update your Firebase database rules.
 
 ## Quick Update (1 minute)
 
@@ -26,6 +26,12 @@ Your quiz now has a real-time chat feature! To enable it, you need to update you
       "$message": {
         ".validate": "newData.hasChildren(['name', 'message', 'timestamp', 'date']) && newData.child('name').isString() && newData.child('message').isString() && newData.child('message').val().length <= 500"
       }
+    },
+    "poll": {
+      "votes": {
+        ".read": true,
+        ".write": true
+      }
     }
   }
 }
@@ -36,11 +42,15 @@ Your quiz now has a real-time chat feature! To enable it, you need to update you
 ## What This Does
 
 - **Leaderboard**: Keeps existing leaderboard functionality (read/write for scores)
-- **Chat**: Adds new chat functionality with:
+- **Chat**: Real-time chat functionality with:
   - Public read/write access (anyone can read and send messages)
   - Message validation (must have name, message, timestamp, date fields)
   - 500 character limit per message
   - Messages must be strings
+- **Poll**: Student poll for most challenging topic with:
+  - Public read/write access
+  - Vote counts for weeks 1-8
+  - One vote per device (tracked via localStorage)
 
 ## How the Chat Works
 
@@ -50,7 +60,7 @@ Your quiz now has a real-time chat feature! To enable it, you need to update you
 4. **User Names**: Messages show the name entered in the quiz (or "Anonymous" if not set)
 5. **Timestamps**: Each message shows the time it was sent
 
-## Features
+## Chat Features
 
 - ✅ Real-time messaging (messages appear instantly for all users)
 - ✅ Beautiful glassmorphism design matching the quiz theme
@@ -59,6 +69,16 @@ Your quiz now has a real-time chat feature! To enable it, you need to update you
 - ✅ Enter key to send messages
 - ✅ Auto-scroll to newest messages
 - ✅ 500 character limit per message
+
+## Poll Features
+
+- ✅ Student poll asking "Which topic will be most challenging on the test?"
+- ✅ Options for Weeks 1-8
+- ✅ Real-time vote counting and percentage display
+- ✅ Visual bar charts showing results
+- ✅ One vote per device (prevents duplicate voting)
+- ✅ Results update instantly as students vote
+- ✅ Vote status persists across page refreshes
 
 ## Test It
 
