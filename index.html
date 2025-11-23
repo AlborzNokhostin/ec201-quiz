@@ -585,6 +585,84 @@
             font-weight: 400;
         }
 
+        .ai-review-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8edf4 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: left;
+            border: 2px solid #667eea;
+        }
+
+        .ai-review-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .ai-review-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .ai-loading {
+            text-align: center;
+            color: #667eea;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        .topic-analysis {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-left: 4px solid #dc3545;
+            border-radius: 4px;
+        }
+
+        .topic-analysis.good {
+            border-left-color: #28a745;
+        }
+
+        .topic-analysis.okay {
+            border-left-color: #ffc107;
+        }
+
+        .topic-name {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .topic-score {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .ai-summary {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .recommendations {
+            margin-top: 20px;
+        }
+
+        .recommendation-item {
+            padding: 10px;
+            margin: 10px 0;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+        }
+
         .leaderboard-section {
             background: #f7fafc;
             padding: 30px;
@@ -806,6 +884,13 @@
                 </div>
             </div>
 
+            <div id="aiReviewSection" class="ai-review-section">
+                <h3>📊 AI Performance Analysis</h3>
+                <div id="aiReview" class="ai-review-content">
+                    <div class="ai-loading">Analyzing your performance...</div>
+                </div>
+            </div>
+
             <div class="leaderboard-section">
                 <h3>🏆 Leaderboard</h3>
                 <div id="finalLeaderboard"></div>
@@ -847,6 +932,7 @@
             // Week 1: Global Imbalances
             {
                 week: 1,
+                topic: "Balance of Payments Components",
                 question: "The Balance of Payments consists of which main components?",
                 options: [
                     "Current Account + Financial Account + Capital Account",
@@ -859,6 +945,7 @@
             },
             {
                 week: 1,
+                topic: "Balance of Payments Components",
                 question: "What does the Trade Balance measure?",
                 options: [
                     "Total government spending on trade",
@@ -871,6 +958,7 @@
             },
             {
                 week: 1,
+                topic: "NIIP and Valuation",
                 question: "Net International Investment Position (NIIP) is calculated as:",
                 options: [
                     "Current Account - Trade Balance",
@@ -883,6 +971,7 @@
             },
             {
                 week: 1,
+                topic: "NIIP and Valuation",
                 question: "What is the relationship between Current Account deficits and NIIP?",
                 options: [
                     "Current Account Deficit causes NIIP to rise",
@@ -895,6 +984,7 @@
             },
             {
                 week: 1,
+                topic: "Global Creditors and Debtors",
                 question: "Which of the following is a major external creditor?",
                 options: [
                     "United States",
@@ -907,6 +997,7 @@
             },
             {
                 week: 1,
+                topic: "NIIP and Valuation",
                 question: "Why might NIIP not equal accumulated current accounts?",
                 options: [
                     "Because of calculation errors",
@@ -919,6 +1010,7 @@
             },
             {
                 week: 1,
+                topic: "NIIP and Valuation",
                 question: "During 2002-2007, the US ran $3.9 trillion in current account deficits but NIIP improved by $80 billion. What explains this?",
                 options: [
                     "Measurement error",
@@ -931,6 +1023,7 @@
             },
             {
                 week: 1,
+                topic: "Dark Matter and Return Differential",
                 question: "The 'Dark Matter' hypothesis suggests:",
                 options: [
                     "The US has hidden debt obligations",
@@ -943,6 +1036,7 @@
             },
             {
                 week: 1,
+                topic: "Dark Matter and Return Differential",
                 question: "The 'Return Differential' hypothesis explains the NIIP-NII paradox by:",
                 options: [
                     "The US borrows at high rates and lends at low rates",
@@ -955,6 +1049,7 @@
             },
             {
                 week: 1,
+                topic: "Balance of Payments Components",
                 question: "Which is included in the Income Balance component of the Current Account?",
                 options: [
                     "Exports and imports of goods",
@@ -969,6 +1064,7 @@
             // Week 2: Sustainability
             {
                 week: 2,
+                topic: "Finite vs Infinite Horizon",
                 question: "In a two-period economy with terminal condition B₂ = 0, can a net debtor run perpetual trade balance deficits?",
                 options: [
                     "Yes, always",
@@ -981,6 +1077,7 @@
             },
             {
                 week: 2,
+                topic: "Transversality Condition",
                 question: "What is the transversality condition in the infinite horizon model?",
                 options: [
                     "Debt must equal zero",
@@ -993,6 +1090,7 @@
             },
             {
                 week: 2,
+                topic: "Perpetual Deficits",
                 question: "In infinite horizon, can a net debtor run perpetual current account deficits?",
                 options: [
                     "No, never",
@@ -1005,6 +1103,7 @@
             },
             {
                 week: 2,
+                topic: "Debt Growth and Sustainability",
                 question: "For perpetual CA deficits to be sustainable, debt must grow at rate g where:",
                 options: [
                     "g > r (faster than interest rate)",
@@ -1017,6 +1116,7 @@
             },
             {
                 week: 2,
+                topic: "Finite vs Infinite Horizon",
                 question: "What is the key difference between finite and infinite horizon sustainability?",
                 options: [
                     "No difference",
@@ -1029,6 +1129,7 @@
             },
             {
                 week: 2,
+                topic: "Accounting Identities",
                 question: "The accounting identity Bₜ = (1+r)Bₜ₋₁ + TBₜ shows:",
                 options: [
                     "How current NIIP relates to previous NIIP plus current trade balance",
@@ -1041,6 +1142,7 @@
             },
             {
                 week: 2,
+                topic: "Accounting Identities",
                 question: "The relationship between Current Account and Trade Balance is:",
                 options: [
                     "CA = TB (they are identical)",
@@ -1053,6 +1155,7 @@
             },
             {
                 week: 2,
+                topic: "Perpetual Deficits",
                 question: "In infinite horizon, a net debtor CANNOT run perpetual:",
                 options: [
                     "Current account deficits",
@@ -1065,6 +1168,7 @@
             },
             {
                 week: 2,
+                topic: "Debt Growth and Sustainability",
                 question: "For sustainability with perpetual CA deficits, GDP growth must be:",
                 options: [
                     "Negative",
@@ -1077,6 +1181,7 @@
             },
             {
                 week: 2,
+                topic: "Finite vs Infinite Horizon",
                 question: "In a two-period model, the sustainability condition with B₀ < 0 (net debtor) is:",
                 options: [
                     "(1+r)B₀ = -TB₁ - TB₂/(1+r)",
@@ -1091,6 +1196,7 @@
             // Week 3: Theory of Current Account
             {
                 week: 3,
+                topic: "Small Open Economy Model",
                 question: "In the small open economy model, what does 'small' mean?",
                 options: [
                     "The country has a small population",
@@ -1103,6 +1209,7 @@
             },
             {
                 week: 3,
+                topic: "Small Open Economy Model",
                 question: "Free capital mobility in the model implies:",
                 options: [
                     "No restrictions on trade",
@@ -1115,6 +1222,7 @@
             },
             {
                 week: 3,
+                topic: "Euler Equation and Optimization",
                 question: "The Euler equation in the model represents:",
                 options: [
                     "Budget constraint",
@@ -1127,6 +1235,7 @@
             },
             {
                 week: 3,
+                topic: "Temporary vs Permanent Shocks",
                 question: "How does a TEMPORARY decline in Q₁ affect the current account?",
                 options: [
                     "Large CA deterioration (households borrow to smooth consumption)",
@@ -1139,6 +1248,7 @@
             },
             {
                 week: 3,
+                topic: "Temporary vs Permanent Shocks",
                 question: "How does a PERMANENT decline in output (Q₁ and Q₂) affect consumption?",
                 options: [
                     "No change in consumption",
@@ -1151,6 +1261,7 @@
             },
             {
                 week: 3,
+                topic: "Temporary vs Permanent Shocks",
                 question: "The general principle comparing temporary vs permanent shocks is:",
                 options: [
                     "Both have identical effects",
@@ -1163,6 +1274,7 @@
             },
             {
                 week: 3,
+                topic: "Anticipated Income Shocks",
                 question: "If households learn in period 1 that Q₂ will be higher (anticipated income shock), what happens to CA₁?",
                 options: [
                     "CA₁ improves",
@@ -1175,6 +1287,7 @@
             },
             {
                 week: 3,
+                topic: "Budget Constraint",
                 question: "The intertemporal budget constraint in the two-period model is:",
                 options: [
                     "C₁ + C₂ = Q₁ + Q₂",
@@ -1187,6 +1300,7 @@
             },
             {
                 week: 3,
+                topic: "Budget Constraint",
                 question: "Trade balance in period 1 is defined as:",
                 options: [
                     "TB₁ = C₁ - Q₁",
@@ -1199,6 +1313,7 @@
             },
             {
                 week: 3,
+                topic: "Anticipated Income Shocks",
                 question: "Current account deficits are not necessarily a sign of weakness because:",
                 options: [
                     "They always indicate strong exports",
@@ -1211,6 +1326,7 @@
             },
             {
                 week: 3,
+                topic: "Consumption Smoothing",
                 question: "What does consumption smoothing mean?",
                 options: [
                     "Consuming the same goods every period",
@@ -1223,6 +1339,7 @@
             },
             {
                 week: 3,
+                topic: "Small Open Economy Model",
                 question: "In equilibrium, which three conditions must be satisfied simultaneously?",
                 options: [
                     "Only budget constraint",
@@ -1235,6 +1352,7 @@
             },
             {
                 week: 3,
+                topic: "Small Open Economy Model",
                 question: "Free capital mobility allows:",
                 options: [
                     "Government control of all capital",
@@ -1247,6 +1365,7 @@
             },
             {
                 week: 3,
+                topic: "Small Open Economy Model",
                 question: "In the model, households receive:",
                 options: [
                     "Wages from working",
@@ -1259,6 +1378,7 @@
             },
             {
                 week: 3,
+                topic: "Euler Equation and Optimization",
                 question: "If β(1+r) = 1, what does the Euler equation imply about consumption?",
                 options: [
                     "C₁ > C₂",
@@ -1549,6 +1669,140 @@
             }
         }
 
+        function analyzePerformance() {
+            // Analyze performance by topic
+            const topicStats = {};
+
+            filteredQuestions.forEach((question, index) => {
+                const topic = question.topic || 'General';
+                const week = question.week;
+
+                if (!topicStats[week]) {
+                    topicStats[week] = {};
+                }
+
+                if (!topicStats[week][topic]) {
+                    topicStats[week][topic] = {
+                        correct: 0,
+                        total: 0,
+                        questions: []
+                    };
+                }
+
+                topicStats[week][topic].total++;
+                topicStats[week][topic].questions.push(question.question);
+
+                if (answeredCorrectly[index]) {
+                    topicStats[week][topic].correct++;
+                }
+            });
+
+            // Generate AI review
+            let reviewHTML = '';
+            let weakTopics = [];
+            let strongTopics = [];
+
+            // Analyze each week
+            Object.keys(topicStats).sort().forEach(week => {
+                const topics = topicStats[week];
+
+                Object.keys(topics).forEach(topicName => {
+                    const stat = topics[topicName];
+                    const accuracy = (stat.correct / stat.total) * 100;
+
+                    const topicData = {
+                        week: week,
+                        topic: topicName,
+                        accuracy: accuracy,
+                        correct: stat.correct,
+                        total: stat.total
+                    };
+
+                    if (accuracy < 60) {
+                        weakTopics.push(topicData);
+                    } else if (accuracy >= 80) {
+                        strongTopics.push(topicData);
+                    }
+                });
+            });
+
+            // Sort weak topics by accuracy (worst first)
+            weakTopics.sort((a, b) => a.accuracy - b.accuracy);
+
+            // Generate summary
+            if (weakTopics.length > 0) {
+                reviewHTML += '<div class="ai-summary">';
+                reviewHTML += `<strong>Key Finding:</strong> You should focus on improving your understanding of `;
+                reviewHTML += weakTopics.slice(0, 3).map(t => `<strong>${t.topic}</strong> (Week ${t.week})`).join(', ');
+                reviewHTML += '.</div>';
+            } else {
+                reviewHTML += '<div class="ai-summary">';
+                reviewHTML += `<strong>Excellent!</strong> You have a strong grasp across all topics. Keep up the great work!`;
+                reviewHTML += '</div>';
+            }
+
+            // Show weak topics first
+            if (weakTopics.length > 0) {
+                reviewHTML += '<h4 style="color: #dc3545; margin-top: 20px;">⚠️ Topics Needing Attention:</h4>';
+                weakTopics.forEach(topic => {
+                    reviewHTML += `<div class="topic-analysis">`;
+                    reviewHTML += `<div class="topic-name">Week ${topic.week}: ${topic.topic}</div>`;
+                    reviewHTML += `<div class="topic-score">Accuracy: ${Math.round(topic.accuracy)}% (${topic.correct}/${topic.total} correct)</div>`;
+                    reviewHTML += `</div>`;
+                });
+            }
+
+            // Show strong topics
+            if (strongTopics.length > 0) {
+                reviewHTML += '<h4 style="color: #28a745; margin-top: 20px;">✅ Topics You Mastered:</h4>';
+                strongTopics.forEach(topic => {
+                    reviewHTML += `<div class="topic-analysis good">`;
+                    reviewHTML += `<div class="topic-name">Week ${topic.week}: ${topic.topic}</div>`;
+                    reviewHTML += `<div class="topic-score">Accuracy: ${Math.round(topic.accuracy)}% (${topic.correct}/${topic.total} correct)</div>`;
+                    reviewHTML += `</div>`;
+                });
+            }
+
+            // Add recommendations
+            if (weakTopics.length > 0) {
+                reviewHTML += '<div class="recommendations">';
+                reviewHTML += '<h4 style="color: #667eea;">💡 Recommendations:</h4>';
+
+                weakTopics.slice(0, 3).forEach(topic => {
+                    let recommendation = '';
+
+                    // Customized recommendations based on topic
+                    if (topic.topic.includes('NIIP')) {
+                        recommendation = 'Review the relationship between Current Account flows and valuation changes. Practice calculating NIIP changes.';
+                    } else if (topic.topic.includes('Dark Matter')) {
+                        recommendation = 'Revisit the US NIIP-NII paradox. Understand both the Dark Matter hypothesis and Return Differential hypothesis.';
+                    } else if (topic.topic.includes('Finite vs Infinite')) {
+                        recommendation = 'Focus on the key difference: finite horizon has hard constraints (B_T=0), while infinite horizon has soft constraints (PV→0).';
+                    } else if (topic.topic.includes('Transversality')) {
+                        recommendation = 'Remember: the transversality condition states that the PRESENT VALUE of debt must vanish, not the debt itself.';
+                    } else if (topic.topic.includes('Perpetual Deficits')) {
+                        recommendation = 'Study when perpetual CA deficits are sustainable. Key: debt must grow slower than interest rate (g < r).';
+                    } else if (topic.topic.includes('Temporary vs Permanent')) {
+                        recommendation = 'Master the principle: economies FINANCE temporary shocks (through borrowing) and ADJUST to permanent shocks (by changing consumption).';
+                    } else if (topic.topic.includes('Euler')) {
+                        recommendation = 'Practice deriving and interpreting the Euler equation. Understand how it relates to optimal intertemporal consumption choice.';
+                    } else if (topic.topic.includes('Consumption Smoothing')) {
+                        recommendation = 'Understand why households prefer stable consumption over time due to concave utility functions.';
+                    } else {
+                        recommendation = `Re-read the lecture notes on ${topic.topic} and try practice problems to strengthen your understanding.`;
+                    }
+
+                    reviewHTML += `<div class="recommendation-item">`;
+                    reviewHTML += `<strong>Week ${topic.week} - ${topic.topic}:</strong> ${recommendation}`;
+                    reviewHTML += `</div>`;
+                });
+
+                reviewHTML += '</div>';
+            }
+
+            document.getElementById('aiReview').innerHTML = reviewHTML;
+        }
+
         function showResults() {
             // Count only answers that were correct on FIRST attempt
             let correct = 0;
@@ -1578,6 +1832,9 @@
             else if (percentage >= 40) title = `Keep Practicing, ${userName}!`;
 
             document.getElementById('resultsTitle').textContent = title;
+
+            // Generate AI performance analysis
+            analyzePerformance();
 
             // Display leaderboard
             displayLeaderboard('finalLeaderboard');
