@@ -1,0 +1,39 @@
+ACCURATE WORD COUNTS (Strict Word Boundaries)
+================================================================================
+
+Week 1:
+  OK: 198, Test: 16, Exam: 10
+  Sentences: 949, Words: 15156
+
+Week 2:
+  OK: 276, Test: 2, Exam: 0
+  Sentences: 882, Words: 15407
+
+Week 3:
+  OK: 303, Test: 4, Exam: 2
+  Sentences: 1024, Words: 15242
+
+Week 4:
+  OK: 168, Test: 0, Exam: 2
+  Sentences: 885, Words: 15583
+
+Week 5:
+  OK: 176, Test: 4, Exam: 0
+  Sentences: 934, Words: 15584
+
+Week 6:
+  OK: 195, Test: 10, Exam: 0
+  Sentences: 907, Words: 14037
+
+Week 7:
+  OK: 191, Test: 20, Exam: 2
+  Sentences: 898, Words: 16612
+
+
+TOTALS:
+  OK: 1507
+  Test: 56
+  Exam: 16
+  Test+Exam: 72
+  Sentences: 6479
+  Words: 107621
