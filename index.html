@@ -1140,9 +1140,12 @@
 
         <!-- Site Update Disclaimer -->
         <div style="background: #1e1e1e; padding: 16px 20px; border-radius: 8px; margin: 20px auto; text-align: center; max-width: 900px; border: 2px solid #5B3069; box-shadow: 0 4px 12px rgba(0,0,0,0.2); width: calc(100% - 40px);">
-            <p style="color: #d4d4d4; margin: 0; font-family: 'Courier New', Courier, monospace; font-size: 0.9em; line-height: 1.7;">
-                <strong style="color: #4ec9b0;">⚡ Live Updates:</strong> This site is continuously updated and improved on an hourly basis. Our language model is currently being trained on lecture capture recordings, transcripts, and course materials. Additional analytics and predicted test questions will become available as the model training progresses. <strong style="color: #c586c0;">Check out the Belgrade Tracker below</strong> for Professor's emphasis patterns. Refresh frequently for the latest insights.
+            <p style="color: #d4d4d4; margin: 0 0 12px 0; font-family: 'Courier New', Courier, monospace; font-size: 0.9em; line-height: 1.7;">
+                <strong style="color: #4ec9b0;">⚡ Live Updates:</strong> This site is continuously updated and improved on an hourly basis. Our language model is currently being trained on lecture capture recordings, transcripts, and course materials. Additional analytics and predicted test questions will become available as the model training progresses. Refresh frequently for the latest insights.
             </p>
+            <button onclick="toggleBelgradeTracker(); document.getElementById('belgradeTracker').scrollIntoView({behavior: 'smooth', block: 'start'});" style="background: #5B3069; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-family: 'Courier New', Courier, monospace; font-size: 0.85em; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 8px;">
+                📊 View Belgrade Tracker - Professor's Emphasis Patterns
+            </button>
         </div>
 
         <!-- Professor Vukotic's Key Exam Mentions -->
