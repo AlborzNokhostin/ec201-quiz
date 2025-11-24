@@ -192,7 +192,7 @@
 - Covers Weeks 1-7 only (not Week 8)
 - 8 multiple choice questions (mostly true/false)
 - 2 short essay questions (14 marks each)
-- Total: 20% of final grade
+- Total: 10% of final grade (2 tests total = 20%, each test = 10%)
 
 ### **Her Advice:**
 
