@@ -1,0 +1,312 @@
+<!-- MOCK TEST FEATURE - Add this code to index.html -->
+
+<!-- ========== CSS STYLES (Add after the .progress-fill styles, around line 296) ========== -->
+<style>
+    .mock-test-timer {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        color: white;
+        padding: 20px 32px;
+        border-radius: 16px;
+        margin-bottom: 30px;
+        text-align: center;
+        box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        animation: pulse 2s infinite;
+        display: none;
+    }
+
+    .mock-test-timer.warning {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        animation: urgentPulse 0.5s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.02); }
+    }
+
+    @keyframes urgentPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 4px 16px rgba(239, 68, 68, 0.5); }
+        50% { transform: scale(1.05); box-shadow: 0 6px 24px rgba(239, 68, 68, 0.8); }
+    }
+
+    .mock-test-info {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        border-left: 4px solid #f59e0b;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        display: none;
+    }
+
+    .mock-test-info h4 {
+        margin: 0 0 10px 0;
+        color: #92400e;
+        font-size: 18px;
+    }
+
+    .mock-test-info p {
+        margin: 5px 0;
+        color: #78350f;
+        font-size: 14px;
+    }
+</style>
+
+<!-- ========== HTML ELEMENTS (Add inside quizArea div, after userGreeting div, around line 1473) ========== -->
+<div id="mockTestTimer" class="mock-test-timer">
+    ⏱️ Time Remaining: <span id="timerDisplay">30:00</span>
+</div>
+
+<div id="mockTestInfo" class="mock-test-info">
+    <h4>📝 Mock Test Mode</h4>
+    <p>• 8 randomly selected MCQs from Weeks 1-7</p>
+    <p>• 30 minute time limit</p>
+    <p>• Simulates actual test conditions</p>
+</div>
+
+<!-- ========== JAVASCRIPT CODE (Add after the questions array initialization, around line 3963) ========== -->
+<script>
+// Mock Test Variables
+let isMockTest = false;
+let mockTestTimeRemaining = 1800; // 30 minutes in seconds
+let mockTestTimer = null;
+
+// Start Mock Test Function
+function startMockTest() {
+    const name = document.getElementById('userName').value.trim();
+    if (!name) {
+        alert('Please enter your name before starting the mock test!');
+        return;
+    }
+
+    userName = name;
+    isMockTest = true;
+    mockTestTimeRemaining = 1800; // Reset to 30 minutes
+
+    // Select 8 random MCQs from weeks 1-7
+    const allQuestions = questions.filter(q => q.week <= 7);
+    filteredQuestions = [];
+    const usedIndices = new Set();
+
+    while (filteredQuestions.length < 8 && usedIndices.size < allQuestions.length) {
+        const randomIndex = Math.floor(Math.random() * allQuestions.length);
+        if (!usedIndices.has(randomIndex)) {
+            usedIndices.add(randomIndex);
+            filteredQuestions.push(allQuestions[randomIndex]);
+        }
+    }
+
+    // Initialize quiz state
+    currentQuestionIndex = 0;
+    userAnswers = [];
+    answeredCorrectly = [];
+    hasAnswered = [];
+
+    for (let i = 0; i < filteredQuestions.length; i++) {
+        userAnswers.push(null);
+        answeredCorrectly.push(false);
+        hasAnswered.push(false);
+    }
+
+    // Show quiz area and hide start screen
+    document.getElementById('startScreen').style.display = 'none';
+    document.getElementById('quizArea').style.display = 'block';
+    document.getElementById('mockTestTimer').style.display = 'block';
+    document.getElementById('mockTestInfo').style.display = 'block';
+
+    // Hide regular quiz elements
+    document.getElementById('weekSelector').style.display = 'none';
+    document.getElementById('difficultySelector').style.display = 'none';
+
+    // Update greeting
+    document.getElementById('userGreeting').textContent = `🎯 Mock Test - Good luck, ${userName}!`;
+
+    // Start timer
+    startMockTestTimer();
+
+    // Show first question
+    showQuestion();
+}
+
+// Mock Test Timer Function
+function startMockTestTimer() {
+    updateTimerDisplay();
+
+    mockTestTimer = setInterval(() => {
+        mockTestTimeRemaining--;
+        updateTimerDisplay();
+
+        // Add warning style when under 5 minutes
+        if (mockTestTimeRemaining <= 300) {
+            document.getElementById('mockTestTimer').classList.add('warning');
+        }
+
+        // Time's up
+        if (mockTestTimeRemaining <= 0) {
+            clearInterval(mockTestTimer);
+            alert('Time\'s up! Your mock test will now be submitted.');
+            finishQuiz();
+        }
+    }, 1000);
+}
+
+// Update Timer Display
+function updateTimerDisplay() {
+    const minutes = Math.floor(mockTestTimeRemaining / 60);
+    const seconds = mockTestTimeRemaining % 60;
+    const display = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    document.getElementById('timerDisplay').textContent = display;
+}
+
+// Override finishQuiz to handle mock test
+const originalFinishQuiz = finishQuiz;
+finishQuiz = function() {
+    if (isMockTest) {
+        // Stop timer
+        if (mockTestTimer) {
+            clearInterval(mockTestTimer);
+            mockTestTimer = null;
+        }
+
+        // Hide mock test elements
+        document.getElementById('mockTestTimer').style.display = 'none';
+        document.getElementById('mockTestInfo').style.display = 'none';
+
+        // Calculate time taken
+        const timeTaken = 1800 - mockTestTimeRemaining;
+        const minutesTaken = Math.floor(timeTaken / 60);
+        const secondsTaken = timeTaken % 60;
+
+        // Calculate score
+        let correctCount = 0;
+        for (let i = 0; i < filteredQuestions.length; i++) {
+            if (answeredCorrectly[i]) {
+                correctCount++;
+            }
+        }
+
+        // Show results with mock test info
+        document.getElementById('quizArea').style.display = 'none';
+        document.getElementById('results').style.display = 'block';
+
+        const percentage = Math.round((correctCount / filteredQuestions.length) * 100);
+
+        document.getElementById('scoreCircle').textContent = percentage + '%';
+        document.getElementById('scoreCircle').style.background = percentage >= 70
+            ? 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)'
+            : percentage >= 50
+            ? 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)'
+            : 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+
+        document.getElementById('resultsTitle').textContent = `Mock Test Complete!`;
+        document.getElementById('correctCount').textContent = correctCount;
+        document.getElementById('incorrectCount').textContent = (filteredQuestions.length - correctCount);
+        document.getElementById('totalCount').textContent = filteredQuestions.length;
+
+        // Add time taken info
+        const resultsDetails = document.querySelector('.results-details');
+        let timeStatDiv = document.getElementById('timeTakenStat');
+        if (!timeStatDiv) {
+            timeStatDiv = document.createElement('div');
+            timeStatDiv.id = 'timeTakenStat';
+            timeStatDiv.className = 'result-stat';
+            timeStatDiv.innerHTML = `
+                <div class="result-stat-value" id="timeTakenValue">${minutesTaken}:${secondsTaken.toString().padStart(2, '0')}</div>
+                <div class="result-stat-label">Time Taken</div>
+            `;
+            resultsDetails.appendChild(timeStatDiv);
+        } else {
+            document.getElementById('timeTakenValue').textContent = `${minutesTaken}:${secondsTaken.toString().padStart(2, '0')}`;
+        }
+
+        // Add mock test badge to results
+        const aiReviewSection = document.getElementById('aiReviewSection');
+        let mockTestBadge = document.getElementById('mockTestBadge');
+        if (!mockTestBadge) {
+            mockTestBadge = document.createElement('div');
+            mockTestBadge.id = 'mockTestBadge';
+            mockTestBadge.style.cssText = 'background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px; font-weight: 600;';
+            mockTestBadge.innerHTML = '🎯 MOCK TEST RESULTS';
+            aiReviewSection.parentNode.insertBefore(mockTestBadge, aiReviewSection);
+        }
+
+        // Load leaderboard (but don't save mock test scores)
+        loadLeaderboard('finalLeaderboard');
+
+        // Reset mock test flag
+        isMockTest = false;
+
+        // Show restart message
+        const mockTestMessage = document.createElement('p');
+        mockTestMessage.style.cssText = 'text-align: center; color: #6b7280; font-size: 14px; margin-top: 15px;';
+        mockTestMessage.textContent = 'Note: Mock test scores are not saved to the leaderboard.';
+        const restartBtn = document.querySelector('#results .btn-primary');
+        restartBtn.parentNode.insertBefore(mockTestMessage, restartBtn);
+
+        return;
+    }
+
+    // Call original finishQuiz for regular quiz
+    originalFinishQuiz();
+};
+
+// Override restartQuiz to reset mock test state
+const originalRestartQuiz = restartQuiz;
+restartQuiz = function() {
+    // Clean up mock test state
+    if (mockTestTimer) {
+        clearInterval(mockTestTimer);
+        mockTestTimer = null;
+    }
+
+    isMockTest = false;
+    mockTestTimeRemaining = 1800;
+
+    document.getElementById('mockTestTimer').style.display = 'none';
+    document.getElementById('mockTestInfo').style.display = 'none';
+    document.getElementById('mockTestTimer').classList.remove('warning');
+
+    // Remove mock test badge if it exists
+    const mockTestBadge = document.getElementById('mockTestBadge');
+    if (mockTestBadge) {
+        mockTestBadge.remove();
+    }
+
+    // Remove time taken stat if it exists
+    const timeStat = document.getElementById('timeTakenStat');
+    if (timeStat) {
+        timeStat.remove();
+    }
+
+    // Show week and difficulty selectors again
+    document.getElementById('weekSelector').style.display = 'block';
+    document.getElementById('difficultySelector').style.display = 'block';
+
+    // Call original restart
+    originalRestartQuiz();
+};
+</script>
+
+<!-- ========== INTEGRATION INSTRUCTIONS ========== -->
+<!--
+1. Add the CSS styles in the <style> section (around line 296, after the .progress-fill animation)
+
+2. Add the HTML timer and info div elements inside the #quizArea div, right after the userGreeting div (around line 1473)
+
+3. Add all the JavaScript code after the questions array declaration (around line 3963)
+
+4. The Mock Test button has already been added to the start screen
+
+5. Save the file and test the mock test feature by clicking the "🎯 Mock Test (8 MCQs)" button
+
+FEATURES:
+- Randomly selects 8 MCQs from weeks 1-7
+- 30-minute countdown timer
+- Timer turns red and pulses when under 5 minutes
+- Automatically submits when time expires
+- Shows time taken in results
+- Mock test scores are NOT saved to leaderboard
+- Clean reset when restarting
+-->
