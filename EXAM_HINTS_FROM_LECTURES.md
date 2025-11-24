@@ -128,6 +128,45 @@
 
 ---
 
+## **NOVEMBER 20, 2025 - WEEK 7: GLOBAL SAVING GLUT**
+
+**HINT 11: Global Saving Glut vs Investment Drought**
+
+**Topic:** Explaining low US interest rates in the 2000s
+
+**Context:** Applying two-country model to understand Global Saving Glut hypothesis
+
+> "Now we're going to apply the two-country model to understand the Global Saving Glut hypothesis."
+
+> "The Global Saving Glut is Ben Bernanke's hypothesis about why US interest rates were low in the 2000s. **This is important for the test and definitely exam material. I want you to understand both the saving glut hypothesis and the investment drought hypothesis - comparing these could be a test question. The test will likely have something on whether the data supports saving glut or investment drought. For the exam, you might need to explain this in more depth.**"
+
+**What she's talking about:**
+- **Global Saving Glut Hypothesis (Bernanke):** Emerging markets (China, oil exporters) saved more in 2000s → capital flowed to US → r* fell → enabled US borrowing
+- **Alternative: Investment Drought (Summers):** US/global investment fell (secular stagnation)
+- **Evidence supports saving glut**
+- Located in Lecture 7, Slides 15-22
+
+---
+
+**HINT 12: Test Preparation Strategy - Final Advice**
+
+**Topic:** How to prepare for the comprehensive test
+
+**Context:** Final lecture before test, giving study advice
+
+> "So we've covered a lot of material in these seven weeks. Let me give you some final advice for the test."
+
+> "**The test is comprehensive on weeks 1-7. Practice the seminar problems, especially parts C. Don't just memorise - understand the logic. If you panic on the test, go back to first principles and derive things.**"
+
+**What she's talking about:**
+- Test covers ALL weeks 1-7 comprehensively
+- Practice is essential (especially seminar part C questions)
+- Derivation over memorisation
+- Work from first principles if stuck during the test
+- Located in Lecture 7, Slides 29-30
+
+---
+
 ## **KEY PATTERNS IN EXAM HINTS**
 
 ### **Guaranteed Test Questions:**
@@ -136,6 +175,7 @@
 2. ✅ NIIP = CA + valuation changes - "this would be again test question"
 3. ✅ Signs of partial derivatives - mentioned as "very important"
 4. ✅ Endogenous vs exogenous variables - "I might ask this on the test"
+5. ✅ **Global Saving Glut vs Investment Drought** - "important for the test and definitely exam material"
 
 ### **High Probability Topics:**
 
@@ -144,6 +184,8 @@
 - Terms of trade definition and effects
 - Tariff effects with general equilibrium
 - Substitution vs income effects with log utility
+- **Comparing saving glut vs investment drought hypotheses - "could be a test question"**
+- **Whether data supports saving glut or investment drought - "test will likely have something on this"**
 
 ### **Test Format (December 1st):**
 
@@ -162,6 +204,6 @@
 
 ---
 
-**Document covers October 9, 16, 23, 30 lectures analyzed**
-**Note:** Weeks 5-7 (Nov 6, 13, 20) lectures had fewer explicit exam hints but covered production economy, Metzler diagram, and empirical applications
+**Document covers lectures from Weeks 1-7 (October 9 - November 20, 2025)**
+**Note:** Week 7 (Nov 20) contained critical exam hints about Global Saving Glut - a confirmed test topic. Weeks 5-6 (Nov 6, 13) had fewer explicit exam hints but covered production economy and Metzler diagram.
  
