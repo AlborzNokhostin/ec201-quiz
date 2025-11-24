@@ -80,7 +80,7 @@
 
 **Context:** Repeating the most important concept from Week 2
 
-> "Then we said, and **this I said will be the question that I will ask on the test because I want everybody to get on that question**. It's like a test to see how much you're listening. To get 100, I mean, I want everybody to get it right. **There will be something true or false. So we said that the infinite horizon, it doesn't mean, so this condition here doesn't mean that debt will be zero as time goes to infinity, but the present discount value of that is going to zero**, which means that you cannot. Run that by not, you know, supporting that debt from some real resources which are going to come from growth of the economy and uh in this uh simple model from uh sicit in the trade bouts."
+> "Then we said, and **this I said will be the question that I will ask on the test because I want everybody to get on that question**. It's like a test to see how much you're listening. To get 100, I mean, I want everybody to get it right. **There will be something true or false.  25%So we said that the infinite horizon, it doesn't mean, so this condition here doesn't mean that debt will be zero as time goes to infinity, but the present discount value of that is going to zero**, which means that you cannot. Run that by not, you know, supporting that debt from some real resources which are going to come from growth of the economy and uh in this uh simple model from uh sicit in the trade bouts."
 
 **What she's talking about:** She REALLY wants everyone to get this right. The transversality condition is lim_{t→∞} B_t/(1+r)^t = 0, NOT lim_{t→∞} B_t = 0. This will be a true/false question.
 
@@ -164,3 +164,4 @@
 
 **Document covers October 9, 16, 23, 30 lectures analyzed**
 **Note:** Weeks 5-7 (Nov 6, 13, 20) lectures had fewer explicit exam hints but covered production economy, Metzler diagram, and empirical applications
+ 
