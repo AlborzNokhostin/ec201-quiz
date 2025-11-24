@@ -3924,6 +3924,28 @@
             }
         }
 
+        function resetChat() {
+            if (!confirm('Are you sure you want to clear all chat messages? This cannot be undone.')) {
+                return;
+            }
+
+            if (chatMessagesRef) {
+                chatMessagesRef.remove()
+                    .then(() => {
+                        // Clear the display
+                        document.getElementById('chatMessages').innerHTML = '';
+                        console.log('Chat cleared successfully');
+                        alert('Chat has been reset successfully!');
+                    })
+                    .catch((error) => {
+                        console.error('Error clearing chat:', error);
+                        alert('Failed to clear chat. Please try again.');
+                    });
+            } else {
+                alert('Chat is not connected. Please refresh the page.');
+            }
+        }
+
         function displayChatMessage(messageData) {
             const messagesContainer = document.getElementById('chatMessages');
 
@@ -3979,6 +4001,7 @@
     <div class="chat-container" id="chatContainer">
         <div class="chat-header">
             <span>💬 EC201 Chat</span>
+            <button class="chat-close-btn" onclick="resetChat()" style="margin-right: 5px; background: #dc3545; font-size: 14px; width: auto; padding: 5px 10px;" title="Clear all messages">Reset</button>
             <button class="chat-close-btn" onclick="toggleChat()">×</button>
         </div>
         <div class="chat-messages" id="chatMessages">
