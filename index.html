@@ -1280,6 +1280,155 @@
             </div>
         </div>
 
+        <!-- Belgrade Tracker Toggle Button -->
+        <div style="text-align: center; padding: 15px; background: #f8f9fa;">
+            <button onclick="toggleBelgradeTracker()" class="btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;">
+                📊 Belgrade Tracker - Professor's Emphasis Patterns
+            </button>
+        </div>
+
+        <!-- Belgrade Tracker Section -->
+        <div id="belgradeTracker" style="display: none; padding: 30px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div style="max-width: 1200px; margin: 0 auto; background: white; border-radius: 16px; padding: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                <h2 style="text-align: center; color: #667eea; margin-bottom: 10px; font-size: 2em;">📊 Belgrade Tracker</h2>
+                <p style="text-align: center; color: #64748b; margin-bottom: 30px; font-style: italic;">Professor Vukotic's Emphasis Patterns Across All Lectures</p>
+
+                <!-- Test/Exam Mentions by Lecture -->
+                <div style="margin-bottom: 40px;">
+                    <h3 style="color: #2d3748; border-bottom: 3px solid #667eea; padding-bottom: 10px; margin-bottom: 20px;">🎯 Test/Exam Mentions Per Lecture</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                            <div style="font-size: 0.85em; color: #92400e; font-weight: 600;">Oct 9 - Week 1</div>
+                            <div style="font-size: 1.1em; color: #78350f; margin-top: 5px;"><strong>Test:</strong> 17 times</div>
+                            <div style="font-size: 1.1em; color: #78350f;"><strong>Exam:</strong> 63 times</div>
+                            <div style="font-size: 0.8em; color: #a16207; margin-top: 5px;">OK: 259 times</div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                            <div style="font-size: 0.85em; color: #5b21b6; font-weight: 600;">Oct 16 - Week 2</div>
+                            <div style="font-size: 1.1em; color: #6b21a8; margin-top: 5px;"><strong>Test:</strong> 2 times</div>
+                            <div style="font-size: 1.1em; color: #6b21a8;"><strong>Exam:</strong> 11 times</div>
+                            <div style="font-size: 0.8em; color: #7c3aed; margin-top: 5px;">OK: 297 times</div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #bbf7d0 0%, #86efac 100%); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                            <div style="font-size: 0.85em; color: #166534; font-weight: 600;">Oct 23 - Week 3</div>
+                            <div style="font-size: 1.1em; color: #15803d; margin-top: 5px;"><strong>Test:</strong> 4 times</div>
+                            <div style="font-size: 1.1em; color: #15803d;"><strong>Exam:</strong> 21 times</div>
+                            <div style="font-size: 0.8em; color: #16a34a; margin-top: 5px;">OK: 321 times</div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                            <div style="font-size: 0.85em; color: #9a3412; font-weight: 600;">Oct 30 - Week 4</div>
+                            <div style="font-size: 1.1em; color: #c2410c; margin-top: 5px;"><strong>Test:</strong> 0 times</div>
+                            <div style="font-size: 1.1em; color: #c2410c;"><strong>Exam:</strong> 35 times</div>
+                            <div style="font-size: 0.8em; color: #ea580c; margin-top: 5px;">OK: 206 times</div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                            <div style="font-size: 0.85em; color: #1e40af; font-weight: 600;">Nov 6 - Week 5</div>
+                            <div style="font-size: 1.1em; color: #1e3a8a; margin-top: 5px;"><strong>Test:</strong> 4 times</div>
+                            <div style="font-size: 1.1em; color: #1e3a8a;"><strong>Exam:</strong> 11 times</div>
+                            <div style="font-size: 0.8em; color: #2563eb; margin-top: 5px;">OK: 209 times</div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                            <div style="font-size: 0.85em; color: #991b1b; font-weight: 600;">Nov 13 - Week 6</div>
+                            <div style="font-size: 1.1em; color: #b91c1c; margin-top: 5px;"><strong>Test:</strong> 10 times</div>
+                            <div style="font-size: 1.1em; color: #b91c1c;"><strong>Exam:</strong> 19 times</div>
+                            <div style="font-size: 0.8em; color: #dc2626; margin-top: 5px;">OK: 223 times</div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #fbcfe8 0%, #f9a8d4 100%); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                            <div style="font-size: 0.85em; color: #831843; font-weight: 600;">Nov 20 - Week 7</div>
+                            <div style="font-size: 1.1em; color: #9f1239; margin-top: 5px;"><strong>Test:</strong> 26 times</div>
+                            <div style="font-size: 1.1em; color: #9f1239;"><strong>Exam:</strong> 28 times</div>
+                            <div style="font-size: 0.8em; color: #db2777; margin-top: 5px;">OK: 227 times</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic Emphasis Chart -->
+                <div style="margin-bottom: 40px;">
+                    <h3 style="color: #2d3748; border-bottom: 3px solid #667eea; padding-bottom: 10px; margin-bottom: 20px;">📚 Topic Emphasis Across All Lectures</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="background: #f0f9ff; padding: 15px; border-radius: 10px; border-left: 4px solid #0ea5e9;">
+                            <div style="font-weight: 600; color: #0c4a6e; margin-bottom: 5px;">Current Account</div>
+                            <div style="font-size: 1.5em; color: #0369a1;">439</div>
+                            <div style="font-size: 0.75em; color: #64748b;">total mentions</div>
+                        </div>
+                        <div style="background: #fef3c7; padding: 15px; border-radius: 10px; border-left: 4px solid #eab308;">
+                            <div style="font-weight: 600; color: #713f12; margin-bottom: 5px;">Trade Balance</div>
+                            <div style="font-size: 1.5em; color: #a16207;">271</div>
+                            <div style="font-size: 0.75em; color: #64748b;">total mentions</div>
+                        </div>
+                        <div style="background: #fce7f3; padding: 15px; border-radius: 10px; border-left: 4px solid #ec4899;">
+                            <div style="font-weight: 600; color: #831843; margin-bottom: 5px;">Interest Rate</div>
+                            <div style="font-size: 1.5em; color: #9f1239;">368</div>
+                            <div style="font-size: 0.75em; color: #64748b;">total mentions</div>
+                        </div>
+                        <div style="background: #f0fdf4; padding: 15px; border-radius: 10px; border-left: 4px solid #22c55e;">
+                            <div style="font-weight: 600; color: #14532d; margin-bottom: 5px;">Consumption</div>
+                            <div style="font-size: 1.5em; color: #15803d;">327</div>
+                            <div style="font-size: 0.75em; color: #64748b;">total mentions</div>
+                        </div>
+                        <div style="background: #ede9fe; padding: 15px; border-radius: 10px; border-left: 4px solid #a855f7;">
+                            <div style="font-weight: 600; color: #581c87; margin-bottom: 5px;">Investment</div>
+                            <div style="font-size: 1.5em; color: #7e22ce;">275</div>
+                            <div style="font-size: 0.75em; color: #64748b;">total mentions</div>
+                        </div>
+                        <div style="background: #fff7ed; padding: 15px; border-radius: 10px; border-left: 4px solid #f97316;">
+                            <div style="font-weight: 600; color: #7c2d12; margin-bottom: 5px;">Saving</div>
+                            <div style="font-size: 1.5em; color: #c2410c;">207</div>
+                            <div style="font-size: 0.75em; color: #64748b;">total mentions</div>
+                        </div>
+                        <div style="background: #e0f2fe; padding: 15px; border-radius: 10px; border-left: 4px solid #06b6d4;">
+                            <div style="font-weight: 600; color: #164e63; margin-bottom: 5px;">Tariff</div>
+                            <div style="font-size: 1.5em; color: #0e7490;">78</div>
+                            <div style="font-size: 0.75em; color: #64748b;">total mentions</div>
+                        </div>
+                        <div style="background: #fef2f2; padding: 15px; border-radius: 10px; border-left: 4px solid #ef4444;">
+                            <div style="font-weight: 600; color: #7f1d1d; margin-bottom: 5px;">Terms of Trade</div>
+                            <div style="font-size: 1.5em; color: #b91c1c;">71</div>
+                            <div style="font-size: 0.75em; color: #64748b;">total mentions</div>
+                        </div>
+                        <div style="background: #faf5ff; padding: 15px; border-radius: 10px; border-left: 4px solid #d946ef;">
+                            <div style="font-weight: 600; color: #701a75; margin-bottom: 5px;">Valuation</div>
+                            <div style="font-size: 1.5em; color: #a21caf;">47</div>
+                            <div style="font-size: 0.75em; color: #64748b;">total mentions</div>
+                        </div>
+                        <div style="background: #ecfdf5; padding: 15px; border-radius: 10px; border-left: 4px solid #10b981;">
+                            <div style="font-weight: 600; color: #065f46; margin-bottom: 5px;">Euler</div>
+                            <div style="font-size: 1.5em; color: #059669;">34</div>
+                            <div style="font-size: 0.75em; color: #64748b;">total mentions</div>
+                        </div>
+                        <div style="background: #fff1f2; padding: 15px; border-radius: 10px; border-left: 4px solid #f43f5e;">
+                            <div style="font-weight: 600; color: #881337; margin-bottom: 5px;">Transversality</div>
+                            <div style="font-size: 1.5em; color: #be123c;">8</div>
+                            <div style="font-size: 0.75em; color: #64748b;">total mentions</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Stats -->
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 12px; color: white;">
+                    <h3 style="margin-bottom: 15px; text-align: center;">📈 Overall Statistics</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; text-align: center;">
+                        <div>
+                            <div style="font-size: 2em; font-weight: bold;">63</div>
+                            <div style="font-size: 0.9em; opacity: 0.9;">Total "Test/Exam" Mentions</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2em; font-weight: bold;">1,742</div>
+                            <div style="font-size: 0.9em; opacity: 0.9;">Total "OK" Count</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2em; font-weight: bold;">107,621</div>
+                            <div style="font-size: 0.9em; opacity: 0.9;">Total Words Spoken</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2em; font-weight: bold;">7</div>
+                            <div style="font-size: 0.9em; opacity: 0.9;">Weeks Analyzed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="startScreen" class="start-screen">
             <h2>Ready to Test Your Knowledge?</h2>
             <p>This quiz covers key concepts from Weeks 1-5 of EC201 International Macroeconomics.</p>
@@ -3388,6 +3537,17 @@
                 displayLeaderboard('leaderboardContent');
             } else {
                 display.style.display = 'none';
+            }
+        }
+
+        function toggleBelgradeTracker() {
+            const tracker = document.getElementById('belgradeTracker');
+            if (tracker.style.display === 'none') {
+                tracker.style.display = 'block';
+                // Scroll to tracker
+                tracker.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                tracker.style.display = 'none';
             }
         }
 
