@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Leaderboard - EC201 Quiz</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            color: #2d3748;
+            margin-bottom: 24px;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            color: #856404;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        button {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .status {
+            margin-top: 24px;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗑️ Reset Leaderboard</h1>
+
+        <div class="warning">
+            ⚠️ WARNING: This will permanently delete all leaderboard entries!
+        </div>
+
+        <button id="resetBtn" onclick="resetLeaderboard()">Reset Leaderboard</button>
+
+        <div id="status"></div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+    <script>
+        // Firebase configuration (same as quiz)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBXHq8c3YlBv67NhrcKYc_Uod3j1aUWQqI",
+            authDomain: "ec201-quiz.firebaseapp.com",
+            databaseURL: "https://ec201-quiz-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "ec201-quiz",
+            storageBucket: "ec201-quiz.firebasestorage.app",
+            messagingSenderId: "690821815371",
+            appId: "1:690821815371:web:7c53f01bbf67a98bcebc73"
+        };
+
+        // Initialize Firebase
+        let database = null;
+        try {
+            firebase.initializeApp(firebaseConfig);
+            database = firebase.database();
+            console.log('Firebase initialized successfully');
+        } catch (error) {
+            console.error('Firebase initialization error:', error);
+            showStatus('Firebase connection failed: ' + error.message, 'error');
+        }
+
+        function resetLeaderboard() {
+            const btn = document.getElementById('resetBtn');
+            const statusDiv = document.getElementById('status');
+
+            if (!database) {
+                showStatus('Firebase not connected', 'error');
+                return;
+            }
+
+            // Confirm action
+            if (!confirm('Are you sure you want to delete ALL leaderboard entries? This cannot be undone!')) {
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Resetting...';
+            statusDiv.innerHTML = '<div style="color: #666;">Deleting all entries...</div>';
+
+            // Delete all leaderboard data
+            const leaderboardRef = database.ref('leaderboard');
+            leaderboardRef.remove()
+                .then(() => {
+                    console.log('Leaderboard reset successfully');
+                    showStatus('✅ Leaderboard has been reset successfully!', 'success');
+                    btn.textContent = 'Reset Complete';
+                })
+                .catch((error) => {
+                    console.error('Error resetting leaderboard:', error);
+                    showStatus('❌ Error: ' + error.message, 'error');
+                    btn.disabled = false;
+                    btn.textContent = 'Reset Leaderboard';
+                });
+        }
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.className = 'status ' + type;
+            statusDiv.textContent = message;
+        }
+    </script>
+</body>
+</html>
