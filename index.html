@@ -1404,6 +1404,12 @@
                 <input type="text" id="userName" class="name-input" placeholder="Your name..." required>
             </div>
 
+            <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+                <button class="btn btn-primary" onclick="startQuiz()" style="font-size: 18px; padding: 18px 36px; flex: 1; min-width: 200px;">Start Quiz</button>
+                <button class="btn btn-primary" onclick="restartQuiz()" style="font-size: 18px; padding: 18px 36px; flex: 1; min-width: 200px;">Restart Quiz</button>
+                <button class="btn view-leaderboard-btn" onclick="showLeaderboardOnly()" style="flex: 1; min-width: 200px;">View Leaderboard</button>
+            </div>
+
             <div style="background: #f8f9fa; padding: 24px; border-radius: 8px; margin: 30px 0; text-align: left; max-width: 900px; margin-left: auto; margin-right: auto; border-left: 4px solid #667eea;">
                 <h3 style="margin-top: 0; color: #2d3748; font-size: 1.3em;">About This Quiz</h3>
                 <p style="line-height: 1.8; color: #4a5568; margin-bottom: 12px;">
@@ -1438,12 +1444,6 @@
                     <li><strong>Week 4:</strong> Terms of Trade shocks, World interest rates, Tariffs</li>
                     <li><strong>Week 5:</strong> Production economy, Investment/Saving schedules, Metzler diagram</li>
                 </ul>
-            </div>
-
-            <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
-                <button class="btn btn-primary" onclick="startQuiz()" style="font-size: 18px; padding: 18px 36px; flex: 1; min-width: 200px;">Start Quiz</button>
-                <button class="btn btn-primary" onclick="restartQuiz()" style="font-size: 18px; padding: 18px 36px; flex: 1; min-width: 200px;">Restart Quiz</button>
-                <button class="btn view-leaderboard-btn" onclick="showLeaderboardOnly()" style="flex: 1; min-width: 200px;">View Leaderboard</button>
             </div>
 
             <div id="leaderboardDisplay" class="leaderboard-section" style="display: none;">
