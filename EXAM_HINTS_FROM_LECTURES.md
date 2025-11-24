@@ -144,7 +144,7 @@
 - **Global Saving Glut Hypothesis (Bernanke):** Emerging markets (China, oil exporters) saved more in 2000s → capital flowed to US → r* fell → enabled US borrowing
 - **Alternative: Investment Drought (Summers):** US/global investment fell (secular stagnation)
 - **Evidence supports saving glut**
-- Located in Lecture 7, Slides 15-22
+- Located in Week 7, Slides 15-22
 
 ---
 
@@ -163,7 +163,7 @@
 - Practice is essential (especially seminar part C questions)
 - Derivation over memorisation
 - Work from first principles if stuck during the test
-- Located in Lecture 7, Slides 29-30
+- Located in Week 7, Slides 29-30
 
 ---
 
