@@ -1143,6 +1143,28 @@
             <p style="color: #d4d4d4; margin: 0; font-family: 'Courier New', Courier, monospace; font-size: 0.9em; line-height: 1.7;">
                 <strong style="color: #4ec9b0;">⚡ Live Updates:</strong> This site is continuously updated and improved on an hourly basis. Our language model is currently being trained on lecture capture recordings, transcripts, and course materials. Additional analytics and predicted test questions will become available as the model training progresses. Refresh frequently for the latest insights.
             </p>
+            <p style="color: #d4d4d4; margin: 12px 0 0 0; font-family: 'Courier New', Courier, monospace; font-size: 0.9em; line-height: 1.7;">
+                <strong style="color: #4ec9b0;">🎯 Model Performance:</strong> The model has demonstrated good understanding and grasp of the knowledge. In Week 8 seminar MCQ testing, it achieved <strong style="color: #ce9178;">7 out of 9 correct answers (first-class performance)</strong>. Keep in mind, the seminar tutor mentioned this test was worded to be more challenging for AI models compared to previous years' questions.
+            </p>
+        </div>
+
+        <!-- Week 8 Seminar Answers -->
+        <div style="background: #1e1e1e; padding: 20px; border-radius: 12px; margin: 20px auto; text-align: center; max-width: 900px; border: 2px solid #5B3069; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: calc(100% - 40px);">
+            <h3 style="margin-top: 0; color: #d4d4d4; font-size: 1.25em; font-weight: 700; margin-bottom: 16px; font-family: 'Courier New', Courier, monospace;">📄 Week 8 Seminar - Complete Answer Guide</h3>
+            <p style="color: #9cdcfe; margin-bottom: 16px; font-family: 'Courier New', Courier, monospace; font-size: 0.9em;">
+                Model Learning & Understanding Test
+            </p>
+            <div style="margin-bottom: 16px;">
+                <a href="EC201 Week 8 Seminar - Complete Answer Guide Model Learning & Understanding Test.pdf" download style="display: inline-block; background: #5B3069; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-family: 'Courier New', Courier, monospace; font-weight: 600; margin-right: 10px; transition: background 0.3s;">
+                    ⬇️ Download PDF
+                </a>
+                <button onclick="togglePdfViewer()" style="background: #4ec9b0; color: #1e1e1e; padding: 12px 24px; border: none; border-radius: 6px; font-family: 'Courier New', Courier, monospace; font-weight: 600; cursor: pointer; transition: background 0.3s;">
+                    👁️ View PDF
+                </button>
+            </div>
+            <div id="pdfViewerContainer" style="display: none; margin-top: 20px;">
+                <iframe id="pdfViewer" src="" style="width: 100%; height: 600px; border: 2px solid #5B3069; border-radius: 8px;"></iframe>
+            </div>
         </div>
 
         <!-- Professor Vukotic's Key Exam Mentions -->
@@ -3943,6 +3965,21 @@
                     });
             } else {
                 alert('Chat is not connected. Please refresh the page.');
+            }
+        }
+
+        function togglePdfViewer() {
+            const container = document.getElementById('pdfViewerContainer');
+            const viewer = document.getElementById('pdfViewer');
+
+            if (container.style.display === 'none') {
+                // Show the viewer
+                viewer.src = 'EC201 Week 8 Seminar - Complete Answer Guide Model Learning & Understanding Test.pdf';
+                container.style.display = 'block';
+            } else {
+                // Hide the viewer
+                container.style.display = 'none';
+                viewer.src = ''; // Clear the src to stop loading
             }
         }
 
