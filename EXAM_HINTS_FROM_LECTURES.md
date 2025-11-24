@@ -44,7 +44,7 @@
 
 > "So if the debt grows higher than the, uh, faster, so even the, the growth rate is higher than the interest rate, then you see that the transversality condition will not hold, and this is not going to be sustainable. OK, **so this is very important. I'll probably put it on the test for sure, something, some version of this question**."
 
-**What she's talking about:** Common misconception - transversality condition does NOT mean debt = 0 in the limit. It means present discounted value of debt → 0, which happens when growth rate of debt < interest rate. **Warning: You will get negative marks if you answer that debt must be zero on the test.**
+**What she's talking about:** Common misconception - transversality condition does NOT mean debt = 0 in the limit. It means present discounted value of debt → 0, which happens when growth rate of debt < interest rate. This is a critical concept that's commonly misunderstood.
 
 ---
 
