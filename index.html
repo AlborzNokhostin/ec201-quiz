@@ -1133,6 +1133,7 @@
             <div class="logos-container">
                 <img src="Warwick_University_Shield.svg.png" alt="Warwick Shield" class="header-logo">
                 <img src="u_of_w_third_party_lockup_positive_rgb.jpg" alt="University of Warwick" class="header-logo">
+                <img src="images.png" alt="WHFS" class="header-logo" style="background: #000; border-radius: 8px; padding: 5px;">
             </div>
             <h1>EC201 International Macroeconomics</h1>
             <p>MCQ Assessment - Weeks 1-5</p>
@@ -1508,6 +1509,7 @@
                 <button class="btn btn-primary" onclick="startQuiz()" style="font-size: 18px; padding: 18px 36px; flex: 1; min-width: 200px;">Start Quiz</button>
                 <button class="btn btn-primary" onclick="restartQuiz()" style="font-size: 18px; padding: 18px 36px; flex: 1; min-width: 200px;">Restart Quiz</button>
                 <button class="btn view-leaderboard-btn" onclick="showLeaderboardOnly()" style="flex: 1; min-width: 200px;">View Leaderboard</button>
+                <button class="btn" onclick="showExamMentions()" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%); color: #4ec9b0; border: 2px solid #4ec9b0;">📋 View All 72 Exam Mentions</button>
             </div>
 
             <div class="week-description">
@@ -1578,6 +1580,164 @@
             <button class="btn btn-primary" onclick="restartQuiz()" style="margin-top: 30px;">Restart Quiz</button>
         </div>
 
+    </div>
+
+    <!-- Exam Mentions Modal -->
+    <div id="examMentionsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; overflow-y: auto;">
+        <div style="max-width: 900px; margin: 20px auto; padding: 30px; background: #1e1e1e; border-radius: 16px; border: 2px solid #5B3069; font-family: 'Courier New', Courier, monospace;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid #5B3069; padding-bottom: 15px;">
+                <h2 style="color: #4ec9b0; margin: 0; font-size: 1.5em;">📋 All 72 Exam Mentions from 14 Lectures</h2>
+                <button onclick="closeExamMentions()" style="background: #5B3069; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600;">✕ Close</button>
+            </div>
+
+            <!-- Guaranteed Topics -->
+            <div style="background: #252526; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #4ec9b0;">
+                <h3 style="color: #4ec9b0; margin-top: 0;">🎯 GUARANTEED TEST QUESTIONS</h3>
+                <div style="color: #d4d4d4; line-height: 1.8;">
+                    <p style="margin: 15px 0; padding: 12px; background: #1e1e1e; border-radius: 8px;">
+                        <strong style="color: #c586c0;">1. Transversality Condition (TRUE/FALSE)</strong><br>
+                        <span style="color: #ce9178;">"I want everybody to get this right"</span><br>
+                        <span style="color: #808080;">Present discounted value of debt → 0, NOT debt → 0. Growth rate of debt &lt; interest rate.</span>
+                    </p>
+                    <p style="margin: 15px 0; padding: 12px; background: #1e1e1e; border-radius: 8px;">
+                        <strong style="color: #c586c0;">2. NIIP = CA + Valuation Changes</strong><br>
+                        <span style="color: #ce9178;">"This would be again test question"</span><br>
+                        <span style="color: #808080;">Stock market performance affects NIIP through valuation channel.</span>
+                    </p>
+                    <p style="margin: 15px 0; padding: 12px; background: #1e1e1e; border-radius: 8px;">
+                        <strong style="color: #c586c0;">3. Endogenous vs Exogenous Variables</strong><br>
+                        <span style="color: #ce9178;">"I might ask this on the test"</span><br>
+                        <span style="color: #808080;">Identify what's chosen (endogenous) vs what's given (exogenous) in models.</span>
+                    </p>
+                    <p style="margin: 15px 0; padding: 12px; background: #1e1e1e; border-radius: 8px;">
+                        <strong style="color: #c586c0;">4. Global Saving Glut vs Investment Drought</strong><br>
+                        <span style="color: #ce9178;">"Important for the test and definitely exam material"</span><br>
+                        <span style="color: #808080;">Compare hypotheses. Assess which data supports. Week 7, Slides 15-22.</span>
+                    </p>
+                    <p style="margin: 15px 0; padding: 12px; background: #1e1e1e; border-radius: 8px;">
+                        <strong style="color: #c586c0;">5. Accounting Identities - Derive Don't Memorise</strong><br>
+                        <span style="color: #ce9178;">"Don't panic if you kind of block on the exam"</span><br>
+                        <span style="color: #808080;">CA_t = TB_t + r*B_{t-1} + NUT - derive from first principles.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Week 1 -->
+            <div style="background: #252526; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #ce9178;">
+                <h3 style="color: #ce9178; margin-top: 0;">📚 WEEK 1 (Oct 9) - Global Imbalances</h3>
+                <div style="color: #d4d4d4; line-height: 1.8; font-size: 0.95em;">
+                    <p><strong style="color: #4ec9b0;">Test Format:</strong> "8 multiple choice questions... two short essay questions and it's gonna be 14 marks each"</p>
+                    <p><strong style="color: #4ec9b0;">Coverage:</strong> "Whatever we cover in the first seven weeks of the term will be on the test on December 1st"</p>
+                    <p><strong style="color: #4ec9b0;">Part C Questions:</strong> "These questions B and C are going to be quite representative, especially the C part of what you might see in the exam"</p>
+                    <p><strong style="color: #4ec9b0;">Study Strategy:</strong> "Tests are easier than exams and it's like a free 20% for you"</p>
+                </div>
+            </div>
+
+            <!-- Week 2 -->
+            <div style="background: #252526; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #ce9178;">
+                <h3 style="color: #ce9178; margin-top: 0;">📚 WEEK 2 (Oct 16) - Current Account Sustainability</h3>
+                <div style="color: #d4d4d4; line-height: 1.8; font-size: 0.95em;">
+                    <p><strong style="color: #4ec9b0;">Transversality - Growth Rate:</strong> "The condition says that the debt cannot grow faster than the interest rate"</p>
+                    <p><strong style="color: #4ec9b0;">GUARANTEED:</strong> "This is very important. I'll probably put it on the test for sure, something, some version of this question"</p>
+                    <p><strong style="color: #4ec9b0;">Common Misconception:</strong> Transversality does NOT mean debt = 0. It means present discounted value → 0.</p>
+                </div>
+            </div>
+
+            <!-- Week 3 -->
+            <div style="background: #252526; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #ce9178;">
+                <h3 style="color: #ce9178; margin-top: 0;">📚 WEEK 3 (Oct 23) - Theory of Current Account</h3>
+                <div style="color: #d4d4d4; line-height: 1.8; font-size: 0.95em;">
+                    <p><strong style="color: #4ec9b0;">Endogenous/Exogenous:</strong> "This is something I might ask on the test. I'll give you an example and say what are the exogenous variables"</p>
+                    <p><strong style="color: #4ec9b0;">Don't Memorise:</strong> "Don't study by heart... just remember the identities from week one and work it out"</p>
+                    <p><strong style="color: #4ec9b0;">TRUE/FALSE Guaranteed:</strong> "This I said will be the question that I will ask on the test because I want everybody to get on that question... There will be something true or false"</p>
+                </div>
+            </div>
+
+            <!-- Week 4 -->
+            <div style="background: #252526; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #ce9178;">
+                <h3 style="color: #ce9178; margin-top: 0;">📚 WEEK 4 (Oct 30) - Terms of Trade & Interest Rates</h3>
+                <div style="color: #d4d4d4; line-height: 1.8; font-size: 0.95em;">
+                    <p><strong style="color: #4ec9b0;">Log Utility:</strong> "The characteristic of the log utility is going to be that the substitution effect is always going to dominate the wealth effect"</p>
+                    <p><strong style="color: #4ec9b0;">Terms of Trade:</strong> TT = P_X / P_M (price of exports divided by price of imports)</p>
+                    <p><strong style="color: #4ec9b0;">Tariff Effects:</strong> General equilibrium effects - relative prices change even if revenue rebated</p>
+                </div>
+            </div>
+
+            <!-- Week 5 -->
+            <div style="background: #252526; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #ce9178;">
+                <h3 style="color: #ce9178; margin-top: 0;">📚 WEEK 5 (Nov 6) - Production Economy</h3>
+                <div style="color: #d4d4d4; line-height: 1.8; font-size: 0.95em;">
+                    <p><strong style="color: #4ec9b0;">Investment Lag:</strong> Investment in period t materialises in period t+1</p>
+                    <p><strong style="color: #4ec9b0;">MPK:</strong> Marginal product of capital = A_t F'(I_{t-1})</p>
+                    <p><strong style="color: #4ec9b0;">Firm's Condition:</strong> A₂F'(I₁) = 1 + r₁ (MPK equals opportunity cost)</p>
+                </div>
+            </div>
+
+            <!-- Week 6 -->
+            <div style="background: #252526; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #ce9178;">
+                <h3 style="color: #ce9178; margin-top: 0;">📚 WEEK 6 (Nov 13) - Metzler Diagram & Uncertainty</h3>
+                <div style="color: #d4d4d4; line-height: 1.8; font-size: 0.95em;">
+                    <p><strong style="color: #4ec9b0;">Test Question Hint:</strong> "Savings in period 2 in a two period economy will be zero - this could be one test question"</p>
+                    <p><strong style="color: #4ec9b0;">Metzler Diagram:</strong> "This is really a bank for many questions that I can ask on the test"</p>
+                    <p><strong style="color: #4ec9b0;">Trick Questions Warning:</strong> "I can always come up with trick questions on the test... Sometimes multiple choices are actually not easy"</p>
+                    <p><strong style="color: #4ec9b0;">Current Productivity:</strong> Investment schedule NOT affected by A₁ - it depends only on A₂</p>
+                </div>
+            </div>
+
+            <!-- Week 7 -->
+            <div style="background: #252526; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #ce9178;">
+                <h3 style="color: #ce9178; margin-top: 0;">📚 WEEK 7 (Nov 20) - Large Open Economies & Global Saving Glut</h3>
+                <div style="color: #d4d4d4; line-height: 1.8; font-size: 0.95em;">
+                    <p><strong style="color: #4ec9b0;">GUARANTEED:</strong> "You will have a question on the large open economy for sure"</p>
+                    <p><strong style="color: #4ec9b0;">Know This:</strong> "How will the increasing productivity in the US in the second period affect the world interest rate would be something that you would be expected to know"</p>
+                    <p><strong style="color: #4ec9b0;">Global Saving Glut:</strong> "This is important for the test and definitely exam material. Comparing these could be a test question."</p>
+                    <p><strong style="color: #4ec9b0;">Data Evidence:</strong> "The test will likely have something on whether the data supports saving glut or investment drought"</p>
+                </div>
+            </div>
+
+            <!-- High Probability Topics -->
+            <div style="background: #252526; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #c586c0;">
+                <h3 style="color: #c586c0; margin-top: 0;">📊 HIGH PROBABILITY TOPICS</h3>
+                <ul style="color: #d4d4d4; line-height: 2; margin: 0; padding-left: 20px;">
+                    <li>Trade balance vs current account sign differences (true/false)</li>
+                    <li>Stock market performance → NIIP connection</li>
+                    <li>Terms of trade definition: TT = P_X / P_M</li>
+                    <li>Tariff effects with general equilibrium</li>
+                    <li>Substitution vs income effects with log utility</li>
+                    <li>Temporary vs permanent shocks on CA</li>
+                    <li>Comparing saving glut vs investment drought</li>
+                    <li>Two-country model interest rate determination</li>
+                </ul>
+            </div>
+
+            <!-- Test Format -->
+            <div style="background: #252526; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #569cd6;">
+                <h3 style="color: #569cd6; margin-top: 0;">📝 TEST FORMAT (December 1st)</h3>
+                <div style="color: #d4d4d4; line-height: 1.8;">
+                    <p><strong>Coverage:</strong> Weeks 1-7 only (NOT Week 8)</p>
+                    <p><strong>Format:</strong> 8 MCQs (mostly true/false) + 2 short essays (14 marks each)</p>
+                    <p><strong>Weight:</strong> 10% of final grade (2 tests total = 20%, each = 10%)</p>
+                    <p><strong>Mode:</strong> In-person</p>
+                </div>
+            </div>
+
+            <!-- Study Advice -->
+            <div style="background: #252526; border-radius: 12px; padding: 20px; border-left: 4px solid #dcdcaa;">
+                <h3 style="color: #dcdcaa; margin-top: 0;">💡 PROFESSOR'S STUDY ADVICE</h3>
+                <ul style="color: #d4d4d4; line-height: 2; margin: 0; padding-left: 20px;">
+                    <li>Don't memorise formulas - <strong>derive them from basic identities</strong></li>
+                    <li>Practice B and C problems from seminars (<strong>especially C</strong> - most representative)</li>
+                    <li>Tests are easier than exams - "free 20%"</li>
+                    <li>If you panic on exam, <strong>work from first principles</strong></li>
+                    <li>Close book and try to derive everything yourself</li>
+                    <li><strong>Study with understanding</strong> - she can make trick questions</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 25px;">
+                <button onclick="closeExamMentions()" style="background: linear-gradient(135deg, #5B3069 0%, #7c3aed 100%); color: white; border: none; padding: 15px 40px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 1.1em;">Close Exam Mentions</button>
+            </div>
+        </div>
     </div>
 
     <!-- Firebase SDK -->
@@ -3541,6 +3701,16 @@
             } else {
                 display.style.display = 'none';
             }
+        }
+
+        function showExamMentions() {
+            document.getElementById('examMentionsModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeExamMentions() {
+            document.getElementById('examMentionsModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
 
         function toggleBelgradeTracker() {
