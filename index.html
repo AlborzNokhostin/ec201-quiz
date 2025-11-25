@@ -1236,9 +1236,12 @@
             </div>
 
             <!-- Belgrade Tracker Button -->
-            <div style="text-align: center; margin-top: 24px;">
+            <div style="text-align: center; margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
                 <button onclick="toggleBelgradeTracker(); document.getElementById('belgradeTracker').scrollIntoView({behavior: 'smooth', block: 'start'});" style="background: #5B3069; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-family: 'Courier New', Courier, monospace; font-size: 0.9em; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(91, 48, 105, 0.3);">
                     📊 View Belgrade Tracker - Professor's Emphasis Patterns
+                </button>
+                <button onclick="toggleExamMentionsSection(); document.getElementById('examMentionsSection').scrollIntoView({behavior: 'smooth', block: 'start'});" style="background: #1e1e1e; color: #4ec9b0; border: 2px solid #4ec9b0; padding: 12px 24px; border-radius: 6px; font-family: 'Courier New', Courier, monospace; font-size: 0.9em; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(78, 201, 176, 0.3);">
+                    📋 See All 72 Exam Mentions
                 </button>
             </div>
         </div>
@@ -1497,6 +1500,13 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Back to Home Button -->
+                <div style="text-align: center; margin-top: 60px;">
+                    <button onclick="toggleBelgradeTracker(); window.scrollTo({top: 0, behavior: 'smooth'});" style="background: linear-gradient(135deg, #5B3069 0%, #7c3aed 100%); color: white; border: none; padding: 15px 40px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 1.1em; font-family: 'Courier New', Courier, monospace; box-shadow: 0 4px 12px rgba(91, 48, 105, 0.4);">
+                        ⬆️ Back to Home
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -1550,77 +1560,75 @@
 
                 <!-- Week 1 -->
                 <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
-                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 1 (Oct 9) — 26 mentions</h3>
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 1 (Oct 9) — 26 mentions | Topics: Balance of Payments, NIIP, Valuation Effects</h3>
                     <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
-                        <p><strong style="color: #4ec9b0;">Test Format:</strong> "8 multiple choice questions... two short essay questions and it's gonna be 14 marks each"</p>
-                        <p><strong style="color: #4ec9b0;">Coverage:</strong> "Whatever we cover in the first seven weeks of the term will be on the test on December 1st"</p>
-                        <p><strong style="color: #4ec9b0;">Part C Questions:</strong> "These questions B and C are going to be quite representative, especially the C part of what you might see in the exam"</p>
-                        <p><strong style="color: #4ec9b0;">Study Strategy:</strong> "Tests are easier than exams and it's like a free 20% for you"</p>
-                        <p><strong style="color: #4ec9b0;">NIIP Hint:</strong> "This would be again test question" - regarding NIIP = CA + Valuation Changes</p>
+                        <p><strong style="color: #4ec9b0;">Test Format:</strong> "8 multiple choice questions... two short essay questions and it's gonna be 14 marks each"<br><span style="color: #808080; font-size: 0.9em;">Context: Explaining test structure at beginning of course</span></p>
+                        <p><strong style="color: #4ec9b0;">Coverage:</strong> "Whatever we cover in the first seven weeks of the term will be on the test on December 1st"<br><span style="color: #808080; font-size: 0.9em;">Context: Clarifying test scope - Week 8 NOT included</span></p>
+                        <p><strong style="color: #4ec9b0;">Part C Questions:</strong> "These questions B and C are going to be quite representative, especially the C part of what you might see in the exam"<br><span style="color: #808080; font-size: 0.9em;">Context: Explaining seminar problem structure - Part C is most exam-like</span></p>
+                        <p><strong style="color: #4ec9b0;">Study Strategy:</strong> "Tests are easier than exams and it's like a free 20% for you"<br><span style="color: #808080; font-size: 0.9em;">Context: Encouraging students to prioritise test preparation</span></p>
+                        <p><strong style="color: #4ec9b0;">NIIP Hint:</strong> "This would be again test question"<br><span style="color: #808080; font-size: 0.9em;">Context: Teaching NIIP = CA + Valuation Changes formula. Stock market booms increase value of foreign equity holdings → improves NIIP even without CA surplus</span></p>
                     </div>
                 </div>
 
                 <!-- Week 2 -->
                 <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
-                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 2 (Oct 16) — 2 mentions</h3>
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 2 (Oct 16) — 2 mentions | Topics: Current Account Sustainability, Transversality</h3>
                     <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
-                        <p><strong style="color: #4ec9b0;">GUARANTEED:</strong> "This is very important. I'll probably put it on the test for sure, something, some version of this question"</p>
-                        <p><strong style="color: #4ec9b0;">Transversality:</strong> "The condition says that the debt cannot grow faster than the interest rate"</p>
+                        <p><strong style="color: #4ec9b0;">GUARANTEED:</strong> "This is very important. I'll probably put it on the test for sure, something, some version of this question"<br><span style="color: #808080; font-size: 0.9em;">Context: Teaching transversality condition. The condition says lim(t→∞) B_t/(1+r)^t = 0. This means PRESENT DISCOUNTED VALUE of debt goes to zero, NOT that debt itself must be zero. Countries can maintain debt forever as long as debt growth rate < interest rate.</span></p>
+                        <p><strong style="color: #4ec9b0;">Transversality:</strong> "The condition says that the debt cannot grow faster than the interest rate"<br><span style="color: #808080; font-size: 0.9em;">Context: Common student mistake is saying "debt must equal zero". WRONG. Debt can be large and growing, just must grow slower than r. If debt grows at 3% and r=5%, transversality holds.</span></p>
                     </div>
                 </div>
 
                 <!-- Week 3 -->
                 <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
-                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 3 (Oct 23) — 6 mentions</h3>
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 3 (Oct 23) — 6 mentions | Topics: Small Open Economy Model, Euler Equation</h3>
                     <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
-                        <p><strong style="color: #4ec9b0;">Endogenous/Exogenous:</strong> "This is something I might ask on the test. I'll give you an example and say what are the exogenous variables"</p>
-                        <p><strong style="color: #4ec9b0;">Don't Memorise:</strong> "Don't study by heart... just remember the identities from week one and work it out"</p>
-                        <p><strong style="color: #4ec9b0;">TRUE/FALSE:</strong> "This I said will be the question that I will ask on the test because I want everybody to get on that question"</p>
-                        <p><strong style="color: #4ec9b0;">Panic Advice:</strong> "Don't panic if you kind of block on the exam... you should be able to logically work out where these come from"</p>
+                        <p><strong style="color: #4ec9b0;">Endogenous/Exogenous:</strong> "This is something I might ask on the test. I'll give you an example and say what are the exogenous variables"<br><span style="color: #808080; font-size: 0.9em;">Context: In small open economy: Endogenous = C₁, C₂, B₁ (what household chooses). Exogenous = Q₁, Q₂, r, B₀ (given to household, can't change). Test may give you a model and ask you to identify which variables are which.</span></p>
+                        <p><strong style="color: #4ec9b0;">Don't Memorise:</strong> "Don't study by heart... just remember the identities from week one and work it out"<br><span style="color: #808080; font-size: 0.9em;">Context: Teaching CA_t = TB_t + r·B_{t-1} + NUT. If you forget whether it's B_t or B_{t-1}, derive it from: Income in period t includes interest on assets held at END of previous period.</span></p>
+                        <p><strong style="color: #4ec9b0;">TRUE/FALSE:</strong> "This I said will be the question that I will ask on the test because I want everybody to get on that question"<br><span style="color: #808080; font-size: 0.9em;">Context: Referring to transversality TRUE/FALSE. Expect: "Transversality condition requires debt to equal zero as t→∞" - Answer: FALSE (it's present discounted value → 0)</span></p>
+                        <p><strong style="color: #4ec9b0;">Panic Advice:</strong> "Don't panic if you kind of block on the exam... you should be able to logically work out where these come from"<br><span style="color: #808080; font-size: 0.9em;">Context: If you forget CA = TB + r·B_{t-1}, think: Current Account = Trade Balance + Income from foreign assets (interest × previous period asset position)</span></p>
                     </div>
                 </div>
 
                 <!-- Week 4 -->
                 <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
-                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 4 (Oct 30) — 2 mentions</h3>
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 4 (Oct 30) — 2 mentions | Topics: Terms of Trade, Interest Rate Shocks, Tariffs</h3>
                     <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
-                        <p><strong style="color: #4ec9b0;">Log Utility:</strong> "The characteristic of the log utility is going to be that the substitution effect is always going to dominate the wealth effect"</p>
-                        <p><strong style="color: #4ec9b0;">Tariffs:</strong> General equilibrium effects important - relative prices change even if revenue rebated</p>
+                        <p><strong style="color: #4ec9b0;">Log Utility:</strong> "The characteristic of the log utility is going to be that the substitution effect is always going to dominate the wealth effect"<br><span style="color: #808080; font-size: 0.9em;">Context: When r↑ with log utility U=ln(C): Substitution effect (save more, cheaper to consume later) ALWAYS dominates income effect. So r↑ → C₁↓ → S↑ → CA improves. No ambiguity with log preferences.</span></p>
+                        <p><strong style="color: #4ec9b0;">Tariffs:</strong> General equilibrium effects important<br><span style="color: #808080; font-size: 0.9em;">Context: Even if tariff revenue is rebated to households, tariffs still affect behaviour through Euler equation. Temporary tariff in period 1 (τ₁ > τ₂) makes consumption today expensive → C₁↓ → CA improves. Permanent tariffs (τ₁ = τ₂) cancel out in Euler equation → no CA effect.</span></p>
                     </div>
                 </div>
 
                 <!-- Week 5 -->
                 <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
-                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 5 (Nov 6) — 4 mentions</h3>
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 5 (Nov 6) — 4 mentions | Topics: Production Economy, Investment, Firms</h3>
                     <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
-                        <p><strong style="color: #4ec9b0;">Test Coverage:</strong> "The material until week 7 will be on the test"</p>
-                        <p><strong style="color: #4ec9b0;">Week 8:</strong> "Whatever is in week 8" will NOT be on test - possible recap lecture</p>
-                        <p><strong style="color: #4ec9b0;">Investment:</strong> A₂F'(I₁) = 1 + r₁ - MPK equals opportunity cost</p>
+                        <p><strong style="color: #4ec9b0;">Test Coverage:</strong> "The material until week 7 will be on the test"<br><span style="color: #808080; font-size: 0.9em;">Context: Confirming test scope - Weeks 1-7 only. Week 8 may be recap.</span></p>
+                        <p><strong style="color: #4ec9b0;">Investment Timing:</strong> Investment in period t materialises in period t+1<br><span style="color: #808080; font-size: 0.9em;">Context: Key concept - Q₂ = A₂·F(I₁). Investment today (I₁) produces output TOMORROW (Q₂). Like building a factory - takes time. Firms borrow D₁ᶠ = I₁ today, produce and repay tomorrow.</span></p>
+                        <p><strong style="color: #4ec9b0;">Firm's Condition:</strong> A₂F'(I₁) = 1 + r₁<br><span style="color: #808080; font-size: 0.9em;">Context: Optimal investment rule: Marginal Product of Capital = Marginal Cost of Capital. Invest until the extra output from one more unit of capital equals the cost of borrowing (1+r). Higher r → less investment. Higher A₂ → more investment.</span></p>
                     </div>
                 </div>
 
                 <!-- Week 6 -->
                 <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
-                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 6 (Nov 13) — 10 mentions</h3>
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 6 (Nov 13) — 10 mentions | Topics: Metzler Diagram, Saving Schedule</h3>
                     <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
-                        <p><strong style="color: #4ec9b0;">Savings Period 2:</strong> "Savings in period 2 in a two period economy will be zero - this could be one test question"</p>
-                        <p><strong style="color: #4ec9b0;">Metzler:</strong> "This is really a bank for many questions that I can ask on the test"</p>
-                        <p><strong style="color: #4ec9b0;">Trick Questions:</strong> "I can always come up with trick questions on the test... Sometimes multiple choices are actually not easy"</p>
-                        <p><strong style="color: #4ec9b0;">Nice Question:</strong> "That's a nice question for the test" - regarding whether A₁ affects investment schedule</p>
-                        <p><strong style="color: #4ec9b0;">Key Point:</strong> Investment schedule NOT affected by A₁ (current productivity) - depends only on A₂</p>
+                        <p><strong style="color: #4ec9b0;">Savings Period 2:</strong> "Savings in period 2 in a two period economy will be zero - this could be one test question"<br><span style="color: #808080; font-size: 0.9em;">Context: In 2-period model, S₂ = 0 always because you consume everything in final period (no reason to save for period 3 that doesn't exist). TRUE/FALSE question likely.</span></p>
+                        <p><strong style="color: #4ec9b0;">Metzler Diagram:</strong> "This is really a bank for many questions that I can ask on the test"<br><span style="color: #808080; font-size: 0.9em;">Context: Metzler diagram has r on vertical axis, CA on horizontal. S(r) slopes UP (higher r → save more). I(r) slopes DOWN (higher r → invest less). CA = S - I. Where they cross determines equilibrium.</span></p>
+                        <p><strong style="color: #4ec9b0;">Trick Questions:</strong> "I can always come up with trick questions on the test... Sometimes multiple choices are actually not easy"<br><span style="color: #808080; font-size: 0.9em;">Context: Warning about MCQ difficulty - read carefully, understand concepts deeply.</span></p>
+                        <p><strong style="color: #4ec9b0;">Nice Question:</strong> "That's a nice question for the test" - Does A₁ affect investment schedule?<br><span style="color: #808080; font-size: 0.9em;">Context: ANSWER: NO! Investment I₁ depends on A₂ (future productivity) and r₁, NOT on A₁. Because I₁ produces Q₂ = A₂·F(I₁). Current productivity A₁ affects current output Q₁ but NOT investment decision.</span></p>
                     </div>
                 </div>
 
                 <!-- Week 7 -->
                 <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
-                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 7 (Nov 20) — 22 mentions</h3>
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 7 (Nov 20) — 22 mentions | Topics: Two-Country Model, Global Saving Glut</h3>
                     <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
-                        <p><strong style="color: #4ec9b0;">GUARANTEED:</strong> "You will have a question on the large open economy for sure"</p>
-                        <p><strong style="color: #4ec9b0;">Know This:</strong> "How will the increasing productivity in the US in the second period affect the world interest rate would be something that you would be expected to know"</p>
-                        <p><strong style="color: #4ec9b0;">Global Saving Glut:</strong> "This is important for the test and definitely exam material"</p>
-                        <p><strong style="color: #4ec9b0;">Comparison:</strong> "Comparing these [saving glut vs investment drought] could be a test question"</p>
-                        <p><strong style="color: #4ec9b0;">Data Evidence:</strong> "The test will likely have something on whether the data supports saving glut or investment drought"</p>
-                        <p><strong style="color: #4ec9b0;">Exam Depth:</strong> "For the exam, you might need to explain this in more depth"</p>
+                        <p><strong style="color: #4ec9b0;">GUARANTEED:</strong> "You will have a question on the large open economy for sure"<br><span style="color: #808080; font-size: 0.9em;">Context: In two-country model, r* is ENDOGENOUS (determined by global S = global I). Unlike small open economy where r* is given. Country A's policies affect Country B through r*.</span></p>
+                        <p><strong style="color: #4ec9b0;">Know This:</strong> "How will the increasing productivity in the US in the second period affect the world interest rate"<br><span style="color: #808080; font-size: 0.9em;">Context: If US A₂↑ → US I↑ (more profitable to invest) → global demand for funds↑ → r*↑. Also US S↓ (borrow against future income) → r*↑ even more. Two-country feedback effects!</span></p>
+                        <p><strong style="color: #4ec9b0;">Global Saving Glut:</strong> "This is important for the test and definitely exam material"<br><span style="color: #808080; font-size: 0.9em;">Context: Bernanke's hypothesis: Emerging markets (China, oil exporters) saved excessively in 2000s → capital flowed to US → r*↓ → US borrowed cheaply → US CA deficit. Alternative: Investment Drought (Summers) - low investment demand globally drove r* down.</span></p>
+                        <p><strong style="color: #4ec9b0;">Comparison:</strong> "Comparing these [saving glut vs investment drought] could be a test question"<br><span style="color: #808080; font-size: 0.9em;">Context: Key difference - Saving Glut says S↑ caused low r*. Investment Drought says I↓ caused low r*. Data shows saving rates DID rise in Asia, supporting Saving Glut. But both could contribute.</span></p>
+                        <p><strong style="color: #4ec9b0;">Data Evidence:</strong> "The test will likely have something on whether the data supports saving glut or investment drought"<br><span style="color: #808080; font-size: 0.9em;">Context: Evidence for Saving Glut: China's saving rate rose from ~35% to >50%. Oil exporters accumulated sovereign wealth funds. Evidence for Investment Drought: Corporate investment weak despite low r*.</span></p>
                     </div>
                 </div>
 
@@ -1659,6 +1667,13 @@
                             <p>• Tests are easier than exams</p>
                         </div>
                     </div>
+                </div>
+
+                <!-- Back to Home Button -->
+                <div style="text-align: center; margin-top: 60px;">
+                    <button onclick="toggleExamMentionsSection(); window.scrollTo({top: 0, behavior: 'smooth'});" style="background: linear-gradient(135deg, #1e1e1e 0%, #4ec9b0 100%); color: white; border: none; padding: 15px 40px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 1.1em; font-family: 'Courier New', Courier, monospace; box-shadow: 0 4px 12px rgba(78, 201, 176, 0.4);">
+                        ⬆️ Back to Home
+                    </button>
                 </div>
             </div>
         </div>
