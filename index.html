@@ -1133,10 +1133,10 @@
             <div class="logos-container">
                 <img src="Warwick_University_Shield.svg.png" alt="Warwick Shield" class="header-logo">
                 <img src="u_of_w_third_party_lockup_positive_rgb.jpg" alt="University of Warwick" class="header-logo">
-                <img src="images.png" alt="WHFS" class="header-logo" style="background: #000; border-radius: 8px; padding: 5px;">
+                <img src="images.png" alt="WHFS" class="header-logo" style="background: #000; border-radius: 8px; padding: 5px; height: 60px; width: auto;">
             </div>
             <h1>EC201 International Macroeconomics</h1>
-            <p>MCQ Assessment - Weeks 1-5</p>
+            <p>MCQ Assessment - Weeks 1-7</p>
             <p style="color: #ce9178; font-size: 0.95em; margin-top: 10px; font-family: 'Courier New', Courier, monospace;">📊 Lecturer mentioned "test" or "exam" <strong style="color: #4ec9b0;">72 times</strong> across 14 lectures — and we have collected all scenarios here</p>
         </div>
 
@@ -1267,6 +1267,8 @@
             <button class="week-btn" data-week="3">Week 3: Current Account Theory</button>
             <button class="week-btn" data-week="4">Week 4: Terms of Trade & Tariffs</button>
             <button class="week-btn" data-week="5">Week 5: Production Economy</button>
+            <button class="week-btn" data-week="6">Week 6: Metzler Diagram & Saving</button>
+            <button class="week-btn" data-week="7">Week 7: Two-Country Model & Saving Glut</button>
         </div>
 
         <div class="difficulty-selector">
@@ -1278,9 +1280,12 @@
         </div>
 
         <!-- Belgrade Tracker Toggle Button -->
-        <div style="text-align: center; padding: 15px; background: #f8f9fa;">
+        <div style="text-align: center; padding: 15px; background: #f8f9fa; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
             <button onclick="toggleBelgradeTracker()" class="btn" style="background: linear-gradient(135deg, #5B3069 0%, #5B3069 100%); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;">
                 📊 Belgrade Tracker - Professor's Emphasis Patterns
+            </button>
+            <button onclick="toggleExamMentionsSection()" class="btn" style="background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%); color: #4ec9b0; border: 2px solid #4ec9b0; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;">
+                📋 View All 72 Exam Mentions
             </button>
         </div>
 
@@ -1495,6 +1500,168 @@
             </div>
         </div>
 
+        <!-- Exam Mentions Section -->
+        <div id="examMentionsSection" style="display: none; padding: 80px 20px; background: #1e1e1e; opacity: 0; animation: fadeIn 0.6s ease-out forwards;">
+            <div style="max-width: 1100px; margin: 0 auto; font-family: 'Courier New', Courier, monospace;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 16px;">
+                    <h2 style="text-align: left; color: #4ec9b0; margin: 0; font-size: 2.5em; font-weight: 300; letter-spacing: -0.5px;">All 72 Exam Mentions</h2>
+                    <div id="examMentionsTimestamp" style="color: #808080; font-size: 0.85em;"></div>
+                </div>
+                <p style="text-align: left; color: #d4d4d4; margin-bottom: 60px; line-height: 1.8; max-width: 900px; font-size: 1.05em;">
+                    Complete collection of every instance where Professor Vukotic mentioned "test" or "exam" across all 14 lectures. Each mention is categorised by week with the professor's exact wording preserved.
+                </p>
+
+                <!-- Guaranteed Topics -->
+                <div style="margin-bottom: 40px;">
+                    <h3 style="color: #4ec9b0; margin-bottom: 24px; font-size: 1.4em; font-weight: 400;">🎯 Guaranteed Test Questions</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: #3c3c3c;">
+                        <div style="background: #252526; padding: 24px;">
+                            <div style="font-size: 0.75em; color: #c586c0; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Transversality Condition</div>
+                            <div style="font-size: 0.95em; color: #ce9178; margin-bottom: 12px; font-style: italic;">"I want everybody to get this right"</div>
+                            <div style="font-size: 0.85em; color: #808080; line-height: 1.6;">TRUE/FALSE: Present discounted value of debt → 0, NOT debt → 0. Growth rate of debt &lt; interest rate.</div>
+                        </div>
+                        <div style="background: #252526; padding: 24px;">
+                            <div style="font-size: 0.75em; color: #c586c0; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">NIIP = CA + Valuation</div>
+                            <div style="font-size: 0.95em; color: #ce9178; margin-bottom: 12px; font-style: italic;">"This would be again test question"</div>
+                            <div style="font-size: 0.85em; color: #808080; line-height: 1.6;">Stock market performance affects NIIP through valuation channel.</div>
+                        </div>
+                        <div style="background: #252526; padding: 24px;">
+                            <div style="font-size: 0.75em; color: #c586c0; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Endogenous vs Exogenous</div>
+                            <div style="font-size: 0.95em; color: #ce9178; margin-bottom: 12px; font-style: italic;">"I might ask this on the test"</div>
+                            <div style="font-size: 0.85em; color: #808080; line-height: 1.6;">Identify what's chosen (endogenous) vs what's given (exogenous) in models.</div>
+                        </div>
+                        <div style="background: #252526; padding: 24px;">
+                            <div style="font-size: 0.75em; color: #c586c0; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Global Saving Glut vs Investment Drought</div>
+                            <div style="font-size: 0.95em; color: #ce9178; margin-bottom: 12px; font-style: italic;">"Important for the test and definitely exam material"</div>
+                            <div style="font-size: 0.85em; color: #808080; line-height: 1.6;">Compare hypotheses. Assess which data supports. Week 7.</div>
+                        </div>
+                        <div style="background: #252526; padding: 24px;">
+                            <div style="font-size: 0.75em; color: #c586c0; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Large Open Economy</div>
+                            <div style="font-size: 0.95em; color: #ce9178; margin-bottom: 12px; font-style: italic;">"You will have a question on the large open economy for sure"</div>
+                            <div style="font-size: 0.85em; color: #808080; line-height: 1.6;">How productivity changes affect world interest rate.</div>
+                        </div>
+                        <div style="background: #252526; padding: 24px;">
+                            <div style="font-size: 0.75em; color: #c586c0; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Metzler Diagram</div>
+                            <div style="font-size: 0.95em; color: #ce9178; margin-bottom: 12px; font-style: italic;">"This is really a bank for many questions that I can ask on the test"</div>
+                            <div style="font-size: 0.85em; color: #808080; line-height: 1.6;">Saving and investment schedules, CA determination.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 1 -->
+                <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 1 (Oct 9) — 26 mentions</h3>
+                    <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
+                        <p><strong style="color: #4ec9b0;">Test Format:</strong> "8 multiple choice questions... two short essay questions and it's gonna be 14 marks each"</p>
+                        <p><strong style="color: #4ec9b0;">Coverage:</strong> "Whatever we cover in the first seven weeks of the term will be on the test on December 1st"</p>
+                        <p><strong style="color: #4ec9b0;">Part C Questions:</strong> "These questions B and C are going to be quite representative, especially the C part of what you might see in the exam"</p>
+                        <p><strong style="color: #4ec9b0;">Study Strategy:</strong> "Tests are easier than exams and it's like a free 20% for you"</p>
+                        <p><strong style="color: #4ec9b0;">NIIP Hint:</strong> "This would be again test question" - regarding NIIP = CA + Valuation Changes</p>
+                    </div>
+                </div>
+
+                <!-- Week 2 -->
+                <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 2 (Oct 16) — 2 mentions</h3>
+                    <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
+                        <p><strong style="color: #4ec9b0;">GUARANTEED:</strong> "This is very important. I'll probably put it on the test for sure, something, some version of this question"</p>
+                        <p><strong style="color: #4ec9b0;">Transversality:</strong> "The condition says that the debt cannot grow faster than the interest rate"</p>
+                    </div>
+                </div>
+
+                <!-- Week 3 -->
+                <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 3 (Oct 23) — 6 mentions</h3>
+                    <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
+                        <p><strong style="color: #4ec9b0;">Endogenous/Exogenous:</strong> "This is something I might ask on the test. I'll give you an example and say what are the exogenous variables"</p>
+                        <p><strong style="color: #4ec9b0;">Don't Memorise:</strong> "Don't study by heart... just remember the identities from week one and work it out"</p>
+                        <p><strong style="color: #4ec9b0;">TRUE/FALSE:</strong> "This I said will be the question that I will ask on the test because I want everybody to get on that question"</p>
+                        <p><strong style="color: #4ec9b0;">Panic Advice:</strong> "Don't panic if you kind of block on the exam... you should be able to logically work out where these come from"</p>
+                    </div>
+                </div>
+
+                <!-- Week 4 -->
+                <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 4 (Oct 30) — 2 mentions</h3>
+                    <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
+                        <p><strong style="color: #4ec9b0;">Log Utility:</strong> "The characteristic of the log utility is going to be that the substitution effect is always going to dominate the wealth effect"</p>
+                        <p><strong style="color: #4ec9b0;">Tariffs:</strong> General equilibrium effects important - relative prices change even if revenue rebated</p>
+                    </div>
+                </div>
+
+                <!-- Week 5 -->
+                <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 5 (Nov 6) — 4 mentions</h3>
+                    <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
+                        <p><strong style="color: #4ec9b0;">Test Coverage:</strong> "The material until week 7 will be on the test"</p>
+                        <p><strong style="color: #4ec9b0;">Week 8:</strong> "Whatever is in week 8" will NOT be on test - possible recap lecture</p>
+                        <p><strong style="color: #4ec9b0;">Investment:</strong> A₂F'(I₁) = 1 + r₁ - MPK equals opportunity cost</p>
+                    </div>
+                </div>
+
+                <!-- Week 6 -->
+                <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 6 (Nov 13) — 10 mentions</h3>
+                    <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
+                        <p><strong style="color: #4ec9b0;">Savings Period 2:</strong> "Savings in period 2 in a two period economy will be zero - this could be one test question"</p>
+                        <p><strong style="color: #4ec9b0;">Metzler:</strong> "This is really a bank for many questions that I can ask on the test"</p>
+                        <p><strong style="color: #4ec9b0;">Trick Questions:</strong> "I can always come up with trick questions on the test... Sometimes multiple choices are actually not easy"</p>
+                        <p><strong style="color: #4ec9b0;">Nice Question:</strong> "That's a nice question for the test" - regarding whether A₁ affects investment schedule</p>
+                        <p><strong style="color: #4ec9b0;">Key Point:</strong> Investment schedule NOT affected by A₁ (current productivity) - depends only on A₂</p>
+                    </div>
+                </div>
+
+                <!-- Week 7 -->
+                <div style="margin-bottom: 40px; border-left: 4px solid #ce9178; padding-left: 24px;">
+                    <h3 style="color: #ce9178; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">Week 7 (Nov 20) — 22 mentions</h3>
+                    <div style="color: #d4d4d4; font-size: 0.95em; line-height: 2;">
+                        <p><strong style="color: #4ec9b0;">GUARANTEED:</strong> "You will have a question on the large open economy for sure"</p>
+                        <p><strong style="color: #4ec9b0;">Know This:</strong> "How will the increasing productivity in the US in the second period affect the world interest rate would be something that you would be expected to know"</p>
+                        <p><strong style="color: #4ec9b0;">Global Saving Glut:</strong> "This is important for the test and definitely exam material"</p>
+                        <p><strong style="color: #4ec9b0;">Comparison:</strong> "Comparing these [saving glut vs investment drought] could be a test question"</p>
+                        <p><strong style="color: #4ec9b0;">Data Evidence:</strong> "The test will likely have something on whether the data supports saving glut or investment drought"</p>
+                        <p><strong style="color: #4ec9b0;">Exam Depth:</strong> "For the exam, you might need to explain this in more depth"</p>
+                    </div>
+                </div>
+
+                <!-- High Probability Topics -->
+                <div style="margin-bottom: 40px; background: #252526; border-radius: 12px; padding: 24px;">
+                    <h3 style="color: #c586c0; margin-bottom: 20px; font-size: 1.2em; font-weight: 400;">📊 High Probability Topics</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
+                        <div style="color: #d4d4d4; font-size: 0.9em;">• Trade balance vs current account sign differences</div>
+                        <div style="color: #d4d4d4; font-size: 0.9em;">• Stock market → NIIP connection</div>
+                        <div style="color: #d4d4d4; font-size: 0.9em;">• Terms of trade: TT = P_X / P_M</div>
+                        <div style="color: #d4d4d4; font-size: 0.9em;">• Tariff effects with GE</div>
+                        <div style="color: #d4d4d4; font-size: 0.9em;">• Substitution vs income effects (log utility)</div>
+                        <div style="color: #d4d4d4; font-size: 0.9em;">• Temporary vs permanent shocks on CA</div>
+                        <div style="color: #d4d4d4; font-size: 0.9em;">• Two-country model interest rate</div>
+                        <div style="color: #d4d4d4; font-size: 0.9em;">• Why A₁ doesn't affect investment schedule</div>
+                    </div>
+                </div>
+
+                <!-- Test Format & Study Advice -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: #3c3c3c;">
+                    <div style="background: #252526; padding: 24px;">
+                        <h3 style="color: #569cd6; margin-bottom: 16px; font-size: 1.1em; font-weight: 400;">📝 Test Format (Dec 1st)</h3>
+                        <div style="color: #d4d4d4; font-size: 0.9em; line-height: 1.8;">
+                            <p><strong>Coverage:</strong> Weeks 1-7 only</p>
+                            <p><strong>Format:</strong> 8 MCQs + 2 essays (14 marks each)</p>
+                            <p><strong>Weight:</strong> 10% (2 tests = 20%)</p>
+                            <p><strong>Mode:</strong> In-person</p>
+                        </div>
+                    </div>
+                    <div style="background: #252526; padding: 24px;">
+                        <h3 style="color: #dcdcaa; margin-bottom: 16px; font-size: 1.1em; font-weight: 400;">💡 Professor's Advice</h3>
+                        <div style="color: #d4d4d4; font-size: 0.9em; line-height: 1.8;">
+                            <p>• Don't memorise - <strong>derive from basics</strong></p>
+                            <p>• Practice Part C problems</p>
+                            <p>• If you panic, work from first principles</p>
+                            <p>• Tests are easier than exams</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div id="startScreen" class="start-screen">
             <h2>Ready to Test Your Knowledge?</h2>
@@ -3711,6 +3878,35 @@
         function closeExamMentions() {
             document.getElementById('examMentionsModal').style.display = 'none';
             document.body.style.overflow = 'auto';
+        }
+
+        function toggleExamMentionsSection() {
+            const section = document.getElementById('examMentionsSection');
+            const timestamp = document.getElementById('examMentionsTimestamp');
+            if (section.style.display === 'none') {
+                section.style.display = 'block';
+                section.style.opacity = '1';
+                // Update timestamp with current time and fetch IP
+                const now = new Date();
+                const timeStr = now.toLocaleString('en-GB', {
+                    day: '2-digit', month: 'short', year: 'numeric',
+                    hour: '2-digit', minute: '2-digit', second: '2-digit'
+                });
+                timestamp.innerHTML = `Loaded: ${timeStr} | Fetching IP...`;
+                // Fetch IP address
+                fetch('https://api.ipify.org?format=json')
+                    .then(r => r.json())
+                    .then(data => {
+                        timestamp.innerHTML = `Loaded: ${timeStr} | IP: ${data.ip}`;
+                    })
+                    .catch(() => {
+                        timestamp.innerHTML = `Loaded: ${timeStr}`;
+                    });
+                // Scroll to section
+                section.scrollIntoView({behavior: 'smooth', block: 'start'});
+            } else {
+                section.style.display = 'none';
+            }
         }
 
         function toggleBelgradeTracker() {
